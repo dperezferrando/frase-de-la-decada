@@ -6,7 +6,8 @@ const commonConfig = {
 
   google: {
     clientID: process.env.GOOGLE_OAUTH_CLIENTID,
-    secret: process.env.GOOGLE_OAUTH_SECRET
+    secret: process.env.GOOGLE_OAUTH_SECRET,
+    scopes: JSON.parse(process.env.GOOGLE_SCOPES || '["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email"]')
   },
 
   session: {
