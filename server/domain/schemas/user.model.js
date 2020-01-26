@@ -1,9 +1,12 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import Promise from "bluebird";
+
+Promise.promisifyAll(mongoose)
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  user:  String,
-  password: String,
+  email:  String,
+  googleId: String,
   name:   String,
 });
 
