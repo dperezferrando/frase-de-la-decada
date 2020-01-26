@@ -5,10 +5,13 @@ const config = require('./config');
 const app = express();
 const PORT = process.env.PORT || 9001; 
 const PUBLIC_DIR = path.join(__dirname, '/../public');
+const { setUpEnvVars } = require('../webpack/setUpLocalEnv');
+
+if(process.env.NODE_ENV == "development")
+  setUpEnvVars()
 
 mongoose.connect(config.mongo.uri, config.mongo.options);
 mongoose.Promise = require("bluebird");
-
 
 app.use("/api/test", (req, res) => res.send({ test: "hola "}));
 

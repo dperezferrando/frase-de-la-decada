@@ -2,6 +2,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require("path");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const _ = require("lodash");
+const webpack = require("webpack");
+const { envVars } = require('./setUpLocalEnv');
+
+const commomPlugins = [
+  new HtmlWebpackPlugin({
+    template: './server/index.html'
+  })
+];
 
 const commonConfig = {
   entry: "./client/app.jsx",
@@ -19,16 +27,13 @@ const commonConfig = {
   resolve: {
     extensions: [".js", ".jsx", ".json"]
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './server/index.html'
-    })
-  ],
+  plugins: commomPlugins,
   node: { fs: 'empty' },
 };
 
 const devConfig = {
-  devtool: 'inline-source-map'
+  devtool: 'inline-source-map',
+  plugins: commomPlugins.concat(new webpack.DefinePlugin(envVars))
 };
 
 const prodConfig = {
@@ -45,5 +50,5 @@ const configMap = {
 
 
 module.exports = () => {
-  return _.assign({}, configMap[process.env.NODE_ENV], commonConfig);
+  return _.merge({}, commonConfig, configMap[process.env.NODE_ENV]);
 }
