@@ -3,5 +3,5 @@
 
 Sistema de votacion de la frase de la decada 2010s
 
-http://punchbangstuf.com/frases
+https://decada.punchbangstuff.com
 
