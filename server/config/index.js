@@ -17,7 +17,7 @@ const commonConfig = {
   mongo: {
     options: {
       useNewUrlParser: true,
-      useUnifiedTopology: false
+      useUnifiedTopology: true
     }
   }
 
