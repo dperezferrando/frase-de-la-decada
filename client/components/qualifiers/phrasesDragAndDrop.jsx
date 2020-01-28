@@ -2,13 +2,10 @@ import React from 'react';
 import Component from "../../utils/component"
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import "./qualifiers.css"
+import mockedFrases from "./mockedFrases";
 
 // fake data generator
-const getItems = (count, offset = 0) =>
-    Array.from({ length: count }, (v, k) => k).map(k => ({
-        id: `item-${k + offset}`,
-        content: `item ${k + offset}`
-    }));
+const getItems = (count, offset = 0) => mockedFrases.frases
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -125,8 +122,8 @@ class PhrasesDragAndDrop extends Component {
                             style={getListStyle(snapshot.isDraggingOver)}>
                             {this.state.items.map((item, index) => (
                                 <Draggable
-                                    key={item.id}
-                                    draggableId={item.id}
+                                    key={item._id}
+                                    draggableId={item._id}
                                     index={index}>
                                     {(provided, snapshot) => (
                                         <div
@@ -137,7 +134,7 @@ class PhrasesDragAndDrop extends Component {
                                                 snapshot.isDragging,
                                                 provided.draggableProps.style
                                             )}>
-                                            {item.content}
+                                            {`${item.frase} (${item.aclaracion}) - ${item.autor} (${item.anio})`}
                                         </div>
                                     )}
                                 </Draggable>
@@ -165,7 +162,7 @@ class PhrasesDragAndDrop extends Component {
                                                 snapshot.isDragging,
                                                 provided.draggableProps.style
                                             )}>
-                                            {item.content}
+                                            {`${item.frase} (${item.aclaracion}) - ${item.autor} (${item.anio})`}
                                         </div>
                                     )}
                                 </Draggable>
