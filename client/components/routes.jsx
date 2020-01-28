@@ -4,6 +4,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import ExampleContainer from "../containers/example";
 import Navbar from "../containers/navbar";
 import Qualifiers from "../containers/qualifiers";
+import "./main.css";
 
 const HolaMundo = () => <h1>Hola Mundo</h1>;  
 
