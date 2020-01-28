@@ -38,18 +38,26 @@ const grid = 8;
 const getItemStyle = (isDragging, draggableStyle) => ({
     // some basic styles to make the items look a bit nicer
     userSelect: 'none',
-    padding: grid * 2,
-    margin: `0 0 ${grid}px 0`,
-
+  //  padding: grid * 2,
+    paddingTop: "10px",
+  //  margin: `0 0 ${grid}px 0`,
+    padingLeft: "2px",
+    padingRight: "2px",
+    wordBreak: "break-word",
     // change background colour if dragging
-    background: isDragging ? 'lightgreen' : 'grey',
+    background: isDragging ? 'lightgrey' : 'white',
+    textAlign: "center",
+    borderTopColor: "lightgrey",
+    borderTopWidth: "thin",
+    borderTopStyle: "solid",
 
     // styles we need to apply on draggables
     ...draggableStyle
 });
 
 const getListStyle = isDraggingOver => ({
-    background: isDraggingOver ? 'lightblue' : 'lightgrey',
+    background: 'white',//isDraggingOver ? 'lightblue' : 'lightgrey',
+    borderRadius: "5px",
     padding: grid,
     width: "30%"
 });
@@ -134,7 +142,10 @@ class PhrasesDragAndDrop extends Component {
                                                 snapshot.isDragging,
                                                 provided.draggableProps.style
                                             )}>
-                                            {`${item.frase} (${item.aclaracion}) - ${item.autor} (${item.anio})`}
+                                            <p className="yearAuthor"> { item.autor } </p>
+                                            <p className="phraseBody"> {`${item.frase}` + (item.aclaracion ? `(${item.aclaracion})`: "")} </p>
+                                            <p className="yearAuthor"> { item.anio } </p>
+
                                         </div>
                                     )}
                                 </Draggable>
@@ -150,8 +161,8 @@ class PhrasesDragAndDrop extends Component {
                             style={getListStyle(snapshot.isDraggingOver)}>
                             {this.state.selected.map((item, index) => (
                                 <Draggable
-                                    key={item.id}
-                                    draggableId={item.id}
+                                    key={item._id}
+                                    draggableId={item._id}
                                     index={index}>
                                     {(provided, snapshot) => (
                                         <div
@@ -162,7 +173,10 @@ class PhrasesDragAndDrop extends Component {
                                                 snapshot.isDragging,
                                                 provided.draggableProps.style
                                             )}>
-                                            {`${item.frase} (${item.aclaracion}) - ${item.autor} (${item.anio})`}
+                                            <p className="yearAuthor"> { item.autor } </p>
+                                            <p className="phraseBody"> {`${item.frase}` + (item.aclaracion ? `(${item.aclaracion})`: "")} </p>
+                                            <p className="yearAuthor"> { item.anio } </p>
+
                                         </div>
                                     )}
                                 </Draggable>
