@@ -4,12 +4,13 @@ import session from 'express-session';
 import passport from "passport";
 import config from '../config';
 import { googleStrategy } from "../auth/google";
+import cookieSession from 'cookie-session';
 
 export default (app) => {  
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
   app.use(cookieParser());
-  app.use(session({ secret: config.session.cookieSecret, resave: true, saveUninitialized: true }));
+  app.use(cookieSession({ name: 'session', secret: config.session.cookieSecret }));
   app.use(passport.initialize());
   app.use(passport.session());
   
