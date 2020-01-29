@@ -2,7 +2,6 @@ import React from 'react';
 import Component from "../../utils/component"
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import _ from "lodash";
-import mockedFrases from "./mockedFrases";
 import PhrasesList from "./phrasesList";
 import "./qualifiers.css"
 
