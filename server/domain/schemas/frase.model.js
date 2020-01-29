@@ -12,4 +12,4 @@ const fraseSchema = new Schema({
   coeficienteAutista: Number,
 });
 
-module.exports = mongoose.model('Frase', userSchema);
+module.exports = mongoose.model('Frase', fraseSchema);
