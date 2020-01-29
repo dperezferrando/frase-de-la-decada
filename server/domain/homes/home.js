@@ -15,6 +15,16 @@ class Home {
     return this.Model.createAsync(entity);
   }
 
+  getAll(query, offset = 0, limit = 25, sort = {_id: 1}) {
+    let options = {
+      skip: parseInt(offset),
+      sort,
+      limit: parseInt(limit)
+    };
+
+    return this.Model.findAsync(query, {}, options);
+  }
+
   _throwIfNotFound(entity) {
     if(!entity)
       throw new NotFound();
