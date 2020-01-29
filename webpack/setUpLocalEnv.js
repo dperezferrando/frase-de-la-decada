@@ -8,8 +8,7 @@ try {
 
 
 const envVariables = _.assign( { }, {
-  'DOMAIN': process.env.DOMAIN,
-  "TEST": process.env.TEST
+  'DOMAIN': process.env.DOMAIN
 }, env);
 
 
