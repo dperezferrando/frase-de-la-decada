@@ -1,5 +1,4 @@
 const { setUpEnvVars } = require('../webpack/setUpLocalEnv');
-if(process.env.NODE_ENV == "development")
-  setUpEnvVars()
+setUpEnvVars()
 require("@babel/register");
 require("./server");
