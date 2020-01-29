@@ -14,3 +14,30 @@
     color: black;
     text-align: center;
 }
+
+.frasesList {
+  background: #FFFFFF;
+  border-radius: 5px;
+  padding: 8px;
+  width: 40%;
+  overflow-y: scroll;
+  height: 1000px;
+}
+
+
+.frase, .fraseDragged {
+  user-select: 'none';
+  padding-top: 10px;
+  padding-left: 2px;
+  padding-right: 2px;
+  word-break: break-word;
+  background: white;
+  text-align: center;
+  border-top-color: lightgrey;
+  border-top-width: thin;
+  border-top-style: solid;
+}
+
+.fraseDragged {
+  background: lightgrey; 
+}
