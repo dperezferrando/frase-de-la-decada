@@ -36,7 +36,6 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 
 class PhrasesList extends Component {
   render() {
-
     return (
     <Droppable droppableId={this.props.id}>
       {(provided, snapshot) => (

@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 import Qualifiers from '../../components/qualifiers';
 import { actions } from '../../actions/qualifiers';
 import Component from "../../utils/component"
-import WithLoading from "../../components/utils/withLoading";
 
-const QualifiersWithLoading = WithLoading(Qualifiers);
 
 class QualifiersContainer extends Component {
 
@@ -18,9 +16,8 @@ class QualifiersContainer extends Component {
   render() {
     return (
       <div>
-        <QualifiersWithLoading
-          {...this.props}
-          isLoading={this.props.isLoading} 
+        <Qualifiers
+          {...this.props} 
         />
       </div>
     );

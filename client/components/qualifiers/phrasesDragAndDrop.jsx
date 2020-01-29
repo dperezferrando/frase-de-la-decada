@@ -38,10 +38,11 @@ const move = (source, destination, droppableSource, droppableDestination) => {
 
 
 class PhrasesDragAndDrop extends Component {
+    
   state = {
-      items: this.props.frases.results,
-      selected: []
-  };
+    items: this.props.frases.results,
+    selected: []
+  }
 
   /**
    * A semi-generic way to handle multiple lists. Matches
@@ -103,6 +104,7 @@ class PhrasesDragAndDrop extends Component {
           <PhrasesList
             id={"phrasesList"}
             items={this.state.items}
+            isLoading={this.props.isLoading}
           />
           <PhrasesList
             id={"selectedPhrasesList"}
