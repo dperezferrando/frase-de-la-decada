@@ -3,6 +3,7 @@ import Component from "../utils/component";
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import ExampleContainer from "../containers/example";
 import Navbar from "../containers/navbar";
+import Footer from "../components/footer";
 import Qualifiers from "../containers/qualifiers";
 import "./main.css";
 
@@ -17,6 +18,7 @@ class Routes extends Component {
         <Route exact path="/qualifiers" component={Qualifiers}/>
         <Route exact path="/test" component={ExampleContainer}/>
       </Switch>
+      <Footer/>
     </BrowserRouter>
   }
 }
