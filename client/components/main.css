@@ -1,5 +1,7 @@
 body {
   background-color: rgba(165, 0, 7, 0.72);
+  color: white;
+  margin: auto;
 }
 
 .footer {

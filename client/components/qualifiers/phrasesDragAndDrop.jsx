@@ -18,6 +18,11 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
+const descendingSort = (list, criteria) => _(list)
+  .sortBy(criteria)
+  .reverse()
+  .value()
+
 /**
  * Moves an item from one list to another list.
  */
@@ -38,10 +43,11 @@ const move = (source, destination, droppableSource, droppableDestination) => {
 
 
 class PhrasesDragAndDrop extends Component {
+    
   state = {
-      items: getItems(10),
-      selected: []
-  };
+    items: this.props.frases.results,
+    selected: this.props.frasesAnio.results
+  }
 
   /**
    * A semi-generic way to handle multiple lists. Matches
@@ -88,8 +94,8 @@ class PhrasesDragAndDrop extends Component {
     );
 
     this.setState({
-      items: result.phrasesList,
-      selected: result.selectedPhrasesList
+      items: descendingSort(result.phrasesList, "coeficienteAutista"),
+      selected: descendingSort(result.selectedPhrasesList, ["fraseDelAnio", "coeficienteAutista"])
     });
     }
   };
@@ -97,12 +103,14 @@ class PhrasesDragAndDrop extends Component {
   // Normally you would want to split things out into separate components.
   // But in this example everything is just done in one place for simplicity
   render() {
+    
     return (
       <div id="frases">
         <DragDropContext onDragEnd={::this.onDragEnd}>
           <PhrasesList
             id={"phrasesList"}
             items={this.state.items}
+            isLoading={this.props.isLoading}
           />
           <PhrasesList
             id={"selectedPhrasesList"}
