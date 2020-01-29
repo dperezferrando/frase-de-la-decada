@@ -12,24 +12,29 @@ class ServerApi {
     return this.post("/logout");
   }
 
+  frases(options) {
+    return this.get("/frases", options);
+  }
+
   delete(resource, body) {
-    return this._request("DELETE", resource, body);
+    return this._request({ method: "DELETE", resource, body });
   }
 
   post(resource, body) {
-    return this._request("POST", resource, body);
+    return this._request({ method: "POST", resource, body });
   }
 
-  get(resource) {
-    return this._request("GET", resource)
+  get(resource, qs) {
+    return this._request({ method: "GET", resource, qs })
   }
 
-  _request(method, resource, body) {
+  _request({ method, resource, body, qs }) {
     return request({ 
       method,
       url: `${baseUrl}${resource}`,
       json: true,
       jar: true,
+      qs,
       body
     }).promise()
   }
