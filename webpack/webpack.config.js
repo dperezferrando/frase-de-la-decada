@@ -8,8 +8,7 @@ const { envVars } = require('./setUpLocalEnv');
 const commomPlugins = [
   new HtmlWebpackPlugin({
     template: './server/index.html'
-  }),
-  new webpack.DefinePlugin(envVars)
+  })
 ];
 
 const commonConfig = {
@@ -37,7 +36,7 @@ const commonConfig = {
 
 const devConfig = {
   devtool: 'inline-source-map',
-  plugins: commomPlugins.concat()
+  plugins: commomPlugins.concat(new webpack.DefinePlugin(envVars))
 };
 
 const prodConfig = {
