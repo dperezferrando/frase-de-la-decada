@@ -41,7 +41,7 @@ class PhrasesDragAndDrop extends Component {
     
   state = {
     items: this.props.frases.results,
-    selected: []
+    selected: this.props.frasesAnio.results
   }
 
   /**
@@ -89,8 +89,8 @@ class PhrasesDragAndDrop extends Component {
     );
 
     this.setState({
-      items: result.phrasesList,
-      selected: result.selectedPhrasesList
+      items: _(result.phrasesList).sortBy("coeficienteAutista").reverse().value(),
+      selected: _(result.selectedPhrasesList).sortBy(["fraseDelAnio", "coeficienteAutista"]).reverse().value()
     });
     }
   };
@@ -98,6 +98,7 @@ class PhrasesDragAndDrop extends Component {
   // Normally you would want to split things out into separate components.
   // But in this example everything is just done in one place for simplicity
   render() {
+    
     return (
       <div id="frases">
         <DragDropContext onDragEnd={::this.onDragEnd}>

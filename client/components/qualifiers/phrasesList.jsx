@@ -46,7 +46,8 @@ class PhrasesList extends Component {
               <Draggable
                 key={item._id}
                 draggableId={item._id}
-                index={index}>
+                index={index}
+                isDragDisabled={item.fraseDelAnio}>
                   {(provided, snapshot) => (
                     <div
                       ref={provided.innerRef}

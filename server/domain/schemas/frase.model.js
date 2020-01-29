@@ -10,7 +10,10 @@ const fraseSchema = new Schema({
   autor: String,
   aclaracion: String,
   coeficienteAutista: Number,
-  fraseDelAnio: Boolean
+  fraseDelAnio: {
+    type: Boolean,
+    default: false
+  }
 });
 
 module.exports = mongoose.model('Frase', fraseSchema);

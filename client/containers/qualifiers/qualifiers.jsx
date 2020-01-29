@@ -9,7 +9,8 @@ import Component from "../../utils/component"
 class QualifiersContainer extends Component {
 
   componentDidMount() {
-    this.props.actions.fetchFrases();
+    this.props.actions.fetchFrases({ fraseDelAnio: false });
+    this.props.actions.fetchFrasesAnio();
   }
 
 
@@ -23,8 +24,8 @@ class QualifiersContainer extends Component {
     );
   }
 }
-function mapStateToProps({ qualifiers: { frases }}, props) {
-    return { frases, isLoading: frases.isLoading };
+function mapStateToProps({ qualifiers: { frases, frasesAnio }}, props) {
+    return { frases, frasesAnio, isLoading: frases.isLoading || frasesAnio.isLoading };
 }
 
 function mapDispatchToProps(dispatch) {
