@@ -8,7 +8,6 @@ const PhrasesDragAndDropWithLoading = WithLoading(PhrasesDragAndDrop);
 
 class Qualifiers extends Component {
   render() {
-    console.log("GG", this.props)
     return <PhrasesDragAndDropWithLoading {...this.props}/>
  
   }

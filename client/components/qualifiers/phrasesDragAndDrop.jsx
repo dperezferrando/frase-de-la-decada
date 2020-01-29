@@ -18,6 +18,11 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
+const descendingSort = (list, criteria) => _(list)
+  .sortBy(criteria)
+  .reverse()
+  .value()
+
 /**
  * Moves an item from one list to another list.
  */
@@ -89,8 +94,8 @@ class PhrasesDragAndDrop extends Component {
     );
 
     this.setState({
-      items: _(result.phrasesList).sortBy("coeficienteAutista").reverse().value(),
-      selected: _(result.selectedPhrasesList).sortBy(["fraseDelAnio", "coeficienteAutista"]).reverse().value()
+      items: descendingSort(result.phrasesList, "coeficienteAutista"),
+      selected: descendingSort(result.selectedPhrasesList, ["fraseDelAnio", "coeficienteAutista"])
     });
     }
   };
