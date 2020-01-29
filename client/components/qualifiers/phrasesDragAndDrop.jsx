@@ -39,7 +39,7 @@ const move = (source, destination, droppableSource, droppableDestination) => {
 
 class PhrasesDragAndDrop extends Component {
   state = {
-      items: getItems(10),
+      items: this.props.frases.results,
       selected: []
   };
 

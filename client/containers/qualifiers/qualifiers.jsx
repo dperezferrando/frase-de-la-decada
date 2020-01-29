@@ -4,26 +4,30 @@ import { connect } from 'react-redux';
 import Qualifiers from '../../components/qualifiers';
 import { actions } from '../../actions/qualifiers';
 import Component from "../../utils/component"
+import WithLoading from "../../components/utils/withLoading";
 
+const QualifiersWithLoading = WithLoading(Qualifiers);
 
 class QualifiersContainer extends Component {
 
   componentDidMount() {
+    this.props.actions.fetchFrases();
   }
 
 
   render() {
     return (
       <div>
-        <Qualifiers 
+        <QualifiersWithLoading
           {...this.props}
+          isLoading={this.props.isLoading} 
         />
       </div>
     );
   }
 }
-function mapStateToProps(state, props) {
-    return {  };
+function mapStateToProps({ qualifiers: { frases }}, props) {
+    return { frases, isLoading: frases.isLoading };
 }
 
 function mapDispatchToProps(dispatch) {
