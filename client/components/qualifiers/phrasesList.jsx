@@ -1,30 +1,34 @@
 import React from 'react';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import Component from "../../utils/component"
-
-const grid = 8;
-
+import { Popover, OverlayTrigger } from "react-bootstrap";
 
 
-const getItemStyle = (isDragging, draggableStyle) => ({
-    // some basic styles to make the items look a bit nicer
-    userSelect: 'none',
-  //  padding: grid * 2,
-    paddingTop: "10px",
-  //  margin: `0 0 ${grid}px 0`,
-    padingLeft: "2px",
-    padingRight: "2px",
-    wordBreak: "break-word",
-    // change background colour if dragging
-    background: isDragging ? 'lightgrey' : 'white',
-    textAlign: "center",
-    borderTopColor: "lightgrey",
-    borderTopWidth: "thin",
-    borderTopStyle: "solid",
 
-    // styles we need to apply on draggables
-    ...draggableStyle
-});
+const Frase = (provided, snapshot, item) => {
+  const popover = (
+    <Popover id="aclaracion">
+      <Popover.Content>
+        { item.aclaracion }
+      </Popover.Content>
+    </Popover>
+  )
+  const body = ( <div
+    ref={provided.innerRef}
+    {...provided.draggableProps}
+    {...provided.dragHandleProps}
+    className={snapshot.isDragging ? "fraseDragged" : (item.fraseDelAnio ? "fraseAnio":"frase")}>
+      <span className="phraseBody"> {`"${item.frase}" - `} </span> 
+      <span className="yearAuthor"> { item.autor } </span>
+      <span className="yearAuthor"> {` (${item.anio})` } </span>
+
+    </div> );
+  return ( item.aclaracion ?
+    <OverlayTrigger trigger="hover" placement="right" overlay={popover}>
+      { body }
+    </OverlayTrigger> : body
+  );
+}
 
 class PhrasesList extends Component {
   render() {
@@ -41,17 +45,7 @@ class PhrasesList extends Component {
                 index={index}
                 isDragDisabled={item.fraseDelAnio}>
                   {(provided, snapshot) => (
-                    <div
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      className={snapshot.isDragging ? "fraseDragged" : "frase"}>
-                        
-                        <span className="phraseBody"> {`"${item.frase}" - `} </span> 
-                        <span className="yearAuthor"> { item.autor } </span>
-                        <span className="yearAuthor"> {` (${item.anio})` } </span>
-
-                    </div>
+                    Frase(provided, snapshot, item)
                   )}
               </Draggable>
             ))}
@@ -63,5 +57,9 @@ class PhrasesList extends Component {
 
   }
 }
+
+
+
+
 
 export default PhrasesList;

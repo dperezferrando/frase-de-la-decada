@@ -20,10 +20,11 @@
   padding: 8px;
   width: 40%;
   height: 1000px;
+  overflow-y: scroll;
 }
 
 
-.frase, .fraseDragged {
+.frase, .fraseDragged, .fraseAnio {
   user-select: 'none';
   padding: 6px;
   word-break: break-word;
@@ -36,4 +37,8 @@
 
 .fraseDragged {
   background: lightgrey; 
+}
+
+.fraseAnio {
+  background: #f8d7da;
 }
