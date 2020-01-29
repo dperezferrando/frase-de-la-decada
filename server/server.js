@@ -7,7 +7,7 @@ import setUpAuthRoutes from "./routes/setUpAuthRoutes";
 import setUpApiRoutes from "./routes/setUpApiRoutes";
 
 const app = express();
-const PORT = process.env.PORT || 9001; 
+const PORT = config.port; 
 const PUBLIC_DIR = path.join(__dirname, '/../public');
 const morgan = require('morgan');
 

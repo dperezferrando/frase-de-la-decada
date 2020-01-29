@@ -19,7 +19,8 @@ const commonConfig = {
       useNewUrlParser: true,
       useUnifiedTopology: true
     }
-  }
+  },
+  port: process.env.PORT || process.env.$PORT || 9001
 
 }
 
