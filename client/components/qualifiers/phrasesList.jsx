@@ -4,14 +4,6 @@ import Component from "../../utils/component"
 
 const grid = 8;
 
-const getListStyle = isDraggingOver => ({
-    background: 'white',//isDraggingOver ? 'lightblue' : 'lightgrey',
-    borderRadius: "5px",
-    padding: grid,
-    width: "30%",
-    overflowY: "scroll",
-    height: "1000px"
-});
 
 
 const getItemStyle = (isDragging, draggableStyle) => ({
@@ -41,7 +33,7 @@ class PhrasesList extends Component {
       {(provided, snapshot) => (
         <div
           ref={provided.innerRef}
-          style={getListStyle(snapshot.isDraggingOver)}>
+          className="frasesList">
             {this.props.items.map((item, index) => (
               <Draggable
                 key={item._id}
@@ -53,13 +45,11 @@ class PhrasesList extends Component {
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
-                      style={getItemStyle(
-                        snapshot.isDragging,
-                        provided.draggableProps.style
-                      )}>
-                        <p className="yearAuthor"> { item.autor } </p>
-                        <p className="phraseBody"> {`${item.frase}` + (item.aclaracion ? ` (${item.aclaracion})`: "")} </p>
-                        <p className="yearAuthor"> { item.anio } </p>
+                      className={snapshot.isDragging ? "fraseDragged" : "frase"}>
+                        
+                        <span className="phraseBody"> {`"${item.frase}" - `} </span> 
+                        <span className="yearAuthor"> { item.autor } </span>
+                        <span className="yearAuthor"> {` (${item.anio})` } </span>
 
                     </div>
                   )}

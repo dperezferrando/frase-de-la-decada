@@ -7,7 +7,6 @@
 .yearAuthor {
     color: #ac0000;
     font-weight: bold;
-    font-size: 20px;
 }
 
 .phraseBody {
@@ -20,16 +19,13 @@
   border-radius: 5px;
   padding: 8px;
   width: 40%;
-  overflow-y: scroll;
   height: 1000px;
 }
 
 
 .frase, .fraseDragged {
   user-select: 'none';
-  padding-top: 10px;
-  padding-left: 2px;
-  padding-right: 2px;
+  padding: 6px;
   word-break: break-word;
   background: white;
   text-align: center;
