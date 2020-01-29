@@ -1,4 +1,4 @@
-import { Types, actions } from "../../actions/example";
+import { Types, actions } from "../actions/example";
 import Promise from "bluebird";
 import { map, flatMap } from 'rxjs/operators';
 import { ofType } from 'redux-observable';
