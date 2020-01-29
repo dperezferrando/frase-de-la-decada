@@ -4,6 +4,8 @@ import mongoose from "mongoose";
 import config from './config';
 import setUpAuthMiddlewares, { authValidation } from "./routes/setUpAuthMiddlewares";
 import setUpAuthRoutes from "./routes/setUpAuthRoutes";
+import setUpApiRoutes from "./routes/setUpApiRoutes";
+
 const app = express();
 const PORT = process.env.PORT || 9001; 
 const PUBLIC_DIR = path.join(__dirname, '/../public');
@@ -23,7 +25,7 @@ setUpAuthRoutes(app);
 app.use(authValidation);
 
 // PRIVATE ROUTES
-app.use("/api/test", ({ user }, res) => res.send({ test: `hola ${user.name}`}));
+setUpApiRoutes(app);
 
 app.use(express.static(PUBLIC_DIR));
 

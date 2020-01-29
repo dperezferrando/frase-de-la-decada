@@ -1,0 +1,16 @@
+#frases {
+  margin-top: 1%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.yearAuthor {
+    color: #ac0000;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.phraseBody {
+    color: black;
+    text-align: center;
+}

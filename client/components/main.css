@@ -1,0 +1,10 @@
+body {
+  background-color: rgba(165, 0, 7, 0.72);
+}
+
+.footer {
+  margin:auto;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  width: 80%;
+}
