@@ -7,9 +7,14 @@ try {
 } catch (e) { }
 
 
+const envVariables = _.assign( { }, {
+  'DOMAIN': process.env.DOMAIN,
+  "TEST": process.env.TEST
+}, env);
+
 
 module.exports = { 
-  envVars: _(env)
+  envVars: _(envVariables)
     .map((value,variable) => [ `process.env.${variable}`, JSON.stringify(value) ])
     .fromPairs()
     .value(),
