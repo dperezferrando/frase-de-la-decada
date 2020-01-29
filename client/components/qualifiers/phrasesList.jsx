@@ -57,7 +57,7 @@ class PhrasesList extends Component {
                         provided.draggableProps.style
                       )}>
                         <p className="yearAuthor"> { item.autor } </p>
-                        <p className="phraseBody"> {`${item.frase}` + (item.aclaracion ? `(${item.aclaracion})`: "")} </p>
+                        <p className="phraseBody"> {`${item.frase}` + (item.aclaracion ? ` (${item.aclaracion})`: "")} </p>
                         <p className="yearAuthor"> { item.anio } </p>
 
                     </div>
