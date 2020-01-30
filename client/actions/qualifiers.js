@@ -3,6 +3,8 @@ export const Types = {
   FETCH_FRASES_ANIO: "FETCH_FRASES_ANIO",
   SET_FRASES: "SET_FRASES",
   SET_FRASES_ANIO: "SET_FRASES_ANIO",
+  FETCH_AUTHORS: "FETCH_AUTORS",
+  SET_AUTHORS: "SET_AUTHORS",
 }
 
 
@@ -20,6 +22,12 @@ export const actions = {
   setFrasesAnio: (frases) => ({
     type: Types.SET_FRASES_ANIO,
     frases
+  }),fetchAuthors: () => ({
+    type: Types.FETCH_AUTHORS
+  }),
+  setAuthors: (authors) => ({
+    type: Types.SET_AUTHORS,
+    authors
   })
 
 }

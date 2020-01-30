@@ -11,6 +11,7 @@ class QualifiersContainer extends Component {
   componentDidMount() {
     this.props.actions.fetchFrases({ fraseDelAnio: false });
     this.props.actions.fetchFrasesAnio();
+    this.props.actions.fetchAuthors();
   }
 
 
@@ -24,8 +25,8 @@ class QualifiersContainer extends Component {
     );
   }
 }
-function mapStateToProps({ qualifiers: { frases, frasesAnio }}, props) {
-    return { frases, frasesAnio, isLoading: frases.isLoading || frasesAnio.isLoading };
+function mapStateToProps({ qualifiers: { frases, frasesAnio, authors }}, props) {
+  return { frases, frasesAnio, authors, isLoading: frases.isLoading || frasesAnio.isLoading };
 }
 
 function mapDispatchToProps(dispatch) {

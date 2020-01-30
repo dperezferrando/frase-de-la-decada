@@ -1,6 +1,6 @@
 import express from "express";
-import Controller from "./frase.controller";
-import Service from "../../domain/services/frase.service";
+import Controller from "./author.controller";
+import Service from "../../domain/services/author.service";
 
 let router = express.Router();
 let { route } = require("endpoint-handler")(router);

@@ -1,6 +1,7 @@
 import React from 'react';
 import Component from "../../utils/component"
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { Col, Row } from "react-bootstrap";
 import _ from "lodash";
 import PhrasesList from "./phrasesList";
 import "./qualifiers.css"
@@ -104,19 +105,24 @@ class PhrasesDragAndDrop extends Component {
   render() {
     
     return (
-      <div id="frases">
         <DragDropContext onDragEnd={::this.onDragEnd}>
-          <PhrasesList
-            id={"phrasesList"}
-            items={this.state.items}
-            isLoading={this.props.isLoading}
-          />
-          <PhrasesList
-            id={"selectedPhrasesList"}
-            items={this.state.selected}
-          />
+          <Row className="justify-content-md-between">
+            <Col md={6}>
+              <PhrasesList
+                id={"phrasesList"}
+                items={this.state.items}
+                isLoading={this.props.isLoading}
+              />
+              </Col>
+            <Col md={6}>
+
+              <PhrasesList
+                id={"selectedPhrasesList"}
+                items={this.state.selected}
+              />
+            </Col>
+          </Row>
         </DragDropContext>
-      </div>
     );
   }
 }
