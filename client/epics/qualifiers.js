@@ -16,5 +16,10 @@ export default {
       ofType(Types.FETCH_FRASES_ANIO),
       flatMap(() => serverApi.frases({ fraseDelAnio: true })),
       map(actions.setFrasesAnio)
+    ),fetchAuthorsEpic: (action$, store) =>
+    action$.pipe(
+      ofType(Types.FETCH_AUTHORS),
+      flatMap(() => serverApi.authors()),
+      map(actions.setAuthors)
     )
 };

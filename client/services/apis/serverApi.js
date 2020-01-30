@@ -16,6 +16,10 @@ class ServerApi {
     return this.get("/frases", options);
   }
 
+  authors() {
+    return this.get("/authors");
+  }
+
   delete(resource, body) {
     return this._request({ method: "DELETE", resource, body });
   }

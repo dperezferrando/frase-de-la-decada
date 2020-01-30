@@ -14,7 +14,7 @@ class Qualifiers extends Component {
       <Container fluid>
         <Row className="justify-content-md-center">
           <Col md={11}>
-            <Form.Group as={Col} md="12" controlId="validationFormikUsername">
+            <Form.Group controlId="validationFormikUsername">
               <Form.Label></Form.Label>
               <InputGroup>
                 <InputGroup.Prepend>
@@ -28,37 +28,41 @@ class Qualifiers extends Component {
      //               value={values.username}
      //               onChange={handleChange}
                 />
-              </InputGroup>
+                </InputGroup>
             </Form.Group>
 
           </Col>
         </Row>
         <Row className="justify-content-md-center">
-          <Col md={5} >
-            <ButtonToolbar>
-              <ToggleButtonGroup type="radio" name="anios" size="lg" onChange={(value) => console.log("GG", value)}>
-              {
-                YEARS.map(anio => 
-                  <ToggleButton value={anio} key={anio} variant="light">{ anio }</ToggleButton>
-                )
-              }
-              </ToggleButtonGroup>
-            </ButtonToolbar>
-          </Col>
-          <Col md={5} >
-            <ButtonToolbar>
-              <ToggleButtonGroup type="radio" name="anios" size="lg" onChange={(value) => console.log("GG", value)}>
-              {
-                YEARS.map(anio => 
-                  <ToggleButton value={anio} key={anio} variant="light">{ anio }</ToggleButton>
-                )
-              }
-              </ToggleButtonGroup>
-            </ButtonToolbar>
+          <Col md={11}>
+            <Row className="justify-content-md-around">
+              <Col md={3} >
+                <ButtonToolbar>
+                  <ToggleButtonGroup type="radio" name="anios" onChange={(value) => console.log("GG", value)}>
+                  {
+                    YEARS.map(anio => 
+                      <ToggleButton value={anio} key={anio} variant="light" className="yearAuthor">{ anio }</ToggleButton>
+                    )
+                  }
+                  </ToggleButtonGroup>
+                </ButtonToolbar>
+              </Col>
+              <Col md={8} >
+                { !this.props.authors.isLoading && <ButtonToolbar>
+                  <ToggleButtonGroup type="radio" name="anios" onChange={(value) => console.log("GG", value)}>
+                  {
+                    this.props.authors.results.map(({ name, _id }) => 
+                      <ToggleButton value={name} key={_id} variant="light" className="yearAuthor">{ name }</ToggleButton>
+                    )
+                  }
+                  </ToggleButtonGroup>
+                </ButtonToolbar>}
+              </Col>
+            </Row>
           </Col>
         </Row>
-        <Row>
-          <Col md={12}>
+        <Row className="justify-content-md-center">
+          <Col md={11}>
             <PhrasesDragAndDropWithLoading {...this.props}/>
           </Col>
         </Row>

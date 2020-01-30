@@ -7,7 +7,7 @@ export default (app) => {
   app.use("/api/test", ({ user }, res) => res.send({ test: `hola ${user.name}`}));
   app.use("/api/users", users);
   app.use("/api/frases", frases);
-  app.use("/api/author", authors);
+  app.use("/api/authors", authors);
 
 
 }
