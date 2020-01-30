@@ -9,6 +9,7 @@ const PhrasesDragAndDropWithLoading = WithLoading(PhrasesDragAndDrop);
 const FiltersWithLoading = WithLoading(Filters);
 
 class Qualifiers extends Component {
+
   render() {
     return (
       <Container fluid>
@@ -26,7 +27,6 @@ class Qualifiers extends Component {
     );
  
   }
-
 
 }
 

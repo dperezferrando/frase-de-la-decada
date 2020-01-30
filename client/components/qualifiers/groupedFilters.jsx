@@ -6,7 +6,7 @@ class GroupedFilters extends Component {
 
   render() {
     return (
-      <ButtonToolbar>
+      <ButtonToolbar key={this.props.clean}>
         <ToggleButtonGroup type="radio" name={this.props.name} onChange={this.props.onChange}>
         {
           this.props.items.map(({ key, value }) => 
