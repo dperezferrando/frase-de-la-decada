@@ -9,7 +9,6 @@ const PhrasesDragAndDropWithLoading = WithLoading(PhrasesDragAndDrop);
 const FiltersWithLoading = WithLoading(Filters);
 
 class Qualifiers extends Component {
-
   render() {
     return (
       <Container fluid>
@@ -20,7 +19,8 @@ class Qualifiers extends Component {
         />
         <Row className="justify-content-md-center">
           <Col md={11}>
-            <PhrasesDragAndDropWithLoading {...this.props}/>
+            <PhrasesDragAndDropWithLoading {...this.props} 
+              showCloak={this.props.isLoading && this.props.frases.alreadyLoadedOnce}/>
           </Col>
         </Row>
       </Container>
