@@ -6,8 +6,9 @@
   "scripts": {
     "test": "NODE_ENV=test mocha-webpack  --recursive --require 'server/test-globals' 'server/**/*.spec.js' --mode development --webpack-config ./webpack/webpack.config.js",
     "dev": "NODE_ENV=development nodemon",
+    "build": "rm -rf ./server/public && webpack --config ./webpack/webpack.config.js --mode production",
     "prod": "rm -rf ./server/public && webpack --config ./webpack/webpack.config.js --mode production && NODE_ENV=production node server/index.js",
-    "start": "npm run prod"
+    "start": "NODE_ENV=production node server/index.js"
   },
   "repository": {
     "type": "git",
