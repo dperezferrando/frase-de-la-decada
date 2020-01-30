@@ -7,6 +7,16 @@ const YEARS = ["2013", "2014", "2015", "2016", "2017", "2018", "2019"]
 
 class Filters extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      fraseText: "",
+      fraseDelAnio: false
+    }
+
+    this.debouncedFraseFilter = _.debounce(() => this.addFilter({ frase: this.state.fraseText }), 1000)
+  }
+
   render() {
     return <span>
       <Row className="justify-content-md-center">
@@ -22,8 +32,7 @@ class Filters extends Component {
                 placeholder="Buscar..."
                 aria-describedby="inputGroupPrepend"
                 name="username"
-    //               value={values.username}
-    //               onChange={handleChange}
+                onChange={({ target: { value } }) => this.onFraseFilterChange(value)}
               />
               </InputGroup>
           </Form.Group>
@@ -37,20 +46,33 @@ class Filters extends Component {
               <GroupedFilters
                 name="anios" 
                 items={YEARS.map(it => ({ value: it }))}
-                onChange={(value) => console.log("EE", value)}
+                onChange={anio => this.addFilter({ anio })}
               />
             </Col>
             <Col md={8} >
               <GroupedFilters
                 name="authors" 
                 items={this.props.authors.map(({ _id, name }) => ({ key: _id, value: name }))}
-                onChange={(value) => console.log("EE", value)}
+                onChange={autor => this.addFilter({ autor })}
               />
             </Col>
           </Row>
         </Col>
       </Row>
     </span>
+  }
+
+  addFilter(filter) {
+    const { fraseText, ...state } = this.state;
+    const newState = { ...state, ...filter };
+    this.props.actions.fetchFrases(newState)
+    this.setState(newState);
+
+  }
+
+  onFraseFilterChange(fraseText) {
+    this.setState({ ...this.state, fraseText })
+     this.debouncedFraseFilter()
   }
 
 }
