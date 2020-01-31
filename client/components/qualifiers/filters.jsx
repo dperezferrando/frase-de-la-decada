@@ -17,9 +17,17 @@ class Filters extends Component {
   constructor(props) {
     super(props)
     this.state = DEFAULT_STATE;
-
     this.debouncedFraseFilter = _.debounce(() => this.addFilter({ frase: this.state.fraseText }), 1000)
   }
+
+  componentDidMount() {
+    console.log("BBB")
+  }
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log("FF")
+  //   return false
+  // }
 
   render() {
     return <span>
@@ -74,7 +82,7 @@ class Filters extends Component {
   addFilter(filter) {
     const { fraseText, clean, ...state } = this.state;
     const newState = { ...state, ...filter };
-    this.props.actions.fetchFrases(_.omit(newState, _.isUndefined))
+    this.props.fetchFrases(_.omit(newState, _.isUndefined))
     this.setState(newState);
 
   }
@@ -88,7 +96,7 @@ class Filters extends Component {
     const newState = {  ...this.state, autor: undefined, anio: undefined, clean: !this.state.clean };
     this.setState(newState);
     const { fraseText, clean, ...state } = newState;
-    this.props.actions.fetchFrases(state)
+    this.props.fetchFrases(state)
 
   }
 
