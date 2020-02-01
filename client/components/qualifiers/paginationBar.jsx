@@ -10,8 +10,8 @@ class PaginationBar extends Component {
           breakLabel={<span>...</span>}
           breakClassName={"break-me"}
           pageCount={this.props.pageCount}
-          marginPagesDisplayed={3}
-          pageRangeDisplayed={5}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={3}
           onPageChange={this.props.onPageChange}
           containerClassName={"pagination"}
           subContainerClassName={"pages pagination"}

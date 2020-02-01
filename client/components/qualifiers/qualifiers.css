@@ -41,3 +41,20 @@
   margin-top: 12px;
   color: #ffffff;
 }
+
+.bar {
+  margin-top: 10px;
+}
+
+.page-item.active .page-link {
+  background-color: #ac0000;
+  border-color: #ac0000;
+}
+
+.page-item {
+  cursor: pointer;
+}
+
+.page-link {
+  color: #ac0000;
+}

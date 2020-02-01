@@ -123,7 +123,7 @@ class Qualifiers extends Component {
           </Col>
         </Row>
         <Row className="justify-content-md-center">
-          <Col md={12}>
+          <Col md={3} className="bar">
             <PaginationBar 
               pageCount={Math.ceil(this.props.frases.total / PAGE_SIZE) }
               onPageChange={::this.onPageChange}
