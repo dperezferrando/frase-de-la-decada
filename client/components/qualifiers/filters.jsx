@@ -71,9 +71,9 @@ class Filters extends Component {
   }
 
   addFilter(filter) {
+    this.props.setSelected();
     const newState = { ...this.props.location.query, ...filter };
     this.props.setFilters(this.props.history, _.omit(newState, _.isUndefined))
-    this.props.setSelected();
   }
 
   onFraseFilterChange(fraseText) {
@@ -82,9 +82,9 @@ class Filters extends Component {
   }
 
   clean() {
+    this.props.setSelected();
     const { frase } = this.props.location.query;
     this.props.setFilters(this.props.history, { frase });
-    this.props.setSelected();
     
 
   }

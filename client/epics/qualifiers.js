@@ -6,9 +6,15 @@ import { map, flatMap, mapTo } from 'rxjs/operators';
 import { ofType } from 'redux-observable';
 import serverApi from "../services/apis/serverApi";
 
+const _isSelected =  (id, selected) => {
+  return _(selected)
+    .map("_id")
+    .includes(id);
+}
+
 const filterSelected = ({ limit, offset, results }, selected) => {
   return {
-    results: _.filter(results, ({ _id }) => !_.includes(selected, ({ _id: id }) => id == _id )),
+    results: _.reject(results, ({ _id }) => _isSelected(_id, selected)),
     limit,
     offset
   };
