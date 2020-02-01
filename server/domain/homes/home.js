@@ -15,6 +15,10 @@ class Home {
     return this.Model.createAsync(entity);
   }
 
+  aggregate(pipeline) {  
+    return this.Model.aggregateAsync(pipeline);
+  }
+
   getAll(query, offset = 0, limit = 25, sort = {_id: 1}) {
     let options = {
       skip: parseInt(offset),

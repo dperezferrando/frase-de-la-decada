@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import Qualifiers from '../../components/qualifiers';
 import { actions } from '../../actions/qualifiers';
 import Component from "../../utils/component"
+import WithLoading from "../../components/utils/withLoading";
 
+const QualifiersWithLoading = WithLoading(Qualifiers)
 
 class QualifiersContainer extends Component {
 
   componentDidMount() {
-    this.props.actions.fetchFrases({ fraseDelAnio: false });
+    this.props.actions.fetchFrases(this.props.location.query);
     this.props.actions.fetchFrasesAnio();
     this.props.actions.fetchAuthors();
   }
@@ -18,15 +20,18 @@ class QualifiersContainer extends Component {
   render() {
     return (
       <div>
-        <Qualifiers
-          {...this.props} 
+        <QualifiersWithLoading
+          {...this.props}
+          showCloak={this.props.isLoading && this.props.frases.alreadyLoadedOnce}
+
+
         />
       </div>
     );
   }
 }
-function mapStateToProps({ qualifiers: { frases, frasesAnio, authors }}, props) {
-  return { frases, frasesAnio, authors, isLoading: frases.isLoading || frasesAnio.isLoading };
+function mapStateToProps({ qualifiers: { frases, frasesAnio, authors, selected }}, props) {
+  return { frases, frasesAnio, authors, selected, isLoading: frases.isLoading || frasesAnio.isLoading };
 }
 
 function mapDispatchToProps(dispatch) {

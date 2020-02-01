@@ -4,20 +4,14 @@ import { Container, Row, Col, Form, InputGroup, Button } from "react-bootstrap";
 import GroupedFilters from "./groupedFilters";
 
 const YEARS = ["2013", "2014", "2015", "2016", "2017", "2018", "2019"]
-const DEFAULT_STATE = {
-  fraseText: "",
-  autor: undefined,
-  anio: undefined,
-  fraseDelAnio: false,
-  clean: false
-};
 
 class Filters extends Component {
 
   constructor(props) {
     super(props)
-    this.state = DEFAULT_STATE;
-
+    this.state = {
+      fraseText: props.location.query.frase || "",
+    };
     this.debouncedFraseFilter = _.debounce(() => this.addFilter({ frase: this.state.fraseText }), 1000)
   }
 
@@ -36,6 +30,7 @@ class Filters extends Component {
                 placeholder="Buscar..."
                 aria-describedby="inputGroupPrepend"
                 name="username"
+                value={this.state.fraseText}
                 onChange={({ target: { value } }) => this.onFraseFilterChange(value)}
               />
               </InputGroup>
@@ -45,25 +40,22 @@ class Filters extends Component {
       </Row>
       <Row className="justify-content-md-center">
         <Col md={11}>
-          <Row className="justify-content-md-between">
-            <Col md={3} >
+          <Row>
+            <Col md={12} >
               <GroupedFilters
                 name="anios" 
                 items={YEARS.map(it => ({ value: it }))}
                 onChange={anio => this.addFilter({ anio })}
-                clean={this.state.clean}
+                selected={this.props.location.query.anio}
               />
-            </Col>
-            <Col md={7} >
               <GroupedFilters
                 name="authors" 
                 items={this.props.authors.map(({ _id, name }) => ({ key: _id, value: name }))}
                 onChange={autor => this.addFilter({ autor })}
-                clean={this.state.clean}
+                selected={this.props.location.query.autor}
               />
-            </Col>
-            <Col md={1}>
-              <Button variant="light" className="yearAuthor" onClick={::this.clean}>Limpiar</Button>
+              <Button variant="light" className="filters yearAuthor" onClick={::this.clean}>Limpiar</Button>
+              <Button variant="light" className="filters yearAuthor" onClick={() => {}}>Paja, bro</Button>
             </Col>
           </Row>
         </Col>
@@ -72,11 +64,9 @@ class Filters extends Component {
   }
 
   addFilter(filter) {
-    const { fraseText, clean, ...state } = this.state;
-    const newState = { ...state, ...filter };
-    this.props.actions.fetchFrases(_.omit(newState, _.isUndefined))
-    this.setState(newState);
-
+    this.props.setSelected();
+    const newState = { ...this.props.location.query, ...filter, page: 0 };
+    this.props.setFilters(this.props.history, _.omit(newState, _.isUndefined))
   }
 
   onFraseFilterChange(fraseText) {
@@ -85,10 +75,10 @@ class Filters extends Component {
   }
 
   clean() {
-    const newState = {  ...this.state, autor: undefined, anio: undefined, clean: !this.state.clean };
-    this.setState(newState);
-    const { fraseText, clean, ...state } = newState;
-    this.props.actions.fetchFrases(state)
+    this.props.setSelected();
+    const { frase } = this.props.location.query;
+    this.props.setFilters(this.props.history, { frase });
+    
 
   }
 

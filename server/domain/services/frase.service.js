@@ -7,8 +7,29 @@ class FraseService {
 
   getAll({ frase, ...other}, offset = 0, limit = 25) {
     const query = frase ? { frase: new RegExp(frase, "gi"), ...other } : other; 
-    return this.home.getAll(query, offset, limit, { coeficienteAutista: -1 })
-      .then(results => ({ results, offset, limit }));
+    query.fraseDelAnio = query.fraseDelAnio == "true"
+    return this.home.aggregate([
+      { "$facet": {
+        "results": [
+          { "$match": query },
+          { "$sort": { coeficienteAutista: -1 } },
+          { "$skip": parseInt(offset) },
+          { "$limit": parseInt(limit) }
+        ],
+        "totalCount": [
+          { "$match": query },
+          { "$count": "count" }
+        ]
+      }
+    }
+    ])
+    .get(0)
+    .then(({ results, totalCount: [countObj] } ) => ({ 
+        total: countObj ? countObj.count : 0,
+        results,
+        offset,
+        limit
+    }));
   }
 
 }

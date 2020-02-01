@@ -1,16 +1,20 @@
 import React from 'react';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import Component from "../../utils/component"
-import { Popover, OverlayTrigger } from "react-bootstrap";
-
+import { Row, Col, Popover, OverlayTrigger, Button } from "react-bootstrap";
 
 
 const Frase = (provided, snapshot, item) => {
   const popover = (
-    <Popover id="aclaracion">
-      <Popover.Content>
-        { item.aclaracion }
-      </Popover.Content>
+    <Popover id="aclaracion" className="frasePopover">
+      <Popover.Title>
+        <b>Coeficiente autista:</b> <span className="yearAuthor">{ item.coeficienteAutista }</span>
+      </Popover.Title>
+      {
+        item.aclaracion && <Popover.Content>
+          { item.aclaracion }
+        </Popover.Content>
+      }
     </Popover>
   )
   const body = ( <div
@@ -23,36 +27,48 @@ const Frase = (provided, snapshot, item) => {
       <span className="yearAuthor"> {` (${item.anio})` } </span>
 
     </div> );
-  return ( item.aclaracion ?
-    <OverlayTrigger trigger="hover" placement="right" overlay={popover}>
+  return (
+    <OverlayTrigger trigger="hover" placement="right-end" overlay={popover}>
       { body }
-    </OverlayTrigger> : body
+    </OverlayTrigger>
   );
 }
 
 class PhrasesList extends Component {
   render() {
     return (
-    <Droppable droppableId={this.props.id}>
-      {(provided, snapshot) => (
-        <div
-          ref={provided.innerRef}
-          className="frasesList">
-            {this.props.items.map((item, index) => (
-              <Draggable
-                key={item._id}
-                draggableId={item._id}
-                index={index}
-                isDragDisabled={item.fraseDelAnio}>
-                  {(provided, snapshot) => (
-                    Frase(provided, snapshot, item)
-                  )}
-              </Draggable>
-            ))}
-          {provided.placeholder}
-        </div>
-      )}
-    </Droppable>
+    <span>
+      <Row style={{ visibility: this.props.withCounter? "visible" : "hidden" }}>
+       <Col md={12} className="contador">
+          <span>
+            Frases seleccionadas: <b>{ this.props.items.length }</b> de 32
+          </span>
+          <span className="voteButton"> 
+            <Button variant="success">VOTAR</Button>
+          </span>
+        </Col>
+      </Row>
+      <Droppable droppableId={this.props.id} isDropDisabled={this.props.isDropDisabled}>
+        {(provided, snapshot) => (
+          <div
+            ref={provided.innerRef}
+            className="frasesList">
+              {this.props.items.map((item, index) => (
+                <Draggable
+                  key={item._id}
+                  draggableId={item._id}
+                  index={index}
+                  isDragDisabled={item.fraseDelAnio}>
+                    {(provided, snapshot) => (
+                      Frase(provided, snapshot, item)
+                    )}
+                </Draggable>
+              ))}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
+    </span>
     );
 
   }

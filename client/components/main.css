@@ -2,11 +2,48 @@ body {
   background-color: rgba(165, 0, 7, 0.72);
   color: white;
   margin: auto;
+
 }
 
 .footer {
-  margin:auto;
+  margin: auto;
   background-color: #FFFFFF;
-  border-radius: 10px;
-  width: 80%;
+  border-radius: 5px;
+  color: black;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #bf0e0e;
+  border: 0px none #ffffff;
+  border-radius: 47px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c5c0c0;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #650202;
+}
+::-webkit-scrollbar-track {
+  background: #ffffff;
+  border: 0px none #ffffff;
+  border-radius: 47px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+::-webkit-scrollbar-track:active {
+  background: #333333;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
