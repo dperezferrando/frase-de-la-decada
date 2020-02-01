@@ -8,6 +8,7 @@ import Qualifiers from "../containers/qualifiers";
 import { createBrowserHistory } from 'history'
 import qhistory from 'qhistory'
 import { stringify, parse } from 'qs'
+import { Container } from "react-bootstrap";
 import "./main.css";
 
 const history = qhistory(
@@ -21,12 +22,14 @@ class Routes extends Component {
   render(){
     return <Router history={history}>
       <Navbar/>
-      <Switch>
-        <Route exact path="/inicio" component={HolaMundo}/>
-        <Route exact path="/qualifiers" component={Qualifiers}/>
-        <Route exact path="/test" component={ExampleContainer}/>
-      </Switch>
-      <Footer/>
+      <Container fluid>
+        <Switch>
+          <Route exact path="/inicio" component={HolaMundo}/>
+          <Route exact path="/qualifiers" component={Qualifiers}/>
+          <Route exact path="/test" component={ExampleContainer}/>
+        </Switch>
+        <Footer/>
+      </Container>
     </Router>
   }
 }

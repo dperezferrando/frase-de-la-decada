@@ -104,7 +104,7 @@ class Qualifiers extends Component {
 
   render() {
     return (
-      <Container fluid>
+      <span>
         <FiltersWithLoading
           isLoading={this.props.authors.isLoading} 
           authors={this.props.authors.results}
@@ -131,7 +131,7 @@ class Qualifiers extends Component {
             />
           </Col>
         </Row>
-      </Container>
+      </span>
     );
  
   }
