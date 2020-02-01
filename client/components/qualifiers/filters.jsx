@@ -17,7 +17,6 @@ class Filters extends Component {
   }
 
   render() {
-    console.log("AAA", this.props)
     return <span>
       <Row className="justify-content-md-center">
         <Col md={11}>

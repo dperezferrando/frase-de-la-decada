@@ -1,8 +1,7 @@
 import React from 'react';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import Component from "../../utils/component"
-import { Popover, OverlayTrigger } from "react-bootstrap";
-
+import { Row, Col, Popover, OverlayTrigger } from "react-bootstrap";
 
 
 const Frase = (provided, snapshot, item) => {
@@ -33,26 +32,33 @@ const Frase = (provided, snapshot, item) => {
 class PhrasesList extends Component {
   render() {
     return (
-    <Droppable droppableId={this.props.id}>
-      {(provided, snapshot) => (
-        <div
-          ref={provided.innerRef}
-          className="frasesList">
-            {this.props.items.map((item, index) => (
-              <Draggable
-                key={item._id}
-                draggableId={item._id}
-                index={index}
-                isDragDisabled={item.fraseDelAnio}>
-                  {(provided, snapshot) => (
-                    Frase(provided, snapshot, item)
-                  )}
-              </Draggable>
-            ))}
-          {provided.placeholder}
-        </div>
-      )}
-    </Droppable>
+    <span>
+      <Row style={{ visibility: this.props.withCounter? "visible" : "hidden" }}>
+       <Col md={12} className="contador">
+          Frases seleccionadas: <b>{ this.props.items.length }</b> de 32
+        </Col>
+      </Row>
+      <Droppable droppableId={this.props.id} isDropDisabled={this.props.isDropDisabled}>
+        {(provided, snapshot) => (
+          <div
+            ref={provided.innerRef}
+            className="frasesList">
+              {this.props.items.map((item, index) => (
+                <Draggable
+                  key={item._id}
+                  draggableId={item._id}
+                  index={index}
+                  isDragDisabled={item.fraseDelAnio}>
+                    {(provided, snapshot) => (
+                      Frase(provided, snapshot, item)
+                    )}
+                </Draggable>
+              ))}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
+    </span>
     );
 
   }

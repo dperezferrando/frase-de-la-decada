@@ -20,6 +20,7 @@ class PhrasesDragAndDrop extends Component {
                 id={"phrasesList"}
                 items={this.props.items}
                 isLoading={this.props.isLoading}
+                isDropDisabled={false}
               />
               </Col>
             <Col md={6}>
@@ -27,6 +28,8 @@ class PhrasesDragAndDrop extends Component {
               <PhrasesList
                 id={"selectedPhrasesList"}
                 items={this.props.selected}
+                isDropDisabled={this.props.selected.length >= 32 }
+                withCounter
               />
             </Col>
           </Row>
