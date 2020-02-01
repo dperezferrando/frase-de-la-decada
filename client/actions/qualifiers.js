@@ -5,6 +5,7 @@ export const Types = {
   SET_FRASES_ANIO: "SET_FRASES_ANIO",
   FETCH_AUTHORS: "FETCH_AUTORS",
   SET_AUTHORS: "SET_AUTHORS",
+  SET_FILTERS: "SET_FILTERS"
 }
 
 
@@ -28,6 +29,11 @@ export const actions = {
   setAuthors: (authors) => ({
     type: Types.SET_AUTHORS,
     authors
+  }),
+  setFilters: (history, filters) => ({
+    type: Types.SET_FILTERS,
+    history,
+    filters
   })
 
 }

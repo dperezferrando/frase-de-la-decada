@@ -20,16 +20,8 @@ class Filters extends Component {
     this.debouncedFraseFilter = _.debounce(() => this.addFilter({ frase: this.state.fraseText }), 1000)
   }
 
-  componentDidMount() {
-    console.log("BBB")
-  }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   console.log("FF")
-  //   return false
-  // }
-
   render() {
+    console.log("AAA", this.props)
     return <span>
       <Row className="justify-content-md-center">
         <Col md={11}>
@@ -82,7 +74,7 @@ class Filters extends Component {
   addFilter(filter) {
     const { fraseText, clean, ...state } = this.state;
     const newState = { ...state, ...filter };
-    this.props.fetchFrases(_.omit(newState, _.isUndefined))
+    this.props.setFilters(this.props.history, _.omit(newState, _.isUndefined))
     this.setState(newState);
 
   }
@@ -96,7 +88,7 @@ class Filters extends Component {
     const newState = {  ...this.state, autor: undefined, anio: undefined, clean: !this.state.clean };
     this.setState(newState);
     const { fraseText, clean, ...state } = newState;
-    this.props.fetchFrases(state)
+    this.props.setFilters(this.props.history, state)
 
   }
 

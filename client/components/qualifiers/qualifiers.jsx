@@ -99,20 +99,14 @@ class Qualifiers extends Component {
     }
   };
 
-  fetchFrases(options) {
-    return this.props.actions.fetchFrases(options);
-  }
-
-
   render() {
-    console.log("GGG", this.props.authors.isLoading, this.props.authors.results)
     return (
       <Container fluid>
         <FiltersWithLoading
-          key={this.props.authors.isLoading}
           isLoading={this.props.authors.isLoading} 
           authors={this.props.authors.results}
-          fetchFrases={::this.fetchFrases}
+          setFilters={this.props.actions.setFilters}
+          history={this.props.history}
         />
         <Row className="justify-content-md-center">
           <Col md={11}>

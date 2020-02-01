@@ -21,5 +21,13 @@ export default {
       ofType(Types.FETCH_AUTHORS),
       flatMap(() => serverApi.authors()),
       map(actions.setAuthors)
+    ),setFiltersEpic: (action$, store) =>
+    action$.pipe(
+      ofType(Types.SET_FILTERS),
+      map(({ history, filters }) => { history.push({ pathname: '/qualifiers', query: filters });
+       return filters;
+     }),
+      map(actions.fetchFrases)
     )
+
 };
