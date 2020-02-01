@@ -68,3 +68,8 @@
   display: inline-block;
   margin-right: 6px;
 }
+
+.frasePopover {
+  text-align: center;
+  color: black;
+}

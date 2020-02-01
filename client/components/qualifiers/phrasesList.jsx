@@ -6,10 +6,15 @@ import { Row, Col, Popover, OverlayTrigger } from "react-bootstrap";
 
 const Frase = (provided, snapshot, item) => {
   const popover = (
-    <Popover id="aclaracion">
-      <Popover.Content>
-        { item.aclaracion }
-      </Popover.Content>
+    <Popover id="aclaracion" className="frasePopover">
+      <Popover.Title>
+        <b>Coeficiente autista:</b> <span className="yearAuthor">{ item.coeficienteAutista }</span>
+      </Popover.Title>
+      {
+        item.aclaracion && <Popover.Content>
+          { item.aclaracion }
+        </Popover.Content>
+      }
     </Popover>
   )
   const body = ( <div
@@ -22,10 +27,10 @@ const Frase = (provided, snapshot, item) => {
       <span className="yearAuthor"> {` (${item.anio})` } </span>
 
     </div> );
-  return ( item.aclaracion ?
-    <OverlayTrigger trigger="hover" placement="right" overlay={popover}>
+  return (
+    <OverlayTrigger trigger="hover" placement="right-end" overlay={popover}>
       { body }
-    </OverlayTrigger> : body
+    </OverlayTrigger>
   );
 }
 
