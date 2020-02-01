@@ -15,8 +15,9 @@ class FraseService {
       { "$facet": {
         "results": [
           { "$match": query },
-          { "$skip": offset },
-          { "$limit": limit }
+          { "$sort": { coeficienteAutista: -1 } },
+          { "$skip": parseInt(offset) },
+          { "$limit": parseInt(limit) }
         ],
         "totalCount": [
           { "$match": query },
