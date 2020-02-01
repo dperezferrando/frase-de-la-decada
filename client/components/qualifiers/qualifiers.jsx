@@ -45,7 +45,7 @@ class Qualifiers extends Component {
 
  state = {
     items: this.props.frases.results,
-    selected: this.props.frasesAnio.results
+    selected: this.props.selected || this.props.frasesAnio.results
   }
 
   /**
@@ -108,6 +108,7 @@ class Qualifiers extends Component {
           setFilters={this.props.actions.setFilters}
           history={this.props.history}
           location={this.props.location}
+          setSelected={::this.setSelected}
         />
         <Row className="justify-content-md-center">
           <Col md={11}>
@@ -121,6 +122,10 @@ class Qualifiers extends Component {
       </Container>
     );
  
+  }
+
+  setSelected() {
+    this.props.actions.setSelected(this.state.selected);
   }
 
 }

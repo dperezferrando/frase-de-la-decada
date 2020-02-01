@@ -14,6 +14,8 @@ import { Types } from "../actions/qualifiers";
         return {...state, authors: { ...state.authors, isLoading: true } }
       case Types.SET_AUTHORS:
         return {...state, authors: { ...state.authors, results: action.authors, isLoading: false } }
+      case Types.SET_SELECTED:
+        return {...state, selected: action.selected }
       default: return state;
     }
  }

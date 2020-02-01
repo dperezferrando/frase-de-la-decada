@@ -31,8 +31,8 @@ class QualifiersContainer extends Component {
     );
   }
 }
-function mapStateToProps({ qualifiers: { frases, frasesAnio, authors }}, props) {
-  return { frases, frasesAnio, authors, isLoading: frases.isLoading || frasesAnio.isLoading };
+function mapStateToProps({ qualifiers: { frases, frasesAnio, authors, selected }}, props) {
+  return { frases, frasesAnio, authors, selected, isLoading: frases.isLoading || frasesAnio.isLoading };
 }
 
 function mapDispatchToProps(dispatch) {

@@ -71,11 +71,9 @@ class Filters extends Component {
   }
 
   addFilter(filter) {
-  //  const { fraseText, clean, ...state } = this.state;
     const newState = { ...this.props.location.query, ...filter };
     this.props.setFilters(this.props.history, _.omit(newState, _.isUndefined))
-//    this.setState(newState);
-
+    this.props.setSelected();
   }
 
   onFraseFilterChange(fraseText) {
@@ -84,11 +82,10 @@ class Filters extends Component {
   }
 
   clean() {
- //   const newState = {  ...this.state, autor: undefined, anio: undefined, clean: !this.state.clean };
- //   this.setState(newState);
-    //const { fraseText, clean, ...state } = newState;
     const { frase } = this.props.location.query;
     this.props.setFilters(this.props.history, { frase });
+    this.props.setSelected();
+    
 
   }
 

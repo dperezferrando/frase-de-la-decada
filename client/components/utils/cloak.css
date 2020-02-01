@@ -13,6 +13,6 @@
 
 .spinner {
   left: calc(50% - 32px);
-  top: calc(40%);
+  top: 40%;
   position: fixed;
 }
