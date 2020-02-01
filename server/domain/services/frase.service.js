@@ -10,7 +10,7 @@ class FraseService {
 
   getAll({ frase, ...other}, offset = 0, limit = 25) {
     const query = frase ? { frase: new RegExp(frase, "gi"), ...other } : other; 
-    other.fraseDelAnio = other.fraseDelAnio == "true"
+    query.fraseDelAnio = query.fraseDelAnio == "true"
     return this.home.aggregate([
       { "$facet": {
         "results": [
@@ -27,11 +27,11 @@ class FraseService {
     }
     ])
     .get(0)
-    .then(({ results, totalCount: [{ count }] } ) => ({ 
-      total: count,
-      results,
-      offset,
-      limit,
+    .then(({ results, totalCount: [countObj] } ) => ({ 
+        total: countObj ? countObj.count : 0,
+        results,
+        offset,
+        limit
     }));
   }
 
