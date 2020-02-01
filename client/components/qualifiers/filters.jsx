@@ -71,7 +71,7 @@ class Filters extends Component {
 
   addFilter(filter) {
     this.props.setSelected();
-    const newState = { ...this.props.location.query, ...filter };
+    const newState = { ...this.props.location.query, ...filter, page: 0 };
     this.props.setFilters(this.props.history, _.omit(newState, _.isUndefined))
   }
 

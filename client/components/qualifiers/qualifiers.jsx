@@ -4,6 +4,9 @@ import Component from "../../utils/component"
 import PhrasesDragAndDrop from "./phrasesDragAndDrop";
 import WithLoading from "../../components/utils/withLoading";
 import Filters from "./filters";
+import PaginationBar from "./paginationBar"
+
+const PAGE_SIZE = 25;
 
 const PhrasesDragAndDropWithLoading = WithLoading(PhrasesDragAndDrop);
 const FiltersWithLoading = WithLoading(Filters);
@@ -119,6 +122,15 @@ class Qualifiers extends Component {
             />
           </Col>
         </Row>
+        <Row className="justify-content-md-center">
+          <Col md={12}>
+            <PaginationBar 
+              pageCount={Math.ceil(this.props.frases.total / PAGE_SIZE) }
+              onPageChange={::this.onPageChange}
+              currentPage={parseInt(this.props.location.query.page) || 0}
+            />
+          </Col>
+        </Row>
       </Container>
     );
  
@@ -126,6 +138,11 @@ class Qualifiers extends Component {
 
   setSelected() {
     this.props.actions.setSelected(this.state.selected);
+  }
+
+  onPageChange({ selected }) {
+    this.setSelected();
+    this.props.actions.setFilters(this.props.history, { ...this.props.location.query, page: selected })
   }
 
 }
