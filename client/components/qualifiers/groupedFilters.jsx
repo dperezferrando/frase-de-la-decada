@@ -9,7 +9,7 @@ class GroupedFilters extends Component {
       <ButtonToolbar key={this.props.clean}>
         <ToggleButtonGroup type="radio" name={this.props.name} onChange={this.props.onChange} defaultValue={this.props.selected}>
         {
-          this.props.items.map(({ key, value }) => console.log(value, value == this.props.selected) ||
+          this.props.items.map(({ key, value }) =>
             <ToggleButton value={value} key={key || value} variant="light" className="yearAuthor">{ value }</ToggleButton>
             )
         }

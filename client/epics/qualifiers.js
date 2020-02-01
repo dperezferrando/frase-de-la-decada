@@ -9,7 +9,7 @@ export default {
   fetchFrasesEpic: (action$, store) =>
     action$.pipe(
       ofType(Types.FETCH_FRASES),
-      flatMap(({ options }) => serverApi.frases(options)),
+      flatMap(({ options }) => serverApi.frases({ ...options, fraseDelAnio: false })),
       map(actions.setFrases)
     ),fetchFrasesAnioEpic: (action$, store) =>
     action$.pipe(

@@ -72,7 +72,7 @@ class Filters extends Component {
 
   addFilter(filter) {
   //  const { fraseText, clean, ...state } = this.state;
-    const newState = { fraseDelAnio: false, ...this.props.location.query, ...filter };
+    const newState = { ...this.props.location.query, ...filter };
     this.props.setFilters(this.props.history, _.omit(newState, _.isUndefined))
 //    this.setState(newState);
 
@@ -88,7 +88,7 @@ class Filters extends Component {
  //   this.setState(newState);
     //const { fraseText, clean, ...state } = newState;
     const { frase } = this.props.location.query;
-    this.props.setFilters(this.props.history, { frase, fraseDelAnio: false })
+    this.props.setFilters(this.props.history, { frase });
 
   }
 
