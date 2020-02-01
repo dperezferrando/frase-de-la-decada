@@ -1,6 +1,7 @@
 import users from "../api/user";
 import frases from "../api/frase";
 import authors from "../api/author";
+import votes from "../api/vote";
 
 export default (app) => {
 
@@ -8,6 +9,7 @@ export default (app) => {
   app.use("/api/users", users);
   app.use("/api/frases", frases);
   app.use("/api/authors", authors);
+  app.use("/api/votes", votes);
 
 
 }
