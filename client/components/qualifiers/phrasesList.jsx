@@ -1,7 +1,7 @@
 import React from 'react';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import Component from "../../utils/component"
-import { Row, Col, Popover, OverlayTrigger } from "react-bootstrap";
+import { Row, Col, Popover, OverlayTrigger, Button } from "react-bootstrap";
 
 
 const Frase = (provided, snapshot, item) => {
@@ -40,7 +40,12 @@ class PhrasesList extends Component {
     <span>
       <Row style={{ visibility: this.props.withCounter? "visible" : "hidden" }}>
        <Col md={12} className="contador">
-          Frases seleccionadas: <b>{ this.props.items.length }</b> de 32
+          <span>
+            Frases seleccionadas: <b>{ this.props.items.length }</b> de 32
+          </span>
+          <span className="voteButton"> 
+            <Button variant="success">VOTAR</Button>
+          </span>
         </Col>
       </Row>
       <Droppable droppableId={this.props.id} isDropDisabled={this.props.isDropDisabled}>
