@@ -11,7 +11,6 @@ class Filters extends Component {
     super(props)
     this.state = {
       fraseText: props.location.query.frase || "",
-      clean: false
     };
     this.debouncedFraseFilter = _.debounce(() => this.addFilter({ frase: this.state.fraseText }), 1000)
   }
@@ -47,14 +46,12 @@ class Filters extends Component {
                 name="anios" 
                 items={YEARS.map(it => ({ value: it }))}
                 onChange={anio => this.addFilter({ anio })}
-                clean={this.state.clean}
                 selected={this.props.location.query.anio}
               />
               <GroupedFilters
                 name="authors" 
                 items={this.props.authors.map(({ _id, name }) => ({ key: _id, value: name }))}
                 onChange={autor => this.addFilter({ autor })}
-                clean={this.state.clean}
                 selected={this.props.location.query.autor}
               />
               <Button variant="light" className="filters yearAuthor" onClick={::this.clean}>Limpiar</Button>
