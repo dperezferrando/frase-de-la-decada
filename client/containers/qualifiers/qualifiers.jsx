@@ -11,7 +11,6 @@ const QualifiersWithLoading = WithLoading(Qualifiers)
 class QualifiersContainer extends Component {
 
   componentDidMount() {
-    console.log("GG", this.props)
     this.props.actions.fetchFrases(this.props.location.query);
     this.props.actions.fetchFrasesAnio();
     this.props.actions.fetchAuthors();

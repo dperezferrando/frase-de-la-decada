@@ -45,7 +45,7 @@ class Qualifiers extends Component {
 
  state = {
     items: this.props.frases.results,
-    selected: this.props.selected || this.props.frasesAnio.results
+    selected: _.isEmpty(this.props.selected) ? this.props.frasesAnio.results : this.props.selected
   }
 
   /**

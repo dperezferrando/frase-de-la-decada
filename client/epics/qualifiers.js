@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { Types, actions } from "../actions/qualifiers";
 import { noop } from "../actions/commons";
 import Promise from "bluebird";
@@ -5,11 +6,21 @@ import { map, flatMap, mapTo } from 'rxjs/operators';
 import { ofType } from 'redux-observable';
 import serverApi from "../services/apis/serverApi";
 
+const filterSelected = ({ limit, offset, results }, selected) => {
+  return {
+    results: _.filter(results, ({ _id }) => !_.includes(selected, ({ _id: id }) => id == _id )),
+    limit,
+    offset
+  };
+
+}
+
 export default {
   fetchFrasesEpic: (action$, store) =>
     action$.pipe(
       ofType(Types.FETCH_FRASES),
-      flatMap(({ options }) => serverApi.frases({ ...options, fraseDelAnio: false })),
+      flatMap(({ options }) => serverApi.frases({ ...options, fraseDelAnio: false })
+        .then(frases => filterSelected(frases, store.value.qualifiers.selected))),
       map(actions.setFrases)
     ),fetchFrasesAnioEpic: (action$, store) =>
     action$.pipe(

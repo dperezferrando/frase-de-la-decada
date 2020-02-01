@@ -1,6 +1,6 @@
 import { Types } from "../actions/qualifiers";
 
- export default (state = { frases: { results: [], isLoading: true, alreadyLoadedOnce: false }, frasesAnio: { results: [], isLoading: true }, authors: { results: [], isLoading: false } }, action) => {
+ export default (state = { frases: { results: [], isLoading: true, alreadyLoadedOnce: false }, frasesAnio: { results: [], isLoading: true }, authors: { results: [], isLoading: false }, selected: [] }, action) => {
     switch(action.type) {
       case Types.FETCH_FRASES:
         return {...state, frases: { ...state.frases, isLoading: true } }
