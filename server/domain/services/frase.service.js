@@ -1,4 +1,7 @@
 import FraseHome from "../homes/frase.home.js";
+import mongoose from "mongoose";
+
+mongoose.set("debug", true)
 
 class FraseService {
   constructor() {
@@ -7,8 +10,28 @@ class FraseService {
 
   getAll({ frase, ...other}, offset = 0, limit = 25) {
     const query = frase ? { frase: new RegExp(frase, "gi"), ...other } : other; 
-    return this.home.getAll(query, offset, limit, { coeficienteAutista: -1 })
-      .then(results => ({ results, offset, limit }));
+    other.fraseDelAnio = other.fraseDelAnio == "true"
+    return this.home.aggregate([
+      { "$facet": {
+        "results": [
+          { "$match": query },
+          { "$skip": offset },
+          { "$limit": limit }
+        ],
+        "totalCount": [
+          { "$match": query },
+          { "$count": "count" }
+        ]
+      }
+    }
+    ])
+    .get(0)
+    .then(({ results, totalCount: [{ count }] } ) => ({ 
+      total: count,
+      results,
+      offset,
+      limit,
+    }));
   }
 
 }
