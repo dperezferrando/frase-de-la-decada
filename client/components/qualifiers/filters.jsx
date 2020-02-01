@@ -49,6 +49,7 @@ class Filters extends Component {
                 items={YEARS.map(it => ({ value: it }))}
                 onChange={anio => this.addFilter({ anio })}
                 clean={this.state.clean}
+                selected={this.props.location.query.anio}
               />
             </Col>
             <Col md={7} >
@@ -57,6 +58,7 @@ class Filters extends Component {
                 items={this.props.authors.map(({ _id, name }) => ({ key: _id, value: name }))}
                 onChange={autor => this.addFilter({ autor })}
                 clean={this.state.clean}
+                selected={this.props.location.query.autor}
               />
             </Col>
             <Col md={1}>
@@ -70,8 +72,8 @@ class Filters extends Component {
 
   addFilter(filter) {
   //  const { fraseText, clean, ...state } = this.state;
-    const newState = { ...this.props.location.query, ...filter };
-    this.props.setFilters(this.props.history, _.omit(newState, _.isEmpty))
+    const newState = { fraseDelAnio: false, ...this.props.location.query, ...filter };
+    this.props.setFilters(this.props.history, _.omit(newState, _.isUndefined))
 //    this.setState(newState);
 
   }
