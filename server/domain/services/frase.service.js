@@ -1,7 +1,4 @@
 import FraseHome from "../homes/frase.home.js";
-import mongoose from "mongoose";
-
-mongoose.set("debug", true)
 
 class FraseService {
   constructor() {
