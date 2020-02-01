@@ -13,6 +13,15 @@ const fraseSchema = new Schema({
   fraseDelAnio: {
     type: Boolean,
     default: false
+  },
+  group: String,
+  votesQuantity: {
+    qualifiers: Number,
+    group: Number,
+    eights: Number,
+    fourths: Number,
+    semi: Number,
+    final: Number,
   }
 });
 

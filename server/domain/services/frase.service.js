@@ -1,8 +1,18 @@
 import FraseHome from "../homes/frase.home.js";
+import VotesService from "../services/vote.service.js";
 
 class FraseService {
-  constructor() {
+  constructor(user) {
     this.home = new FraseHome();
+    this.votesService = new VotesService(user);
+  }
+
+  vote({ phase, frases }) {
+    // VALIDAR FECHA
+    // VALIDAR LO QUE SEA
+    const ids = _.map(frases, "_id");
+    return this.home.vote(phase, ids)
+      //.then(() => {}) // create votes
   }
 
   getAll({ frase, ...other}, offset = 0, limit = 25) {
@@ -14,7 +24,8 @@ class FraseService {
           { "$match": query },
           { "$sort": { coeficienteAutista: -1 } },
           { "$skip": parseInt(offset) },
-          { "$limit": parseInt(limit) }
+          { "$limit": parseInt(limit) },
+          { "$project": { votesQuantity: 0 }}
         ],
         "totalCount": [
           { "$match": query },

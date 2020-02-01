@@ -2,8 +2,8 @@ import Promise from "bluebird";
 
 class VoteController {
 
-  qualificationVote({ service }) {
-    return service.qualificationVote();
+  qualificationVote({ service, body }) {
+    return service.qualificationVote(body);
   }
 
 }

@@ -7,11 +7,12 @@ let { route } = require("endpoint-handler")(router);
 const controller = new Controller();
 
 router.use((req, res, next) => {
-  req.service = new Service();
+  req.service = new Service(req.user);
   next();
 });
 
 
 route.get("/", controller.getAll);
+route.post("/votes", controller.vote)
 
 export default router;
