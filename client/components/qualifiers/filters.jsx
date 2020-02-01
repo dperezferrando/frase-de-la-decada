@@ -41,8 +41,8 @@ class Filters extends Component {
       </Row>
       <Row className="justify-content-md-center">
         <Col md={11}>
-          <Row className="justify-content-md-between">
-            <Col md={3} >
+          <Row>
+            <Col md={12} >
               <GroupedFilters
                 name="anios" 
                 items={YEARS.map(it => ({ value: it }))}
@@ -50,8 +50,6 @@ class Filters extends Component {
                 clean={this.state.clean}
                 selected={this.props.location.query.anio}
               />
-            </Col>
-            <Col md={7} >
               <GroupedFilters
                 name="authors" 
                 items={this.props.authors.map(({ _id, name }) => ({ key: _id, value: name }))}
@@ -59,9 +57,8 @@ class Filters extends Component {
                 clean={this.state.clean}
                 selected={this.props.location.query.autor}
               />
-            </Col>
-            <Col md={1}>
-              <Button variant="light" className="yearAuthor" onClick={::this.clean}>Limpiar</Button>
+              <Button variant="light" className="filters yearAuthor" onClick={::this.clean}>Limpiar</Button>
+              <Button variant="light" className="filters yearAuthor" onClick={() => {}}>Paja, bro</Button>
             </Col>
           </Row>
         </Col>

@@ -51,10 +51,20 @@
   border-color: #ac0000;
 }
 
+.page-item.{
+  background-color: #ac0000;
+  border-color: #ac0000;
+}
+
 .page-item {
   cursor: pointer;
 }
 
 .page-link {
   color: #ac0000;
+}
+
+.filters {
+  display: inline-block;
+  margin-right: 6px;
 }
