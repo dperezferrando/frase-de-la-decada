@@ -4,19 +4,15 @@ import { Container, Row, Col, Form, InputGroup, Button } from "react-bootstrap";
 import GroupedFilters from "./groupedFilters";
 
 const YEARS = ["2013", "2014", "2015", "2016", "2017", "2018", "2019"]
-const DEFAULT_STATE = {
-  fraseText: "",
-  autor: undefined,
-  anio: undefined,
-  fraseDelAnio: false,
-  clean: false
-};
 
 class Filters extends Component {
 
   constructor(props) {
     super(props)
-    this.state = DEFAULT_STATE;
+    this.state = {
+      fraseText: props.location.query.frase || "",
+      clean: false
+    };
     this.debouncedFraseFilter = _.debounce(() => this.addFilter({ frase: this.state.fraseText }), 1000)
   }
 
@@ -36,6 +32,7 @@ class Filters extends Component {
                 placeholder="Buscar..."
                 aria-describedby="inputGroupPrepend"
                 name="username"
+                value={this.state.fraseText}
                 onChange={({ target: { value } }) => this.onFraseFilterChange(value)}
               />
               </InputGroup>
@@ -72,10 +69,10 @@ class Filters extends Component {
   }
 
   addFilter(filter) {
-    const { fraseText, clean, ...state } = this.state;
-    const newState = { ...state, ...filter };
-    this.props.setFilters(this.props.history, _.omit(newState, _.isUndefined))
-    this.setState(newState);
+  //  const { fraseText, clean, ...state } = this.state;
+    const newState = { ...this.props.location.query, ...filter };
+    this.props.setFilters(this.props.history, _.omit(newState, _.isEmpty))
+//    this.setState(newState);
 
   }
 
@@ -85,10 +82,11 @@ class Filters extends Component {
   }
 
   clean() {
-    const newState = {  ...this.state, autor: undefined, anio: undefined, clean: !this.state.clean };
-    this.setState(newState);
-    const { fraseText, clean, ...state } = newState;
-    this.props.setFilters(this.props.history, state)
+ //   const newState = {  ...this.state, autor: undefined, anio: undefined, clean: !this.state.clean };
+ //   this.setState(newState);
+    //const { fraseText, clean, ...state } = newState;
+    const { frase } = this.props.location.query;
+    this.props.setFilters(this.props.history, { frase, fraseDelAnio: false })
 
   }
 

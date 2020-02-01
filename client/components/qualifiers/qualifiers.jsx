@@ -107,6 +107,7 @@ class Qualifiers extends Component {
           authors={this.props.authors.results}
           setFilters={this.props.actions.setFilters}
           history={this.props.history}
+          location={this.props.location}
         />
         <Row className="justify-content-md-center">
           <Col md={11}>
