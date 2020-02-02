@@ -46,7 +46,7 @@ class PhrasesList extends Component {
               Frases seleccionadas: <b>{ this.props.items.length }</b> de 32
             </span>
             <span className="voteButton"> 
-              <Button variant="success" onClick={this.props.vote} disabled={ this.props.items.length < 32 }>VOTAR</Button>
+              <Button variant="success" onClick={this.props.vote} disabled={ this.props.items.length < 7 }>VOTAR</Button>
             </span>
             </span>
           }

@@ -7,6 +7,7 @@ import Filters from "./filters";
 import PaginationBar from "./paginationBar"
 
 const PAGE_SIZE = 25;
+const MAX_FRASES_PER_AUTOR = 10;
 
 const PhrasesDragAndDropWithLoading = WithLoading(PhrasesDragAndDrop);
 const FiltersWithLoading = WithLoading(Filters);
@@ -48,7 +49,8 @@ class Qualifiers extends Component {
 
  state = {
     items: this.props.frases.results,
-    selected: _.isEmpty(this.props.selected) ? this.props.frasesAnio.results : this.props.selected
+    selected: _.isEmpty(this.props.selected) ? this.props.frasesAnio.results : this.props.selected,
+    disableDrop: false
   }
 
   /**
@@ -64,6 +66,19 @@ class Qualifiers extends Component {
   getList(id) {
     return this.state[this.id2List[id]]
   };
+
+  onDragStart({ draggableId, source: { droppableId } }) {
+    if(droppableId == "phrasesList"){
+      console.log("AAA")
+      const { autor } = _.find(this.state.items, { _id: draggableId });
+      const { true: count } = _.countBy(this.state.selected, { autor });
+      if(count == MAX_FRASES_PER_AUTOR)
+        this.setState({ ...this.state, disableDrop: true });
+      else
+        this.setState({ ...this.state, disableDrop: false });
+    }
+
+  }
 
   onDragEnd(result) {
     const { source, destination } = result;
@@ -120,8 +135,10 @@ class Qualifiers extends Component {
               items={this.state.items}
               selected={this.state.selected}
               onDragEnd={::this.onDragEnd}
+              onDragStart={::this.onDragStart}
               vote={::this.vote}
               voted={this.props.user.voted.qualifiers}
+              disableDrop={this.state.disableDrop}
             />
           </Col>
         </Row>

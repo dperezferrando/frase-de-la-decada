@@ -2,8 +2,6 @@ import FraseHome from "../homes/frase.home.js";
 import VotesService from "../services/vote.service.js";
 import UserService from "../services/user.service.js";
 import _ from "lodash";
-import mongoose from "mongoose";
-mongoose.set("debug", true)
 
 class FraseService {
   constructor(user) {
