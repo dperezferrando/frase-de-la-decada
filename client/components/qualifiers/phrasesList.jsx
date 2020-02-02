@@ -28,7 +28,7 @@ const Frase = (provided, snapshot, item) => {
 
     </div> );
   return (
-    <OverlayTrigger trigger="hover" placement="right-end" overlay={popover}>
+    <OverlayTrigger trigger="hover" placement="auto-end" overlay={popover}>
       { body }
     </OverlayTrigger>
   );
