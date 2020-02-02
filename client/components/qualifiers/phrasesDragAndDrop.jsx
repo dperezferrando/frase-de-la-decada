@@ -29,6 +29,7 @@ class PhrasesDragAndDrop extends Component {
                 id={"selectedPhrasesList"}
                 items={this.props.selected}
                 isDropDisabled={this.props.selected.length >= 32 }
+                vote={this.props.vote}
                 withCounter
               />
             </Col>

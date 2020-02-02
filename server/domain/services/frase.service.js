@@ -1,5 +1,6 @@
 import FraseHome from "../homes/frase.home.js";
 import VotesService from "../services/vote.service.js";
+import _ from "lodash";
 
 class FraseService {
   constructor(user) {

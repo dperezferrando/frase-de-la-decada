@@ -119,6 +119,7 @@ class Qualifiers extends Component {
               items={this.state.items}
               selected={this.state.selected}
               onDragEnd={::this.onDragEnd}
+              vote={::this.vote}
             />
           </Col>
         </Row>
@@ -143,6 +144,10 @@ class Qualifiers extends Component {
   onPageChange({ selected }) {
     this.setSelected();
     this.props.actions.setFilters(this.props.history, { ...this.props.location.query, page: selected })
+  }
+
+  vote() {
+    this.props.actions.vote("qualifiers", this.state.selected);
   }
 
 }

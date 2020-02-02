@@ -44,7 +44,7 @@ class PhrasesList extends Component {
             Frases seleccionadas: <b>{ this.props.items.length }</b> de 32
           </span>
           <span className="voteButton"> 
-            <Button variant="success">VOTAR</Button>
+            <Button variant="success" onClick={this.props.vote}>VOTAR</Button>
           </span>
         </Col>
       </Row>

@@ -53,6 +53,11 @@ export default {
        return filters;
      }),
       map(actions.fetchFrases)
+    ),voteEpic: (action$, store) =>
+    action$.pipe(
+      ofType(Types.VOTE_QUALIFIERS),
+      map(({ phase, frases }) => serverApi.vote(phase, frases)),
+      mapTo(noop())
     )
 
 };
