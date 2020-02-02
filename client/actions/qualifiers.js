@@ -7,7 +7,9 @@ export const Types = {
   SET_AUTHORS: "SET_AUTHORS",
   SET_FILTERS: "SET_FILTERS",
   SET_SELECTED: "SET_SELECTED",
-  VOTE_QUALIFIERS: "VOTE_QUALIFIERS"
+  VOTE_QUALIFIERS: "VOTE_QUALIFIERS",
+  FETCH_VOTES_QUALIFIERS: "FETCH_VOTES_QUALIFIERS",
+  SET_VOTES_QUALIFIERS: "SET_VOTES_QUALIFIERS"
 }
 
 
@@ -45,6 +47,14 @@ export const actions = {
     type: Types.VOTE_QUALIFIERS,
     phase,
     frases
+  }),
+  fetchVotes: (phase) => ({
+    type: Types.FETCH_VOTES_QUALIFIERS,
+    phase
+  }),
+  setVotes: (votes) => ({
+    type: Types.SET_VOTES_QUALIFIERS,
+    votes
   })
 
 }

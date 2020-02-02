@@ -11,6 +11,6 @@ router.use((req, res, next) => {
   next();
 });
 
-route.post("/", controller.qualificationVote);
+route.get("/:phase", controller.votes);
 
 export default router;

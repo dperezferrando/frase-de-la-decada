@@ -9,7 +9,7 @@ export default (app) => {
   app.use("/api/users", users);
   app.use("/api/frases", frases);
   app.use("/api/authors", authors);
-  //app.use("/api/votes", votes);
+  app.use("/api/votes", votes);
 
 
 }

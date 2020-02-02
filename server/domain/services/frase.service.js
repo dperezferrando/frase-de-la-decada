@@ -1,11 +1,16 @@
 import FraseHome from "../homes/frase.home.js";
 import VotesService from "../services/vote.service.js";
+import UserService from "../services/user.service.js";
 import _ from "lodash";
+import mongoose from "mongoose";
+mongoose.set("debug", true)
 
 class FraseService {
   constructor(user) {
+    this.user = user;
     this.home = new FraseHome();
     this.votesService = new VotesService(user);
+    this.userService = new UserService()
   }
 
   vote({ phase, frases }) {
@@ -13,7 +18,9 @@ class FraseService {
     // VALIDAR LO QUE SEA
     const ids = _.map(frases, "_id");
     return this.home.vote(phase, ids)
-      .then(() => this.votesService.createVotes(phase, ids)); // create votes
+      .then(() => this.votesService.createVotes(phase, ids)) // create votes
+      .then(() => this.userService.vote(this.user, phase));
+      // GUARDA INCONSISTENCIAS
   }
 
   getAll({ frase, ...other}, offset = 0, limit = 25) {

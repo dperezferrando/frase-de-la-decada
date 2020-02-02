@@ -120,6 +120,7 @@ class Qualifiers extends Component {
               selected={this.state.selected}
               onDragEnd={::this.onDragEnd}
               vote={::this.vote}
+              voted={this.props.user.voted.qualifiers}
             />
           </Col>
         </Row>

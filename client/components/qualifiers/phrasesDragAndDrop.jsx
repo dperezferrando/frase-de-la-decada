@@ -21,6 +21,7 @@ class PhrasesDragAndDrop extends Component {
                 items={this.props.items}
                 isLoading={this.props.isLoading}
                 isDropDisabled={false}
+                voted={this.props.voted}
               />
               </Col>
             <Col md={6}>
@@ -30,6 +31,7 @@ class PhrasesDragAndDrop extends Component {
                 items={this.props.selected}
                 isDropDisabled={this.props.selected.length >= 32 }
                 vote={this.props.vote}
+                voted={this.props.voted}
                 withCounter
               />
             </Col>

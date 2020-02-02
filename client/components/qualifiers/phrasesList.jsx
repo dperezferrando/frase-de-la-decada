@@ -40,12 +40,21 @@ class PhrasesList extends Component {
     <span>
       <Row style={{ visibility: this.props.withCounter? "visible" : "hidden" }}>
        <Col md={12} className="contador">
-          <span>
-            Frases seleccionadas: <b>{ this.props.items.length }</b> de 32
-          </span>
-          <span className="voteButton"> 
-            <Button variant="success" onClick={this.props.vote}>VOTAR</Button>
-          </span>
+          {
+            !this.props.voted && <span>
+            <span>
+              Frases seleccionadas: <b>{ this.props.items.length }</b> de 32
+            </span>
+            <span className="voteButton"> 
+              <Button variant="success" onClick={this.props.vote}>VOTAR</Button>
+            </span>
+            </span>
+          }
+          {
+            this.props.voted && <span>
+              <b>Ya votaste en esta fase!</b> Esta fue tu eleccion:
+            </span>
+          }
         </Col>
       </Row>
       <Droppable droppableId={this.props.id} isDropDisabled={this.props.isDropDisabled}>
@@ -58,7 +67,7 @@ class PhrasesList extends Component {
                   key={item._id}
                   draggableId={item._id}
                   index={index}
-                  isDragDisabled={item.fraseDelAnio}>
+                  isDragDisabled={item.fraseDelAnio || this.props.voted}>
                     {(provided, snapshot) => (
                       Frase(provided, snapshot, item)
                     )}

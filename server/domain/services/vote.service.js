@@ -16,6 +16,10 @@ class VoteService {
 
   }
 
+  votes(phase) {
+    return this.home.getAll({ phase });
+  }
+
 }
 
 export default VoteService;

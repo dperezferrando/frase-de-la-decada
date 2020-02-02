@@ -14,6 +14,7 @@ class QualifiersContainer extends Component {
     this.props.actions.fetchFrases(this.props.location.query);
     this.props.actions.fetchFrasesAnio();
     this.props.actions.fetchAuthors();
+    this.props.actions.fetchVotes("qualifiers");
   }
 
 
@@ -30,8 +31,8 @@ class QualifiersContainer extends Component {
     );
   }
 }
-function mapStateToProps({ qualifiers: { frases, frasesAnio, authors, selected }}, props) {
-  return { frases, frasesAnio, authors, selected, isLoading: frases.isLoading || frasesAnio.isLoading };
+function mapStateToProps({ qualifiers: { frases, frasesAnio, authors, selected, votes  }, profile: { user, isLoading } }, props) {
+  return { frases, user, frasesAnio: !isLoading && user.voted.qualifiers ? votes : frasesAnio, authors, selected, isLoading: isLoading || frases.isLoading || (user.voted.qualifiers ? votes.isLoading : frasesAnio.isLoading) };
 }
 
 function mapDispatchToProps(dispatch) {
