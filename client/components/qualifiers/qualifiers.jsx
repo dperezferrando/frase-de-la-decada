@@ -69,7 +69,6 @@ class Qualifiers extends Component {
 
   onDragStart({ draggableId, source: { droppableId } }) {
     if(droppableId == "phrasesList"){
-      console.log("AAA")
       const { autor } = _.find(this.state.items, { _id: draggableId });
       const { true: count } = _.countBy(this.state.selected, { autor });
       if(count == MAX_FRASES_PER_AUTOR)
