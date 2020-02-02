@@ -2,8 +2,8 @@ import Promise from "bluebird";
 
 class UserController {
 
-  me({ service, user }) {
-    return service.get(user);
+  me({ service, user: { googleId } }) {
+    return service.get({ googleId });
   }
 
 }
