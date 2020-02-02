@@ -1,7 +1,7 @@
 import React from 'react';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import Component from "../../utils/component"
-import { Row, Col, Popover, OverlayTrigger, Button, Badge } from "react-bootstrap";
+import { Row, Col, Popover, OverlayTrigger } from "react-bootstrap";
 
 
 const Frase = (provided, snapshot, item) => {
@@ -38,31 +38,6 @@ class PhrasesList extends Component {
   render() {
     return (
     <span>
-      <Row style={{ visibility: this.props.withCounter? "visible" : "hidden" }}>
-       <Col md={12} className="contador">
-          {
-            !this.props.voted && <span>
-            <span>
-              Frases seleccionadas: <b>{ this.props.items.length }</b> de 32
-            </span>
-            <span className="voteButton"> 
-              <Button variant="success" onClick={this.props.vote} disabled={this.props.items.length < 7 || !this.validate()}>VOTAR</Button>
-            </span>
-            {
-              (!this.props.withCounter || !this.validate()) && <div>
-              Faltan frases de los anios: { this.aniosFaltantes() }
-
-            </div>
-            }
-            </span>
-          }
-          {
-            this.props.voted && <span>
-              <b>Ya votaste en esta fase!</b> Esta fue tu eleccion:
-            </span>
-          }
-        </Col>
-      </Row>
       <Droppable droppableId={this.props.id} isDropDisabled={this.props.isDropDisabled}>
         {(provided, snapshot) => (
           <div
@@ -87,23 +62,6 @@ class PhrasesList extends Component {
     );
   }
 
-  validate() {
-    return this._countByAnio()
-      .values()
-      .every(it => it > 3);
-  }
-  aniosFaltantes() {
-    return this._countByAnio()
-      .map((count, anio) => ({ anio, count }))
-      .filter(({ count }) => count < 4)
-      .map("anio")
-      .join(", ")
-  }
-
-  _countByAnio() {
-    return _(this.props.items)
-      .countBy("anio")
-  }
 }
 
 
