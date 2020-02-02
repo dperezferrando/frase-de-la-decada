@@ -56,7 +56,9 @@ export default {
     ),voteEpic: (action$, store) =>
     action$.pipe(
       ofType(Types.VOTE_QUALIFIERS),
-      flatMap(({ phase, frases }) => serverApi.vote(phase, frases)),
+      flatMap(({ phase, frases }) => serverApi.vote(phase, frases)
+        .then(() => window.location = "/qualifiers")
+        .catch(it => alert(it))),
       mapTo(noop())
     ),fetchVotes: (action$, store) =>
     action$.pipe(
