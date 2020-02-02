@@ -1,6 +1,6 @@
 import express from "express";
-import Controller from "./user.controller";
-import Service from "../../domain/services/user.service";
+import Controller from "./vote.controller";
+import Service from "../../domain/services/vote.service";
 
 let router = express.Router();
 let { route } = require("endpoint-handler")(router);
@@ -11,6 +11,6 @@ router.use((req, res, next) => {
   next();
 });
 
-route.get("/me", controller.me);
+route.get("/:phase", controller.votes);
 
 export default router;

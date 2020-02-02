@@ -1,8 +1,24 @@
 import FraseHome from "../homes/frase.home.js";
+import VotesService from "../services/vote.service.js";
+import UserService from "../services/user.service.js";
+import _ from "lodash";
 
 class FraseService {
-  constructor() {
+  constructor(user) {
+    this.user = user;
     this.home = new FraseHome();
+    this.votesService = new VotesService(user);
+    this.userService = new UserService()
+  }
+
+  vote({ phase, frases }) {
+    // VALIDAR FECHA
+    // VALIDAR LO QUE SEA
+    const ids = _.map(frases, "_id");
+    return this.home.vote(phase, ids)
+      .then(() => this.votesService.createVotes(phase, ids)) // create votes
+      .then(() => this.userService.vote(this.user, phase));
+      // GUARDA INCONSISTENCIAS
   }
 
   getAll({ frase, ...other}, offset = 0, limit = 25) {
@@ -14,7 +30,8 @@ class FraseService {
           { "$match": query },
           { "$sort": { coeficienteAutista: -1 } },
           { "$skip": parseInt(offset) },
-          { "$limit": parseInt(limit) }
+          { "$limit": parseInt(limit) },
+          { "$project": { votesQuantity: 0 }}
         ],
         "totalCount": [
           { "$match": query },

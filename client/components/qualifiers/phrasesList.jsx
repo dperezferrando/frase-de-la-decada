@@ -1,7 +1,7 @@
 import React from 'react';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import Component from "../../utils/component"
-import { Row, Col, Popover, OverlayTrigger, Button } from "react-bootstrap";
+import { Row, Col, Popover, OverlayTrigger } from "react-bootstrap";
 
 
 const Frase = (provided, snapshot, item) => {
@@ -28,7 +28,7 @@ const Frase = (provided, snapshot, item) => {
 
     </div> );
   return (
-    <OverlayTrigger trigger="hover" placement="right-end" overlay={popover}>
+    <OverlayTrigger trigger="hover" placement="auto-end" overlay={popover}>
       { body }
     </OverlayTrigger>
   );
@@ -38,16 +38,6 @@ class PhrasesList extends Component {
   render() {
     return (
     <span>
-      <Row style={{ visibility: this.props.withCounter? "visible" : "hidden" }}>
-       <Col md={12} className="contador">
-          <span>
-            Frases seleccionadas: <b>{ this.props.items.length }</b> de 32
-          </span>
-          <span className="voteButton"> 
-            <Button variant="success">VOTAR</Button>
-          </span>
-        </Col>
-      </Row>
       <Droppable droppableId={this.props.id} isDropDisabled={this.props.isDropDisabled}>
         {(provided, snapshot) => (
           <div
@@ -58,7 +48,7 @@ class PhrasesList extends Component {
                   key={item._id}
                   draggableId={item._id}
                   index={index}
-                  isDragDisabled={item.fraseDelAnio}>
+                  isDragDisabled={item.fraseDelAnio || this.props.voted}>
                     {(provided, snapshot) => (
                       Frase(provided, snapshot, item)
                     )}
@@ -70,8 +60,8 @@ class PhrasesList extends Component {
       </Droppable>
     </span>
     );
-
   }
+
 }
 
 

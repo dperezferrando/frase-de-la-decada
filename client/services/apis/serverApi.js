@@ -20,6 +20,14 @@ class ServerApi {
     return this.get("/authors");
   }
 
+  vote(phase, frases) {
+    return this.post("/frases/votes", { phase, frases });
+  }
+
+  votes(phase) {
+    return this.get(`/votes/${phase}`);
+  }
+
   delete(resource, body) {
     return this._request({ method: "DELETE", resource, body });
   }

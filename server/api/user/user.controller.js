@@ -2,8 +2,8 @@ import Promise from "bluebird";
 
 class UserController {
 
-  me({ user }) {
-    return Promise.resolve(user);
+  me({ service, user }) {
+    return service.get(user);
   }
 
 }
