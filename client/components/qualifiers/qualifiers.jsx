@@ -112,6 +112,7 @@ class Qualifiers extends Component {
           history={this.props.history}
           location={this.props.location}
           setSelected={::this.setSelected}
+          voted={this.props.user.voted.qualifiers}
         />
         <Row className="justify-content-md-center">
           <Col md={11}>
