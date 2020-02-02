@@ -13,7 +13,7 @@ class FraseService {
     // VALIDAR LO QUE SEA
     const ids = _.map(frases, "_id");
     return this.home.vote(phase, ids)
-      //.then(() => {}) // create votes
+      .then(() => this.votesService.createVotes(phase, ids)); // create votes
   }
 
   getAll({ frase, ...other}, offset = 0, limit = 25) {
