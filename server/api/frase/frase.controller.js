@@ -9,6 +9,10 @@ class FraseController {
     return service.vote(body);
   }
 
+  trolo({ service }) {
+    return service.trolo();
+  }
+
 }
 
 export default FraseController;

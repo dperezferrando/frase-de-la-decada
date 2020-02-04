@@ -11,5 +11,4 @@ export default (app) => {
   app.use("/api/authors", authors);
   app.use("/api/votes", votes);
 
-
 }
