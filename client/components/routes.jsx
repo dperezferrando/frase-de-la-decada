@@ -19,18 +19,33 @@ const history = qhistory(
 const HolaMundo = () => <h1>Hola Mundo</h1>;  
 
 class Routes extends Component {
+  state = {
+    trolo: false
+  }
+
+  Qualifiers = (props) => <Qualifiers
+    {...props}
+    trolo={this.state.trolo}
+    setTroloMode={::this.setTroloMode}
+  />
+
   render(){
     return <Router history={history}>
-      <Navbar/>
+      <Navbar trolo={this.state.trolo} />
       <Container fluid>
         <Switch>
           <Route exact path="/inicio" component={HolaMundo}/>
-          <Route exact path="/qualifiers" component={Qualifiers}/>
+          <Route exact path="/qualifiers" component={this.Qualifiers} />
           <Route exact path="/test" component={ExampleContainer}/>
         </Switch>
         <Footer/>
       </Container>
     </Router>
+  }
+  
+  setTroloMode() {
+    this.setState({ ...this.state, trolo: true });
+    document.body.style.backgroundColor = "rgb(243, 142, 161)";
   }
 }
 

@@ -1,10 +1,13 @@
 import React from 'react';
 import Component from "../../utils/component"
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { Col, Row, Button } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import _ from "lodash";
 import PhrasesList from "./phrasesList";
+import ActionButtons from "./actionButtons";
 import "./qualifiers.css"
+
+const MIN_FRASE_YEAR = 3;
 
 class PhrasesDragAndDrop extends Component {
     
@@ -19,9 +22,14 @@ class PhrasesDragAndDrop extends Component {
               <span>
                 Frases seleccionadas: <b>{ this.props.selected.length }</b> de 32
               </span>
-              <span className="voteButton"> 
-                <Button variant="success" onClick={this.props.vote} disabled={this.props.selected.length < 7 || !this.validate()}>VOTAR</Button>
-              </span>
+              <ActionButtons 
+                voted={this.props.voted}
+                vote={this.props.vote}
+                validate={::this.validate}
+                selected={this.props.selected}
+                setTroloMode={this.props.setTroloMode}
+                trolo={this.props.trolo}
+              />
               {
                 !this.validate() && <div>
                 Faltan frases de los años: { this.aniosFaltantes() }
@@ -45,6 +53,7 @@ class PhrasesDragAndDrop extends Component {
                 items={this.props.items}
                 isLoading={this.props.isLoading}
                 isDropDisabled={false}
+                className={this.props.className}
               />
               </Col>
             <Col md={6}>
@@ -53,6 +62,7 @@ class PhrasesDragAndDrop extends Component {
                 id={"selectedPhrasesList"}
                 items={this.props.selected}
                 isDropDisabled={this.props.disableDrop || this.props.selected.length >= 32 }
+                className={this.props.className}
               />
             </Col>
           </Row>
@@ -63,12 +73,12 @@ class PhrasesDragAndDrop extends Component {
   validate() {
     return this._countByAnio()
       .values()
-      .every(it => it > 3);
+      .every(it => it >= MIN_FRASE_YEAR);
   }
   aniosFaltantes() {
     return this._countByAnio()
       .map((count, anio) => ({ anio, count }))
-      .filter(({ count }) => count < 4)
+      .filter(({ count }) => count < MIN_FRASE_YEAR)
       .map("anio")
       .join(", ")
   }

@@ -6,11 +6,13 @@ class MyNavbar extends Component {
   render() {
     return <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="/">
-          <img
+          { !this.props.trolo? <img
             src="staticos/assets/images/logo.png"
           //  className="d-inline-block align-top"
             alt="PBSTUFF logo"
           />
+          : <img src="https://i.imgur.com/Ml69p4G.png" height="50px" width="50px"/>
+        } 
         </Navbar.Brand>
       <Nav className="mr-auto">
         <Nav.Link href="/qualifiers">Eliminatorias</Nav.Link>

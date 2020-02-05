@@ -3,8 +3,8 @@ import Cloak from './cloak';
 
 const WithCloak = (MyComponent) => {
   return (
-    (props) =>
-      <Cloak>
+    (props) => 
+      <Cloak trolo={props.trolo}>
         <MyComponent {...props}/>
       </Cloak>
   );

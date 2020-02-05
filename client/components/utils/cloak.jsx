@@ -8,7 +8,7 @@ class Cloak extends Component {
     return (
       <div>
         <div className="cloak">
-          <Spinner animation="border" variant="danger" className="spinner" />
+          <Spinner animation="border" variant="danger" className={this.props.trolo? "spinnerTrolo" : "spinner"} />
         </div>
         {this.props.children}
       </div>

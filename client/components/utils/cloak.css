@@ -16,3 +16,10 @@
   top: 40%;
   position: fixed;
 }
+
+.spinnerTrolo {
+  left: calc(50% - 32px);
+  top: 40%;
+  position: fixed;
+  color: rgb(243, 142, 161) !important;
+}

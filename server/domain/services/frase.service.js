@@ -1,6 +1,7 @@
 import FraseHome from "../homes/frase.home.js";
 import VotesService from "../services/vote.service.js";
 import UserService from "../services/user.service.js";
+import SelectionService from "../services/selection.service.js";
 import _ from "lodash";
 
 class FraseService {
@@ -8,7 +9,8 @@ class FraseService {
     this.user = user;
     this.home = new FraseHome();
     this.votesService = new VotesService(user);
-    this.userService = new UserService()
+    this.userService = new UserService();
+    this.selectionService = new SelectionService();
   }
 
   vote({ phase, frases }) {
@@ -21,9 +23,15 @@ class FraseService {
       // GUARDA INCONSISTENCIAS
   }
 
+  trolo() {
+    return this.selectionService.random()
+      .then(({ frases }) => this.getAll({ _id: { $in: frases } }, 0, 32 ));
+  }
+
   getAll({ frase, ...other}, offset = 0, limit = 25) {
     const query = frase ? { frase: new RegExp(frase, "gi"), ...other } : other; 
-    query.fraseDelAnio = query.fraseDelAnio == "true"
+    if(query.fraseDelAnio)
+      query.fraseDelAnio = query.fraseDelAnio == "true"
     return this.home.aggregate([
       { "$facet": {
         "results": [
@@ -48,6 +56,7 @@ class FraseService {
         limit
     }));
   }
+
 
 }
 

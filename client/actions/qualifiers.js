@@ -9,7 +9,9 @@ export const Types = {
   SET_SELECTED: "SET_SELECTED",
   VOTE_QUALIFIERS: "VOTE_QUALIFIERS",
   FETCH_VOTES_QUALIFIERS: "FETCH_VOTES_QUALIFIERS",
-  SET_VOTES_QUALIFIERS: "SET_VOTES_QUALIFIERS"
+  SET_VOTES_QUALIFIERS: "SET_VOTES_QUALIFIERS",
+  FETCH_PRESELECTION: "FETCH_PRESELECTION", 
+  SET_PRESELECTION: "SET_PRESELECTION" 
 }
 
 
@@ -55,6 +57,13 @@ export const actions = {
   setVotes: (votes) => ({
     type: Types.SET_VOTES_QUALIFIERS,
     votes
+  }),
+  fetchPreselection: () => ({
+    type: Types.FETCH_PRESELECTION
+  }),
+  setPreselection: (preselection) => ({
+    type: Types.SET_PRESELECTION,
+    preselection
   })
 
 }

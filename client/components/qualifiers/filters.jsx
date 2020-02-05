@@ -2,8 +2,8 @@ import React from "react";
 import Component from "../../utils/component"
 import { Container, Row, Col, Form, InputGroup, Button } from "react-bootstrap";
 import GroupedFilters from "./groupedFilters";
-
 const YEARS = ["2013", "2014", "2015", "2016", "2017", "2018", "2019"]
+
 
 class Filters extends Component {
 
@@ -47,15 +47,16 @@ class Filters extends Component {
                 items={YEARS.map(it => ({ value: it }))}
                 onChange={anio => this.addFilter({ anio })}
                 selected={this.props.location.query.anio}
+                className={this.props.className}
               />
               <GroupedFilters
                 name="authors" 
                 items={this.props.authors.map(({ _id, name }) => ({ key: _id, value: name }))}
                 onChange={autor => this.addFilter({ autor })}
                 selected={this.props.location.query.autor}
+                className={this.props.className}
               />
-              <Button variant="light" className="filters yearAuthor" onClick={::this.clean}>Limpiar</Button>
-              <Button variant="light" className="filters yearAuthor" onClick={() => {}} disabled={this.props.voted}>Paja, bro</Button>
+              <Button variant="light" className={"filters " + this.props.className} onClick={::this.clean}>Limpiar</Button>
             </Col>
           </Row>
         </Col>

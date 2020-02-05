@@ -74,6 +74,17 @@
   color: black;
 }
 
-.voteButton {
-  margin-left: 10px;
+.actionButton {
+  margin-left: 6px;
+}
+
+.troloModal {
+  color: black;
+  text-align: justify;
+}
+
+.yearAuthorTrolo {
+  color: #e864b3;
+  font-weight: bold;
+
 }

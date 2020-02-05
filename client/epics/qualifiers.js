@@ -60,11 +60,16 @@ export default {
         .then(() => window.location = "/qualifiers")
         .catch(it => alert(it))),
       mapTo(noop())
-    ),fetchVotes: (action$, store) =>
+    ),fetchVotesEpic: (action$, store) =>
     action$.pipe(
       ofType(Types.FETCH_VOTES_QUALIFIERS),
       flatMap(({ phase }) => serverApi.votes(phase)),
       map(actions.setVotes)
+    ),fetchPreselectionEpic: (action$, store) =>
+    action$.pipe(
+      ofType(Types.FETCH_PRESELECTION),
+      flatMap(() => serverApi.preselection()),
+      map(actions.setPreselection)
     )
 
 };
