@@ -1,7 +1,7 @@
 import { Types } from "../actions/qualifiers";
 import _ from "lodash";
 
- export default (state = { frases: { results: [], isLoading: true, alreadyLoadedOnce: false }, frasesAnio: { results: [], isLoading: true }, authors: { results: [], isLoading: false }, selected: [], votes: { results: [], isLoading: false } }, action) => {
+ export default (state = { frases: { results: [], isLoading: true, alreadyLoadedOnce: false }, frasesAnio: { results: [], isLoading: true }, authors: { results: [], isLoading: false }, selected: [], votes: { results: [], isLoading: false }, preselection: { results: [], isLoading: false } }, action) => {
     switch(action.type) {
       case Types.FETCH_FRASES:
         return {...state, frases: { ...state.frases, isLoading: true } }
@@ -21,6 +21,10 @@ import _ from "lodash";
         return {...state, votes: { ...state.votes, isLoading: true } }
       case Types.SET_VOTES_QUALIFIERS:
         return {...state, votes: { ...state.votes, results: _.isEmpty(action.votes) ? [] : _.map(action.votes[0].frases, "frase"), isLoading: false } }
+      case Types.FETCH_PRESELECTION:
+        return {...state, preselection: { ...state.preselection, isLoading: true } }
+      case Types.SET_PRESELECTION:
+        return {...state, preselection: { ...action.preselection, isLoading: false } }
       default: return state;
     }
  }
