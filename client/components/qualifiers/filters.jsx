@@ -2,8 +2,8 @@ import React from "react";
 import Component from "../../utils/component"
 import { Container, Row, Col, Form, InputGroup, Button } from "react-bootstrap";
 import GroupedFilters from "./groupedFilters";
-
 const YEARS = ["2013", "2014", "2015", "2016", "2017", "2018", "2019"]
+
 
 class Filters extends Component {
 
@@ -55,7 +55,6 @@ class Filters extends Component {
                 selected={this.props.location.query.autor}
               />
               <Button variant="light" className="filters yearAuthor" onClick={::this.clean}>Limpiar</Button>
-              <Button variant="light" className="filters yearAuthor" onClick={() => {}} disabled={this.props.voted}>Paja, bro</Button>
             </Col>
           </Row>
         </Col>
