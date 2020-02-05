@@ -51,7 +51,6 @@ class Qualifiers extends Component {
     items: this.props.frases.results,
     selected: _.isEmpty(this.props.selected) ? this.props.frasesAnio.results : this.props.selected,
     disableDrop: false,
-    trolo: false
   }
 
   /**
@@ -118,7 +117,7 @@ class Qualifiers extends Component {
   };
 
   render() {
-    const className = `${this.state.trolo? "yearAuthorTrolo" : "yearAuthor"}`
+    const className = `${this.props.trolo? "yearAuthorTrolo" : "yearAuthor"}`
     return (
       <span>
         <FiltersWithLoading
@@ -141,7 +140,7 @@ class Qualifiers extends Component {
               vote={::this.vote}
               voted={this.props.user.voted.qualifiers}
               disableDrop={this.state.disableDrop}
-              setTroloMode={::this.setTroloMode}
+              setTroloMode={this.props.setTroloMode}
               className={className}
             />
           </Col>
@@ -171,11 +170,6 @@ class Qualifiers extends Component {
 
   vote() {
     this.props.actions.vote("qualifiers", this.state.selected);
-  }
-
-  setTroloMode() {
-    console.log("GG")
-    this.setState({ ...this.state, trolo: true });
   }
 
 }

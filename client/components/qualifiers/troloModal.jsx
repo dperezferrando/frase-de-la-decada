@@ -28,6 +28,10 @@ class TroloModal extends Component {
             de las mejores frases de cada año y vas a poder modificarla si te da cancer para que se ajuste a tus (ologifrenicos) gustos.
           </p> 
           <p>
+            Tambien vas a poder apretar de nuevo el boton para obtener distintas selecciones.
+            No prometo que no se repitan porque no me gaste tanto en esta mierda.
+          </p>
+          <p>
             Sin embargo, si haces eso sos terrible TROLO (confirmado por un grupo de rugbiers)
           </p>
           <p>

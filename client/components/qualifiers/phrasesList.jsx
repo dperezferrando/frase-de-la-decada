@@ -8,7 +8,7 @@ const Frase = (provided, snapshot, item, className) => {
   const popover = (
     <Popover id="aclaracion" className="frasePopover">
       <Popover.Title>
-        <b>Coeficiente autista:</b> <span className="yearAuthor">{ item.coeficienteAutista }</span>
+        <b>Coeficiente autista:</b> <span className={className}>{ item.coeficienteAutista }</span>
       </Popover.Title>
       {
         item.aclaracion && <Popover.Content>
