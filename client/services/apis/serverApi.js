@@ -28,6 +28,10 @@ class ServerApi {
     return this.get(`/votes/${phase}`);
   }
 
+  preselection() {
+    return this.get("/frases/trolo");
+  }
+
   delete(resource, body) {
     return this._request({ method: "DELETE", resource, body });
   }
