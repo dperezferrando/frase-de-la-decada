@@ -49,7 +49,7 @@ class Qualifiers extends Component {
 
  state = {
     items: this.props.frases.results,
-    selected: _.isEmpty(this.props.selected) ? this.props.frasesAnio.results : this.props.selected,
+    selected: _.isEmpty(this.props.selected) ? ( _.isEmpty(this.props.preselection.results) ? this.props.frasesAnio.results : descendingSort(this.props.preselection.results, ["fraseDelAnio", "coeficienteAutista"])) : this.props.selected,
     disableDrop: false,
   }
 
@@ -117,6 +117,7 @@ class Qualifiers extends Component {
   };
 
   render() {
+    console.log("GG", this.props.preselection)
     const className = `${this.props.trolo? "yearAuthorTrolo" : "yearAuthor"}`
     return (
       <span>
@@ -140,7 +141,7 @@ class Qualifiers extends Component {
               vote={::this.vote}
               voted={this.props.user.voted.qualifiers}
               disableDrop={this.state.disableDrop}
-              setTroloMode={this.props.setTroloMode}
+              setTroloMode={::this.setTroloMode}
               className={className}
             />
           </Col>
@@ -170,6 +171,11 @@ class Qualifiers extends Component {
 
   vote() {
     this.props.actions.vote("qualifiers", this.state.selected);
+  }
+
+  setTroloMode() {
+    this.props.actions.fetchPreselection();
+    this.props.setTroloMode();
   }
 
 }

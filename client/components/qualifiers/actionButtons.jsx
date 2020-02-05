@@ -17,7 +17,7 @@ class ActionButtons extends Component {
         show={this.state.troloModalOpened}
         setTroloMode={this.props.setTroloMode}
       />}
-      <Button variant="success" className="actionButton" onClick={this.props.vote} disabled={this.props.selected.length < 7 || !this.props.validate()}>VOTAR</Button>
+      <Button variant="success" className="actionButton" onClick={this.props.vote} disabled={this.props.selected.length < 32 || !this.props.validate()}>VOTAR</Button>
       <Button variant="warning" className="actionButton" onClick={::this.openTroloModal} disabled={this.props.voted}>Me da paja, bro</Button>
     </span>
     )

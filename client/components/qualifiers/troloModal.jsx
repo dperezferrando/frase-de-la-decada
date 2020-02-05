@@ -25,7 +25,7 @@ class TroloModal extends Component {
           <p>
             Elegir la frase de la decada <b>no es joda</b>, pero, dado que seguro sos terrible feto
             tenes la opcion de cargar tu seleccion con un conjunto random
-            de las mejores frases de cada año y vas a poder modificarla si te da cancer para que se ajuste a tus (ologifrenicos) gustos.
+            de las mejores frases de cada año. Si te da cancer, vas a poder modificarla para que se ajuste a tus (ologifrenicos) gustos.
           </p> 
           <p>
             Tambien vas a poder apretar de nuevo el boton para obtener distintas selecciones.
