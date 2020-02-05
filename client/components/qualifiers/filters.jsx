@@ -47,14 +47,16 @@ class Filters extends Component {
                 items={YEARS.map(it => ({ value: it }))}
                 onChange={anio => this.addFilter({ anio })}
                 selected={this.props.location.query.anio}
+                className={this.props.className}
               />
               <GroupedFilters
                 name="authors" 
                 items={this.props.authors.map(({ _id, name }) => ({ key: _id, value: name }))}
                 onChange={autor => this.addFilter({ autor })}
                 selected={this.props.location.query.autor}
+                className={this.props.className}
               />
-              <Button variant="light" className="filters yearAuthor" onClick={::this.clean}>Limpiar</Button>
+              <Button variant="light" className={"filters " + this.props.className} onClick={::this.clean}>Limpiar</Button>
             </Col>
           </Row>
         </Col>

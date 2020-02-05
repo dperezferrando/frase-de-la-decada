@@ -8,7 +8,8 @@ class TroloModal extends Component {
   render() {
     return (
       <Modal
-        {...this.props}
+        onHide={this.props.onHide}
+        show={this.props.show}
         className="troloModal"
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
@@ -37,11 +38,16 @@ class TroloModal extends Component {
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="success" onClick={this.props.onHide}>Quiero ser TROLO</Button>
+          <Button variant="success" onClick={::this.becomeTrolo}>Quiero ser TROLO</Button>
           <Button variant="danger" onClick={this.props.onHide}>No soy TROLO</Button>
         </Modal.Footer>
       </Modal>
     );
+  }
+
+  becomeTrolo() {
+    this.props.setTroloMode();
+    this.props.onHide();
   }
 
 }

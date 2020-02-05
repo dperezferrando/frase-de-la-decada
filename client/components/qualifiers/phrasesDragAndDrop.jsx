@@ -27,6 +27,7 @@ class PhrasesDragAndDrop extends Component {
                 vote={this.props.vote}
                 validate={::this.validate}
                 selected={this.props.selected}
+                setTroloMode={this.props.setTroloMode}
               />
               {
                 !this.validate() && <div>
@@ -51,6 +52,7 @@ class PhrasesDragAndDrop extends Component {
                 items={this.props.items}
                 isLoading={this.props.isLoading}
                 isDropDisabled={false}
+                className={this.props.className}
               />
               </Col>
             <Col md={6}>
@@ -59,6 +61,7 @@ class PhrasesDragAndDrop extends Component {
                 id={"selectedPhrasesList"}
                 items={this.props.selected}
                 isDropDisabled={this.props.disableDrop || this.props.selected.length >= 32 }
+                className={this.props.className}
               />
             </Col>
           </Row>
