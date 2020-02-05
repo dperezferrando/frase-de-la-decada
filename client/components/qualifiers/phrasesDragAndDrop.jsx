@@ -28,6 +28,7 @@ class PhrasesDragAndDrop extends Component {
                 validate={::this.validate}
                 selected={this.props.selected}
                 setTroloMode={this.props.setTroloMode}
+                trolo={this.props.trolo}
               />
               {
                 !this.validate() && <div>

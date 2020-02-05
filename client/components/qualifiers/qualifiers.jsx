@@ -142,6 +142,7 @@ class Qualifiers extends Component {
               voted={this.props.user.voted.qualifiers}
               disableDrop={this.state.disableDrop}
               setTroloMode={::this.setTroloMode}
+              trolo={this.props.trolo}
               className={className}
             />
           </Col>
@@ -175,7 +176,8 @@ class Qualifiers extends Component {
 
   setTroloMode() {
     this.props.actions.fetchPreselection();
-    this.props.setTroloMode();
+    if(!this.props.trolo)
+      this.props.setTroloMode();
   }
 
 }
