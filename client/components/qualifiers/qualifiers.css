@@ -74,6 +74,11 @@
   color: black;
 }
 
-.voteButton {
-  margin-left: 10px;
+.actionButton {
+  margin-left: 6px;
+}
+
+.troloModal {
+  color: black;
+  text-align: justify;
 }

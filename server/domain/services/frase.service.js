@@ -25,7 +25,6 @@ class FraseService {
 
   trolo() {
     return this.selectionService.random()
-      .tap(it => console.log("ASDAD", it))
       .then(({ frases }) => this.getAll({ _id: { $in: frases } }, 0, 32 ));
   }
 
