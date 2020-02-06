@@ -110,8 +110,8 @@ class Qualifiers extends Component {
     );
 
     this.setState({
-      items: descendingSort(result.phrasesList, "coeficienteAutista"),
-      selected: descendingSort(result.selectedPhrasesList, ["fraseDelAnio", "coeficienteAutista"])
+      items: result.phrasesList, // descendingSort(result.phrasesList, "coeficienteAutista"),
+      selected: result.selectedPhrasesList//descendingSort(result.selectedPhrasesList, ["fraseDelAnio", "coeficienteAutista"])
     });
     }
   };
