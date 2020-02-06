@@ -24,14 +24,13 @@ class QualifiersContainer extends Component {
         <QualifiersWithLoading
           {...this.props}
           showCloak={this.props.isLoading && this.props.frases.alreadyLoadedOnce}
-
-
         />
       </div>
     );
   }
 }
 function mapStateToProps({ qualifiers: { frases, frasesAnio, authors, selected, votes, preselection  }, profile: { user, isLoading } }, props) {
+  console.log("USER LOADING", isLoading)
   return { frases, user, preselection, frasesAnio: !isLoading && user.voted.qualifiers ? votes : frasesAnio, authors, selected, isLoading: isLoading || frases.isLoading || preselection.isLoading || (user.voted.qualifiers ? votes.isLoading : frasesAnio.isLoading) };
 }
 

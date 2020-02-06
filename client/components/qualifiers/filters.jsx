@@ -56,7 +56,7 @@ class Filters extends Component {
                 selected={this.props.location.query.autor}
                 className={this.props.className}
               />
-              <Button variant="light" className={"filters " + this.props.className} onClick={::this.clean}>Limpiar</Button>
+              <Button variant="light" className={this.props.className} onClick={::this.clean}>Limpiar</Button>
             </Col>
           </Row>
         </Col>

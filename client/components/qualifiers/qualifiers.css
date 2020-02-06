@@ -67,6 +67,7 @@
 .filters {
   display: inline-block;
   margin-right: 0.4%;
+  margin-top:5px;
 }
 
 .frasePopover {
