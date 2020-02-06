@@ -5,6 +5,7 @@ import VotesService from "../services/vote.service.js";
 import UserService from "../services/user.service.js";
 import SelectionService from "../services/selection.service.js";
 import InvalidVote from "../exceptions/invalidVote";
+import VoteFailed from "../exceptions/voteFailed";
 import voteValidator from "../voteValidators";
 
 class FraseService {
@@ -23,7 +24,8 @@ class FraseService {
       .then(selection => this._validate(phase, selection))
       .then(() => this.home.vote(phase, ids))
       .then(() => this.votesService.createVotes(phase, ids))
-      .then(() => this.userService.vote(this.user, phase));
+      .then(() => this.userService.vote(this.user, phase))
+      .catch(({ name }) => name != "InvalidVote", () => { throw new VoteFailed()})
   }
 
   _validate(phase, selection) {
