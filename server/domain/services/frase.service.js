@@ -1,8 +1,12 @@
+import _ from "lodash";
+import Promise from "bluebird";
 import FraseHome from "../homes/frase.home.js";
 import VotesService from "../services/vote.service.js";
 import UserService from "../services/user.service.js";
 import SelectionService from "../services/selection.service.js";
-import _ from "lodash";
+import InvalidVote from "../exceptions/invalidVote";
+import VoteFailed from "../exceptions/voteFailed";
+import voteValidator from "../voteValidators";
 
 class FraseService {
   constructor(user) {
@@ -14,13 +18,19 @@ class FraseService {
   }
 
   vote({ phase, frases }) {
-    // VALIDAR FECHA
-    // VALIDAR LO QUE SEA
+    // OTRO OBJETO DEBERIA HACER ESTE CRAP
     const ids = _.map(frases, "_id");
-    return this.home.vote(phase, ids)
-      .then(() => this.votesService.createVotes(phase, ids)) // create votes
-      .then(() => this.userService.vote(this.user, phase));
-      // GUARDA INCONSISTENCIAS
+    return this.home.getAll({ _id: { $in: ids }})
+      .then(selection => this._validate(phase, selection))
+      .then(() => this.home.vote(phase, ids))
+      .then(() => this.votesService.createVotes(phase, ids))
+      .then(() => this.userService.vote(this.user, phase))
+      .catch(({ name }) => name != "InvalidVote", () => { throw new VoteFailed()})
+  }
+
+  _validate(phase, selection) {
+    if(!voteValidator(phase).validate(selection))
+      return Promise.reject(new InvalidVote())
   }
 
   trolo() {

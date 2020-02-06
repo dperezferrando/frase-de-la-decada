@@ -110,14 +110,13 @@ class Qualifiers extends Component {
     );
 
     this.setState({
-      items: descendingSort(result.phrasesList, "coeficienteAutista"),
-      selected: descendingSort(result.selectedPhrasesList, ["fraseDelAnio", "coeficienteAutista"])
+      items: result.phrasesList,
+      selected: result.selectedPhrasesList
     });
     }
   };
 
   render() {
-    console.log("GG", this.props.preselection)
     const className = `${this.props.trolo? "yearAuthorTrolo" : "yearAuthor"}`
     return (
       <span>
