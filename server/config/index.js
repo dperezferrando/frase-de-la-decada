@@ -1,4 +1,5 @@
 const _ = require("lodash");
+const moment = require('moment');
 
 const commonConfig = {
  
@@ -12,6 +13,10 @@ const commonConfig = {
 
   session: {
     cookieSecret: process.env.COOKIE_SECRET || "a nisman lo mataron"
+  },
+
+  qualifiers: {
+    endDate: moment(new Date(process.env.QUALIFIERS_END_DATE || "1/1/3000"))
   },
 
   mongo: {
