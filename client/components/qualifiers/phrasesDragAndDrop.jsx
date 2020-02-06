@@ -1,7 +1,7 @@
 import React from 'react';
 import Component from "../../utils/component"
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Alert } from "react-bootstrap";
 import _ from "lodash";
 import moment from "moment";
 import PhrasesList from "./phrasesList";
@@ -10,19 +10,38 @@ import "./qualifiers.css"
 import config from "../../config";
 
 const MIN_FRASE_YEAR = 3;
+const MAX_FRASE_AUTHOR = 10;
 
 class PhrasesDragAndDrop extends Component {
+
+  state = {
+    showExplanation: true
+  }
     
   render() {
     
     return (
       <span>
         <Row>
-         <Col md={11} className="contador">
+          <Col md={12} className="qualifiersDesc">
+           { this.state.showExplanation && 
+            <Alert variant="light" onClose={::this.hideTutorial} dismissible>
+              <b>ELIMINATORIAS:</b> Tenes que elegir las 27 frases que consideras deben participar
+              en la competicion para convertirse en la <b>Frase de la Decada</b> (Las frases ganadroas de cada año ya estan clasificadas). Esto lo haces arrastrando las frases de 
+              izquierda a derecha <i>(No es casualidad, la derecha funciona)</i>
+              <b> Hay dos restricciones</b>: minimo tiene que haber <b>{MIN_FRASE_YEAR}</b> frases de cada año y maximo <b>{MAX_FRASE_AUTHOR}</b> frases de un autor en particular. (Contando siempre a las frases ya clasificadas)
+              Si te da <b>PAJA</b> hay un boton para eso.
+              <b> Good luck, have fun. </b>
+            </Alert>
+            }
+          </Col>
+        </Row>
+        <Row >
+          <Col md={11}>
             {
               this._shouldBeAbleToVote() && <span>
               <span>
-                Frases seleccionadas: <b>{ this.props.selected.length }</b> de 32
+                <b>Frases seleccionadas:</b> <b>{ this.props.selected.length }</b> de 32
               </span>
               <ActionButtons 
                 voted={this.props.voted}
@@ -34,7 +53,7 @@ class PhrasesDragAndDrop extends Component {
               />
               {
                 !this.validate() && <div>
-                Faltan frases de los años: { this.aniosFaltantes() }
+                <b>Te faltan frases de los años:</b> { this.aniosFaltantes() }
 
               </div>
               }
@@ -103,6 +122,10 @@ class PhrasesDragAndDrop extends Component {
 
   _qualifiersFinished() {
     return moment().isAfter(config.qualifiers.endDate);
+  }
+
+  hideTutorial() {
+    this.setState({ ...this.state, showExplanation: false })
   }
 }
 

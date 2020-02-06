@@ -37,11 +37,6 @@
   background: #f8d7da;
 }
 
-.contador {
-  margin-top: 12px;
-  color: #ffffff;
-}
-
 .bar {
   margin-top: 10px;
 }
@@ -88,4 +83,9 @@
   color: #e864b3;
   font-weight: bold;
 
+}
+
+.qualifiersDesc {
+  text-align: justify;
+  margin-top: 12px;
 }
