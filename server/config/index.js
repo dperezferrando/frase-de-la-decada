@@ -16,7 +16,7 @@ const commonConfig = {
   },
 
   qualifiers: {
-    endDate: moment(new Date(process.env.QUALIFIERS_END_DATE || "1/1/3000"))
+    endDate: moment(new Date(process.env.QUALIFIERS_END_DATE || "1/1/2021"))
   },
 
   mongo: {
