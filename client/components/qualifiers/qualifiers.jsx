@@ -117,7 +117,6 @@ class Qualifiers extends Component {
   };
 
   render() {
-    console.log("GG", this.props.preselection)
     const className = `${this.props.trolo? "yearAuthorTrolo" : "yearAuthor"}`
     return (
       <span>

@@ -3,9 +3,11 @@ import Component from "../../utils/component"
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { Col, Row } from "react-bootstrap";
 import _ from "lodash";
+import moment from "moment";
 import PhrasesList from "./phrasesList";
 import ActionButtons from "./actionButtons";
 import "./qualifiers.css"
+import config from "../../config";
 
 const MIN_FRASE_YEAR = 3;
 
@@ -18,7 +20,7 @@ class PhrasesDragAndDrop extends Component {
         <Row>
          <Col md={11} className="contador">
             {
-              !this.props.voted && <span>
+              this._shouldBeAbleToVote() && <span>
               <span>
                 Frases seleccionadas: <b>{ this.props.selected.length }</b> de 32
               </span>
@@ -39,8 +41,13 @@ class PhrasesDragAndDrop extends Component {
               </span>
             }
             {
-              this.props.voted && <span>
+              this.props.voted && !this._qualifiersFinished() && <span>
                 <b>Ya votaste en esta fase!</b> Podes seguir viendo tu eleccion:
+              </span>
+            }
+            {
+              this._qualifiersFinished() && <span>
+                <b>Esta fase ya termino!</b>
               </span>
             }
           </Col>
@@ -54,6 +61,7 @@ class PhrasesDragAndDrop extends Component {
                 isLoading={this.props.isLoading}
                 isDropDisabled={false}
                 className={this.props.className}
+                dragDisabled={this.props.voted || this._qualifiersFinished()}
               />
               </Col>
             <Col md={6}>
@@ -63,6 +71,7 @@ class PhrasesDragAndDrop extends Component {
                 items={this.props.selected}
                 isDropDisabled={this.props.disableDrop || this.props.selected.length >= 32 }
                 className={this.props.className}
+                dragDisabled={this.props.voted || this._qualifiersFinished()}
               />
             </Col>
           </Row>
@@ -86,6 +95,14 @@ class PhrasesDragAndDrop extends Component {
   _countByAnio() {
     return _(this.props.selected)
       .countBy("anio")
+  }
+
+  _shouldBeAbleToVote() {
+    return !this.props.voted && !this._qualifiersFinished();
+  }
+
+  _qualifiersFinished() {
+    return moment().isAfter(config.qualifiers.endDate);
   }
 }
 

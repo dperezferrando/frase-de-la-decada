@@ -48,7 +48,7 @@ class PhrasesList extends Component {
                   key={item._id}
                   draggableId={item._id}
                   index={index}
-                  isDragDisabled={item.fraseDelAnio || this.props.voted}>
+                  isDragDisabled={item.fraseDelAnio || this.props.dragDisabled}>
                     {(provided, snapshot) => (
                       Frase(provided, snapshot, item, this.props.className)
                     )}
