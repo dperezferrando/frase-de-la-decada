@@ -28,6 +28,13 @@ class FraseService {
       .catch(({ name }) => name != "InvalidVote", () => { throw new VoteFailed()})
   }
 
+  qualified() {
+    return this.home.aggregate([
+      { $sort: { "votesQuantity.qualifiers": -1 , "coeficienteAutista": -1, "anio": -1  } },
+      { $limit: 50 }
+    ])
+  }
+
   _validate(phase, selection) {
     if(!voteValidator(phase).validate(selection))
       return Promise.reject(new InvalidVote())

@@ -1,4 +1,4 @@
-import { Types } from "../actions/qualifiers";
+import { Types } from "../actions/qualifiersResults";
 import _ from "lodash";
 
  export default (state = { results: { results: [], isLoading: false } }, action) => {

@@ -9,7 +9,7 @@ export default {
   fetchResultsEpic: (action$, store) =>
     action$.pipe(
       ofType(Types.FETCH_RESULTS),
-      flatMap(() => serverApi.frases({})),
+      flatMap(() => serverApi.qualified()),
       map(actions.setResults)
     )
 };

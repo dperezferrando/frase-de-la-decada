@@ -13,6 +13,10 @@ class FraseController {
     return service.trolo();
   }
 
+  qualified({ service }) {
+    return service.qualified();
+  }
+
 }
 
 export default FraseController;

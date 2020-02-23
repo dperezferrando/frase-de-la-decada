@@ -16,6 +16,10 @@ class ServerApi {
     return this.get("/frases", options);
   }
 
+  qualified() {
+    return this.get("/frases/qualified");
+  }
+
   authors() {
     return this.get("/authors");
   }
