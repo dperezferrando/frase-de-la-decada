@@ -6,7 +6,7 @@ import _ from "lodash";
       case Types.FETCH_RESULTS:
         return {...state, results: { ...state.results, isLoading: true } }
       case Types.SET_RESULTS:
-        return {...state, results: { ...action.results, isLoading: false } }
+        return {...state, results: { results: action.results, isLoading: false } }
       default: return state;
     }
  }
