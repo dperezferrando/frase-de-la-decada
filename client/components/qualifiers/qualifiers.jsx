@@ -1,10 +1,13 @@
 import React from 'react';
 import { Container, Row, Col } from "react-bootstrap";
+import moment from "moment";
 import Component from "../../utils/component"
 import PhrasesDragAndDrop from "./phrasesDragAndDrop";
 import WithLoading from "../../components/utils/withLoading";
 import Filters from "./filters";
 import PaginationBar from "./paginationBar"
+import config from "../../config";
+import QualifiersResults from "../../containers/qualifiers/qualifiersResults";
 
 const PAGE_SIZE = 25;
 const MAX_FRASES_PER_AUTOR = 10;
@@ -120,6 +123,10 @@ class Qualifiers extends Component {
     const className = `${this.props.trolo? "yearAuthorTrolo" : "yearAuthor"}`
     return (
       <span>
+
+        { moment().isAfter(config.qualifiers.resultsDate) &&
+          <QualifiersResults / >
+        }
         <FiltersWithLoading
           isLoading={this.props.authors.isLoading} 
           authors={this.props.authors.results}

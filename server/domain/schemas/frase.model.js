@@ -23,7 +23,8 @@ const fraseSchema = new Schema({
     fourths: Number,
     semi: Number,
     final: Number,
-  }
+  },
+  qualified: Boolean
 });
 
 module.exports = mongoose.model('Frase', fraseSchema);

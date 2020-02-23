@@ -20,7 +20,7 @@ class FraseService {
   vote({ phase, frases }) {
     // OTRO OBJETO DEBERIA HACER ESTE CRAP
     const ids = _.map(frases, "_id");
-    return this.home.getAll({ _id: { $in: ids }})
+    return this.home.getAll({ _id: { $in: ids }}, 0, 32)
       .then(selection => this._validate(phase, selection))
       .then(() => this.home.vote(phase, ids))
       .then(() => this.votesService.createVotes(phase, ids))
