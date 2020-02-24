@@ -1,3 +1,16 @@
 .groupStage {
   margin-top: 15px;
 }
+
+.group {
+  color: black;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.groupFrase {
+  user-select: 'none';
+  padding: 6px;
+  word-break: break-word;
+  background: white;
+}

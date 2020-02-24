@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Card, Button } from "react-bootstrap";
 import Component from "../../utils/component"
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import "./groupStage.css"
@@ -19,37 +19,44 @@ class Group extends Component {
   }
 
   render() {
-    return <Col md={3}>
-      <div>group {this.props.name}</div>
-      <DragDropContext onDragEnd={::this.onDragEnd}>
-        <Droppable droppableId={this.props.name}>
-          {(provided, snapshot) => (
-            <div
-              ref={provided.innerRef}
-             // className="frasesList"
-              >
-                {this.state.frases.map((item, index) => (
-                  <Draggable
-                    key={item._id}
-                    draggableId={item._id}
-                    index={index}
-                    //isDragDisabled={item.fraseDelAnio || this.props.dragDisabled}
-                    >
-                      {(provided, snapshot) => (
-                        //Frase(provided, snapshot, item, this.props.className)
-                        <div ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}>
-                          {item.frase}
-                        </div>
-                      )}
-                  </Draggable>
-                ))}
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
+    return <Col md={3} className="group">
+      <Card>
+      <Card.Header>GRUPO {this.props.name}</Card.Header>
+        <Card.Body>
+          <DragDropContext onDragEnd={::this.onDragEnd}>
+            <Droppable droppableId={this.props.name}>
+              {(provided, snapshot) => (
+                <div
+                  ref={provided.innerRef}
+                 // className="frasesList"
+                  >
+                    {this.state.frases.map((item, index) => (
+                      <Draggable
+                        key={item._id}
+                        draggableId={item._id}
+                        index={index}
+                        //isDragDisabled={item.fraseDelAnio || this.props.dragDisabled}
+                        >
+                          {(provided, snapshot) => (
+                            //Frase(provided, snapshot, item, this.props.className)
+                            <div ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              className="groupFrase">
+                              <span className="yearAuthor">{`${item.autor} - (${item.anio})`}</span>
+                            </div>
+                          )}
+                      </Draggable>
+                    ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </DragDropContext>
+          <Button variant="success">Go somewhere</Button>
+        </Card.Body>
+    </Card>
+      
     </Col>
   }
 
