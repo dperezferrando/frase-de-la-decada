@@ -26,8 +26,14 @@ class GroupStageContainer extends Component {
     );
   }
 }
-function mapStateToProps({ profile: { user, isLoading }, groupStage: { qualified, isLoading: qualifiedLoading } }, props) {
-  return { qualified: _.filter(qualified.results, "group"), isLoading: isLoading || qualifiedLoading };
+function mapStateToProps({ profile: { user, isLoading }, groupStage: { qualified: { results, isLoading: qualifiedIsLoading } } }, props) {
+  const groups =  _(results)
+    .filter("group")
+    .groupBy("group")
+    .map(_.identity)
+    .value()
+  console.log("AAA", groups, qualifiedIsLoading)
+  return { groups, isLoading: qualifiedIsLoading || isLoading };
 }
 
 function mapDispatchToProps(dispatch) {
