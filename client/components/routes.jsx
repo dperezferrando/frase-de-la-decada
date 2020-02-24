@@ -5,6 +5,7 @@ import ExampleContainer from "../containers/example";
 import Navbar from "../containers/navbar";
 import Footer from "../components/footer";
 import Qualifiers from "../containers/qualifiers";
+import GroupStage from "../containers/groupStage";
 import { createBrowserHistory } from 'history'
 import qhistory from 'qhistory'
 import { stringify, parse } from 'qs'
@@ -36,6 +37,7 @@ class Routes extends Component {
         <Switch>
           <Route exact path="/inicio" component={HolaMundo}/>
           <Route exact path="/qualifiers" component={this.Qualifiers} />
+          <Route exact path="/groupstage" component={GroupStage} />
           <Route exact path="/test" component={ExampleContainer}/>
         </Switch>
         <Footer/>
