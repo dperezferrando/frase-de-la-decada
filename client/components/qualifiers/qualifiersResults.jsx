@@ -5,7 +5,6 @@ import "./qualifiers.css"
 
 class QualifiersResults extends Component {
   render() {
-    console.log("AA", this.props.frases)
     return <Row className="justify-content-md-center" style={{ marginTop: "10px"}}>
       <Col md={11}>
         <h4><b>Frases clasificadas:</b></h4>
