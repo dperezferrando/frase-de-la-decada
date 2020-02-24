@@ -6,9 +6,9 @@ import "./qualifiers.css"
 class QualifiersResults extends Component {
   render() {
     console.log("AA", this.props.frases)
-    return <Row className="justify-content-md-center">
+    return <Row className="justify-content-md-center" style={{ marginTop: "10px"}}>
       <Col md={11}>
-        <h4>Frases clasificadas:</h4>
+        <h4><b>Frases clasificadas:</b></h4>
         <Table striped bordered>
           <thead>
             <tr>
@@ -23,7 +23,7 @@ class QualifiersResults extends Component {
 
               return <tr key={`fraseclasif-${i}`} className={frase.qualified? "qualified" : ""}>
                 <td className="yearAuthor">{i + 1}</td>
-                <td><span>{`${frase.frase} - `}</span><span className="yearAuthor">{`${frase.autor}(${frase.anio})` }</span></td>
+                <td><span>{`${frase.frase} - `}</span><span className="yearAuthor">{`${frase.autor} (${frase.anio})` }</span></td>
                 <td className="yearAuthor">{frase.votesQuantity.qualifiers}</td>
                 <td className="yearAuthor">{frase.coeficienteAutista}</td>
               </tr>
