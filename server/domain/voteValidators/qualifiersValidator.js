@@ -17,7 +17,7 @@ class QualifiersValidator extends VoteValidator {
     const validByAuthor = _(frases)
       .countBy("autor")
       .every(it => it <= MAX_FRASE_AUTOR);
-    return validByYear && validByAuthor && frases.legnth == 32;
+    return validByYear && validByAuthor && frases.length == 32;
   }
 
 }

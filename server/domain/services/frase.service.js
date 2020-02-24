@@ -20,12 +20,19 @@ class FraseService {
   vote({ phase, frases }) {
     // OTRO OBJETO DEBERIA HACER ESTE CRAP
     const ids = _.map(frases, "_id");
-    return this.home.getAll({ _id: { $in: ids }})
+    return this.home.getAll({ _id: { $in: ids }}, 0, 32)
       .then(selection => this._validate(phase, selection))
       .then(() => this.home.vote(phase, ids))
       .then(() => this.votesService.createVotes(phase, ids))
       .then(() => this.userService.vote(this.user, phase))
       .catch(({ name }) => name != "InvalidVote", () => { throw new VoteFailed()})
+  }
+
+  qualified() {
+    return this.home.aggregate([
+      { $sort: { "votesQuantity.qualifiers": -1 , "coeficienteAutista": -1, "anio": -1  } },
+      { $limit: 50 }
+    ])
   }
 
   _validate(phase, selection) {
