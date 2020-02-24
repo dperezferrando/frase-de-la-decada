@@ -1,8 +1,36 @@
 import React from 'react';
-import { Row, Col, Card, Button } from "react-bootstrap";
+import { Row, Col, Card, Button, OverlayTrigger, Popover } from "react-bootstrap";
 import Component from "../../utils/component"
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import "./groupStage.css"
+
+const Frase = (provided, snapshot, item, index) => {
+  const popover = (
+    <Popover id="aclaracion" className="frasePopover">
+      <Popover.Title>
+        <b>Coeficiente autista:</b> <span className="yearAuthor">{ item.coeficienteAutista }</span>
+      </Popover.Title>
+      {
+        <Popover.Content>
+          { item.frase + (item.aclaracion ? ` (${item.aclaracion})`: "") }
+        </Popover.Content>
+      }
+    </Popover>
+  )
+  const body = ( <div
+    ref={provided.innerRef}
+    {...provided.draggableProps}
+    {...provided.dragHandleProps}
+    className={index == 0 || index == 1 ? "groupFraseSelected" : "groupFrase"}>
+      <span className="yearAuthor">{`${item.autor} - (${item.anio})`}</span>
+    </div> );
+  return (
+    <OverlayTrigger trigger="hover" placement="auto-end" overlay={popover}>
+      { body }
+    </OverlayTrigger>
+  );
+}
+
 
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
@@ -15,13 +43,13 @@ const reorder = (list, startIndex, endIndex) => {
 class Group extends Component {
 
   state ={
-    frases: this.props.frases
+    frases: _.orderBy(this.props.frases, ["fraseDelAnio", "coeficienteAutista"], ["desc", "desc"])
   }
 
   render() {
     return <Col md={3} className="group">
       <Card>
-      <Card.Header>GRUPO {this.props.name}</Card.Header>
+      <Card.Header><b>GRUPO {this.props.name}</b></Card.Header>
         <Card.Body>
           <DragDropContext onDragEnd={::this.onDragEnd}>
             <Droppable droppableId={this.props.name}>
@@ -38,13 +66,7 @@ class Group extends Component {
                         //isDragDisabled={item.fraseDelAnio || this.props.dragDisabled}
                         >
                           {(provided, snapshot) => (
-                            //Frase(provided, snapshot, item, this.props.className)
-                            <div ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                              className="groupFrase">
-                              <span className="yearAuthor">{`${item.autor} - (${item.anio})`}</span>
-                            </div>
+                            Frase(provided, snapshot, item, index)
                           )}
                       </Draggable>
                     ))}
@@ -53,7 +75,7 @@ class Group extends Component {
               )}
             </Droppable>
           </DragDropContext>
-          <Button variant="success">Go somewhere</Button>
+          <Button variant="success">VOTAR</Button>
         </Card.Body>
     </Card>
       

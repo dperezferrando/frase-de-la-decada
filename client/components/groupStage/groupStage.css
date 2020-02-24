@@ -8,9 +8,13 @@
   margin-bottom: 28px;
 }
 
-.groupFrase {
+.groupFrase, .groupFraseSelected {
   user-select: 'none';
   padding: 6px;
   word-break: break-word;
   background: white;
+}
+
+.groupFraseSelected {
+  background-color: #00bd2b2b;
 }
