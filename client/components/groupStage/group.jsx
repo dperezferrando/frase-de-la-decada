@@ -58,7 +58,7 @@ class Group extends Component {
         show={this.state.fraseDetailModalOpened}
       />}
       <Card>
-      <Card.Header><b>GRUPO {this.props.name}</b></Card.Header>
+      <Card.Header><b>GRUPO {this.props.name == "F" ? this.props.name + " to pay respects" : this.props.name}</b></Card.Header>
         <Card.Body>
           <DragDropContext onDragEnd={::this.onDragEnd}>
             <Droppable droppableId={this.props.name}>

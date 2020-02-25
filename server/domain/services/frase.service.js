@@ -16,7 +16,7 @@ class FraseService {
     const ids = _.map(frases, "_id");
     const voter = phaseVoter(phase, this.user);
     return voter.vote(ids, other)
-      // .catch(({ name }) => name != "InvalidVote", () => { throw new VoteFailed()})
+      .catch(({ name }) => name != "InvalidVote", () => { throw new VoteFailed()})
   }
 
   qualified() {

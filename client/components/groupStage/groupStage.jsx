@@ -5,7 +5,7 @@ import Component from "../../utils/component"
 import Explanation from "./explanation";
 import Group from "./group";
 import "./groupStage.css"
-const GROUPS = ["A", "B", "C", "D", "E", "F to pay respects", "G", "H"]
+const GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H"]
 
 
 class GroupStage extends Component {
