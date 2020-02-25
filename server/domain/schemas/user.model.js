@@ -13,7 +13,7 @@ const userSchema = new Schema({
       type: Boolean,
       default: false,
     },
-    group: {
+    groupStage: {
       type: Boolean,
       default: false,
     },

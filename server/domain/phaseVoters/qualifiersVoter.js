@@ -1,9 +1,9 @@
 import _ from "lodash";
-import VoteValidator from "./voteValidator";
+import PhaseVoter from "./phaseVoter";
 const MIN_FRASE_YEAR = 3;
 const MAX_FRASE_AUTOR = 10;
 
-class QualifiersValidator extends VoteValidator {
+class QualifiersVoter extends PhaseVoter {
 
   constructor() {
     super()
@@ -22,4 +22,4 @@ class QualifiersValidator extends VoteValidator {
 
 }
 
-export default QualifiersValidator;
+export default QualifiersVoter;

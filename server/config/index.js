@@ -19,6 +19,10 @@ const commonConfig = {
     endDate: moment(new Date(process.env.QUALIFIERS_END_DATE || "1/1/2021"))
   },
 
+  groupStage: {
+    endDate: moment(new Date(process.env.GROUPSTAGE_END_DATE || "1/1/2021"))
+  },
+
   mongo: {
     options: {
       useNewUrlParser: true,

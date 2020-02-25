@@ -4,9 +4,8 @@ import FraseHome from "../homes/frase.home.js";
 import VotesService from "../services/vote.service.js";
 import UserService from "../services/user.service.js";
 import SelectionService from "../services/selection.service.js";
-import InvalidVote from "../exceptions/invalidVote";
 import VoteFailed from "../exceptions/voteFailed";
-import voteValidator from "../voteValidators";
+import phaseVoter from "../phaseVoters";
 
 class FraseService {
   constructor(user) {
@@ -20,12 +19,12 @@ class FraseService {
   vote({ phase, frases }) {
     // OTRO OBJETO DEBERIA HACER ESTE CRAP
     const ids = _.map(frases, "_id");
-    return this.home.getAll({ _id: { $in: ids }}, 0, 32)
-      .then(selection => this._validate(phase, selection))
-      .then(() => this.home.vote(phase, ids))
+    console.log("AAA", phaseVoter)
+    const voter = phaseVoter(phase);
+    return voter.vote(ids)
       .then(() => this.votesService.createVotes(phase, ids))
       .then(() => this.userService.vote(this.user, phase))
-      .catch(({ name }) => name != "InvalidVote", () => { throw new VoteFailed()})
+      // .catch(({ name }) => name != "InvalidVote", () => { throw new VoteFailed()})
   }
 
   qualified() {
@@ -33,11 +32,6 @@ class FraseService {
       { $sort: { "votesQuantity.qualifiers": -1 , "coeficienteAutista": -1, "anio": -1  } },
       { $limit: 50 }
     ])
-  }
-
-  _validate(phase, selection) {
-    if(!voteValidator(phase).validate(selection))
-      return Promise.reject(new InvalidVote())
   }
 
   trolo() {

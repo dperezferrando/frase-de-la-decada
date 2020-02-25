@@ -19,7 +19,7 @@ const fraseSchema = new Schema({
   group: String,
   votesQuantity: {
     qualifiers: Number,
-    group: Number,
+    groupStage: Number,
     eights: Number,
     fourths: Number,
     semi: Number,

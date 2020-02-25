@@ -11,5 +11,11 @@ export default {
       ofType(Types.FETCH_QUALIFIED),
       flatMap(() => serverApi.qualified()),
       map(actions.setQualified)
-    )
+    ),voteEpic: (action$, store) =>
+    action$.pipe(
+      ofType(Types.VOTE_GROUPSTAGE),
+      flatMap(({ phase, frases }) => serverApi.vote(phase, frases)
+      //  .then(() => window.location = "/qualifiers")
+        .catch(it => alert(it))),
+      mapTo(noop()))
 };

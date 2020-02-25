@@ -9,6 +9,7 @@ const voteSchema = new Schema({
   date: Date,
   phase: String,
   match: Schema.ObjectId,
+  group: String,
   frases: [{
     _id: false,
     frase: {

@@ -19,11 +19,15 @@ class GroupStage extends Component {
       <Row className="justify-content-md-center">
         <Col md={11}>
           <Row>
-            {this.props.groups.map((it, i) => <Group key={i} name={GROUPS[i]} frases={it}/>)}
+            {this.props.groups.map((it, i) => <Group key={i} name={GROUPS[i]} frases={it} vote={::this.vote}/>)}
           </Row>
         </Col>
       </Row>
     </span>
+  }
+
+  vote(group, frases) {
+    this.props.actions.vote("groupStage", group, frases);   
   }
 }
 

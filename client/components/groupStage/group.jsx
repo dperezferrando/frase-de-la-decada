@@ -91,7 +91,7 @@ class Group extends Component {
             </Droppable>
           </DragDropContext>
           <div className="voteButton">
-            <Button variant="success">VOTAR</Button>
+            <Button variant="success" onClick={::this.vote}>VOTAR</Button>
           </div>
         </Card.Body>
     </Card>
@@ -99,6 +99,9 @@ class Group extends Component {
     </Col>
   }
 
+  vote() {
+    this.props.vote(this.props.name, _.take(this.state.frases, 2));
+  }
 
   onDragEnd(result) {
     // dropped outside the list
