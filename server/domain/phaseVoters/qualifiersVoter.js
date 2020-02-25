@@ -5,8 +5,8 @@ const MAX_FRASE_AUTOR = 10;
 
 class QualifiersVoter extends PhaseVoter {
 
-  constructor() {
-    super()
+  constructor(user) {
+    super(user)
     this.phase = "qualifiers";
   }
 

@@ -14,8 +14,7 @@ export default {
     ),voteEpic: (action$, store) =>
     action$.pipe(
       ofType(Types.VOTE_GROUPSTAGE),
-      flatMap(({ phase, frases }) => serverApi.vote(phase, frases)
-      //  .then(() => window.location = "/qualifiers")
+      flatMap(({ phase, frases, group }) => serverApi.vote(phase, frases, group)
         .catch(it => alert(it))),
       mapTo(noop()))
 };

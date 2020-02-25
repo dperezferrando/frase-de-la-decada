@@ -24,8 +24,8 @@ class ServerApi {
     return this.get("/authors");
   }
 
-  vote(phase, frases) {
-    return this.post("/frases/votes", { phase, frases });
+  vote(phase, frases, group = "") {
+    return this.post("/frases/votes", { phase, frases, group });
   }
 
   votes(phase) {

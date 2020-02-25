@@ -2,11 +2,13 @@ import config from "../../config";
 import moment from "moment";
 import FraseHome from "../homes/frase.home.js";
 import InvalidVote from "../exceptions/invalidVote";
+import VotesService from "../services/vote.service.js";
 
 class PhaseVoter {
 
-  constructor() {
+  constructor(user) {
     this.fraseHome = new FraseHome();
+    this.votesService = new VotesService(user);
   }
 
   validate(frases) {
@@ -14,10 +16,12 @@ class PhaseVoter {
   }
 
 
-  vote(ids) {
+  vote(ids, other) {
     return this.fraseHome.getAll({ _id: { $in: ids }}, 0, 32)
       .then(selection => this.validateSelection(selection))
-      .then(() => this.__saveVote__(ids));
+      .then(() => this.__saveVote__(ids))
+      .then(() => this.votesService.createVotes({ phase: this.phase, ids, ...other }))
+
     ;
   }
 

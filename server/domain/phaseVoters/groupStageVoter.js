@@ -3,8 +3,8 @@ import PhaseVoter from "./phaseVoter";
 
 class GroupStageVoter extends PhaseVoter {
 
-  constructor() {
-    super()
+  constructor(user) {
+    super(user)
     this.phase = "groupStage";
   }
 

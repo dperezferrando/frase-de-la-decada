@@ -2,8 +2,8 @@ import QualifiersVoter from "./qualifiersVoter";
 import GroupStageVoter from "./groupStageVoter";
 
 const voters = {
-  "qualifiers": new QualifiersVoter(),
-  "groupStage": new GroupStageVoter()
+  qualifiers: (user) => new QualifiersVoter(user),
+  groupStage: (user) => new GroupStageVoter(user)
 };
 
-export default (phase) => console.log("GGG", phase) || voters[phase];
+export default (phase, user) =>  voters[phase](user);

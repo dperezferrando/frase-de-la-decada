@@ -6,12 +6,13 @@ class VoteService {
     this.home = new VoteHome(user);
   }
 
-  createVotes(phase, ids) {
+  createVotes({ phase, ids, ...other }) {
     const date = new Date();
    return this.home.create({
     date,
     phase,
-    frases: ids.map(frase => ({ frase }))
+    frases: ids.map(frase => ({ frase })),
+    ...other
    });
 
   }
