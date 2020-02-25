@@ -1,7 +1,6 @@
 import _ from "lodash";
 import Promise from "bluebird";
 import FraseHome from "../homes/frase.home.js";
-import UserService from "../services/user.service.js";
 import SelectionService from "../services/selection.service.js";
 import VoteFailed from "../exceptions/voteFailed";
 import phaseVoter from "../phaseVoters";
@@ -10,17 +9,13 @@ class FraseService {
   constructor(user) {
     this.user = user;
     this.home = new FraseHome();
-    this.userService = new UserService();
     this.selectionService = new SelectionService();
   }
 
   vote({ phase, frases, ...other }) {
-    // OTRO OBJETO DEBERIA HACER ESTE CRAP
     const ids = _.map(frases, "_id");
-    console.log("AAA", phaseVoter)
     const voter = phaseVoter(phase, this.user);
     return voter.vote(ids, other)
-      .then(() => this.userService.vote(this.user, phase))
       // .catch(({ name }) => name != "InvalidVote", () => { throw new VoteFailed()})
   }
 

@@ -14,8 +14,8 @@ const userSchema = new Schema({
       default: false,
     },
     groupStage: {
-      type: Boolean,
-      default: false,
+      type: [String],
+      default: [],
     },
     eights: {
       type: Boolean,

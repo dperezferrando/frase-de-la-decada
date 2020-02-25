@@ -17,6 +17,10 @@ class GroupStageVoter extends PhaseVoter {
       .then(() => this._persist(_.last(ids), 1));
   }
 
+  __votedValue__({ group }) {
+    return { $push: { [`voted.${this.phase}`]: group } }
+  }
+
 
 }
 
