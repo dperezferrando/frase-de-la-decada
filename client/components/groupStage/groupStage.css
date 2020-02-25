@@ -22,3 +22,27 @@
 .voteButton {
   margin-top: 10px;
 }
+
+.fraseDetailModal {
+  color: black;
+  text-align: justify;
+  font-size: 20px;
+}
+
+.detailAutor {
+  font-size: 32px;
+  text-align: center;
+  color: #ac0000;
+  font-weight: bold;
+
+}
+.detailFrase {
+  font-size: 32px;
+  text-align: center;
+}
+
+.detailAttribute {
+  color: #ac0000;
+  font-weight: bold;
+  margin-right: 3px;
+}

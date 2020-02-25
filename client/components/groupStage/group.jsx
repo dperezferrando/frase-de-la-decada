@@ -2,9 +2,10 @@ import React from 'react';
 import { Row, Col, Card, Button, OverlayTrigger, Popover } from "react-bootstrap";
 import Component from "../../utils/component"
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import FraseDetailModal from "./fraseDetailModal";
 import "./groupStage.css"
 
-const Frase = (provided, snapshot, item, index) => {
+const Frase = ({ provided, snapshot, item, index, onClick }) => {
   const popover = (
     <Popover id="aclaracion" className="frasePopover">
       <Popover.Title>
@@ -21,6 +22,7 @@ const Frase = (provided, snapshot, item, index) => {
     ref={provided.innerRef}
     {...provided.draggableProps}
     {...provided.dragHandleProps}
+    onClick={onClick}
     className={index == 0 || index == 1 ? "groupFraseSelected" : "groupFrase"}>
       <span className="yearAuthor">{`${item.autor} - (${item.anio})`}</span>
     </div> );
@@ -43,11 +45,18 @@ const reorder = (list, startIndex, endIndex) => {
 class Group extends Component {
 
   state ={
-    frases: _.orderBy(this.props.frases, ["fraseDelAnio", "coeficienteAutista"], ["desc", "desc"])
+    frases: _.orderBy(this.props.frases, ["fraseDelAnio", "coeficienteAutista"], ["desc", "desc"]),
+    fraseToShow: null,
+    fraseDetailModalOpened: false
   }
 
   render() {
     return <Col md={3} className="group">
+      {this.state.fraseDetailModalOpened && <FraseDetailModal
+        onHide={::this.closeFraseDetailModal}
+        frase={this.state.fraseToShow}
+        show={this.state.fraseDetailModalOpened}
+      />}
       <Card>
       <Card.Header><b>GRUPO {this.props.name}</b></Card.Header>
         <Card.Body>
@@ -66,7 +75,13 @@ class Group extends Component {
                         //isDragDisabled={item.fraseDelAnio || this.props.dragDisabled}
                         >
                           {(provided, snapshot) => (
-                            Frase(provided, snapshot, item, index)
+                            <Frase
+                              provided={provided} 
+                              snapshot={snapshot}
+                              item={item}
+                              index={index}
+                              onClick={() => this.openFraseDetailModal(item)}
+                            />
                           )}
                       </Draggable>
                     ))}
@@ -100,6 +115,16 @@ class Group extends Component {
     this.setState({
       frases
     });
+  }
+
+  closeFraseDetailModal() {
+    this.setState({...this.state, fraseDetailModalOpened: false })
+  }
+
+  openFraseDetailModal(frase) {
+    console.log("ASDD")
+    this.setState({...this.state, fraseToShow: frase, fraseDetailModalOpened: true })
+
   }
 }
 
