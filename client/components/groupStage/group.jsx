@@ -75,7 +75,9 @@ class Group extends Component {
               )}
             </Droppable>
           </DragDropContext>
-          <Button variant="success">VOTAR</Button>
+          <div className="voteButton">
+            <Button variant="success">VOTAR</Button>
+          </div>
         </Card.Body>
     </Card>
       

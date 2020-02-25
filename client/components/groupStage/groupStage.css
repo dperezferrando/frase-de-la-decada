@@ -12,9 +12,13 @@
   user-select: 'none';
   padding: 6px;
   word-break: break-word;
-  background: white;
+  background-color: #bdae002b;
 }
 
 .groupFraseSelected {
   background-color: #00bd2b2b;
+}
+
+.voteButton {
+  margin-top: 10px;
 }
