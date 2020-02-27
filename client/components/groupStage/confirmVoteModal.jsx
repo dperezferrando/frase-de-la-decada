@@ -1,9 +1,13 @@
 import React from 'react';
 import Component from "../../utils/component"
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Spinner } from "react-bootstrap";
 import "./groupStage.css"
 
 class ConfirmVoteModal extends Component {
+
+  state= {
+    isLoading: false
+  }
 
   render() {
     return (
@@ -33,11 +37,29 @@ class ConfirmVoteModal extends Component {
 
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="success" onClick={() => this.props.vote(this.props.frases)}>Votar</Button>
+          { 
+            this.state.isLoading ? 
+              <Button variant="success">
+                <Spinner
+                  as="span"
+                  animation="grow"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                />
+              </Button>
+              :
+              <Button variant="success" onClick={::this.vote}>Votar</Button>
+          }
           <Button variant="danger" onClick={this.props.onHide}>Cancelar</Button>
         </Modal.Footer>
       </Modal>
     );
+  }
+
+  vote() {
+    this.setState({ ...this.state, isLoading: true })
+    this.props.vote(this.props.frases)
   }
 
 }
