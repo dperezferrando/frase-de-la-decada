@@ -6,13 +6,17 @@ import GroupStage from '../../components/groupStage';
 import { actions } from '../../actions/groupStage';
 import Component from "../../utils/component"
 import WithLoading from "../../components/utils/withLoading";
+import config from "../../config";
+import moment from "moment";
 const GroupStageWithLoading = WithLoading(GroupStage)
 
 class GroupStageContainer extends Component {
 
   componentDidMount() {
-    this.props.actions.fetchQualified();
-    this.props.actions.fetchVotes("groupStage");
+    if(moment().isAfter(config.groupStage.startDate)){
+      this.props.actions.fetchQualified();
+      this.props.actions.fetchVotes("groupStage");      
+    }
 
   }
 

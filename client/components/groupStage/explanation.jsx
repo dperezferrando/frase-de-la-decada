@@ -10,11 +10,25 @@ class Explanation extends Component {
 
   render() {
     return <span> { 
-      this.state.showExplanation && <Alert variant="light" onClose={::this.hideExplanation} dismissible>
-        <b>FASE DE GRUPOS:</b>
-        <b><span className="yearAuthor">ESTA FASE TERMINA EN</span></b>
+      this.state.showExplanation && <Alert variant="light" onClose={::this.hideExplanation} dismissible={this.props.started}>
+        {
+          this.props.started ? <this.Explanation/> : <this.NotStarted/>
+        }
       </Alert>
       }
+    </span>
+  }
+
+  Explanation = () => {
+    return <span>
+      <b>FASE DE GRUPOS:</b>
+      <b><span className="yearAuthor">ESTA FASE TERMINA EN</span></b>
+    </span>
+  }
+
+  NotStarted = () => {
+    return <span>
+      NO EMPEZO
     </span>
   }
 

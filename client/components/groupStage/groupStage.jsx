@@ -4,19 +4,22 @@ import moment from "moment";
 import Component from "../../utils/component"
 import Explanation from "./explanation";
 import Group from "./group";
+import config from "../../config";
 import "./groupStage.css"
 const GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H"]
 
 
 class GroupStage extends Component {
+
   render() {
+    const started = moment().isAfter(config.groupStage.startDate);
     return <span>
       <Row className="justify-content-md-center groupStage">
         <Col md={11}>
-          <Explanation />
+          <Explanation started={started}/>
         </Col>
       </Row>
-      <Row className="justify-content-md-center">
+      {started && <Row className="justify-content-md-center">
         <Col md={11}>
           <Row>
             {this.props.groups.map((it, i) => <Group
@@ -31,6 +34,7 @@ class GroupStage extends Component {
           </Row>
         </Col>
       </Row>
+    }
     </span>
   }
 
