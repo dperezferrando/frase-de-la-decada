@@ -51,7 +51,7 @@ class ConfirmVoteModal extends Component {
               :
               <Button variant="success" onClick={::this.vote}>Votar</Button>
           }
-          <Button variant="danger" onClick={this.props.onHide}>Cancelar</Button>
+          <Button variant="danger" onClick={this.props.onHide} disabled={this.state.isLoading}>Cancelar</Button>
         </Modal.Footer>
       </Modal>
     );

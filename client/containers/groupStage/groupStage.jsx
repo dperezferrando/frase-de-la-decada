@@ -32,8 +32,7 @@ function mapStateToProps({ profile: { user, isLoading }, groupStage: { qualified
     .groupBy("group")
     .map(_.identity)
     .value()
-  console.log("AAA", groups, qualifiedIsLoading)
-  return { groups, isLoading: qualifiedIsLoading || isLoading };
+  return { groups, user, isLoading: qualifiedIsLoading || isLoading };
 }
 
 function mapDispatchToProps(dispatch) {

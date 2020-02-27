@@ -100,7 +100,7 @@ class Group extends Component {
             </Droppable>
           </DragDropContext>
           <div className="voteButton">
-            <Button variant="success" onClick={::this.openConfirmVoteModal}>VOTAR</Button>
+            <Button variant="success" onClick={::this.openConfirmVoteModal} disabled={!this.props.shouldVote}>VOTAR</Button>
           </div>
         </Card.Body>
     </Card>
