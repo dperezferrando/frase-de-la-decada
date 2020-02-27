@@ -46,7 +46,7 @@ const reorder = (list, startIndex, endIndex) => {
 class Group extends Component {
 
   state ={
-    frases: _.orderBy(this.props.frases, ["fraseDelAnio", "coeficienteAutista"], ["desc", "desc"]),
+    frases: this.frases(),
     fraseToShow: null,
     fraseDetailModalOpened: false,
     confirmVoteModalOpened: false
@@ -81,6 +81,7 @@ class Group extends Component {
                         key={item._id}
                         draggableId={item._id}
                         index={index}
+                        isDragDisabled={!this.props.shouldVote}
                         //isDragDisabled={item.fraseDelAnio || this.props.dragDisabled}
                         >
                           {(provided, snapshot) => (
@@ -106,6 +107,13 @@ class Group extends Component {
     </Card>
       
     </Col>
+  }
+
+  frases() {
+    const { votes, shouldVote, frases } = this.props;
+    if(shouldVote)
+      return _.orderBy(frases, ["fraseDelAnio", "coeficienteAutista"], ["desc", "desc"]);
+    return votes.concat(_.reject(frases, ({_id: id }) => _.some(votes, ({ _id }) => _id == id )));
   }
 
   vote(frases) {

@@ -17,5 +17,11 @@ export default {
       flatMap(({ phase, frases, group }) => serverApi.vote(phase, frases, group)
         .then(() => window.location = "/groupstage")
         .catch(it => alert(it))),
-      mapTo(noop()))
+      mapTo(noop())
+    ),fetchVotesEpic: (action$, store) =>
+    action$.pipe(
+      ofType(Types.FETCH_VOTES),
+      flatMap(({ phase }) => serverApi.votes(phase)),
+      map(actions.setVotes)
+    )
 };

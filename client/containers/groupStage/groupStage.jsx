@@ -12,6 +12,7 @@ class GroupStageContainer extends Component {
 
   componentDidMount() {
     this.props.actions.fetchQualified();
+    this.props.actions.fetchVotes("groupStage");
 
   }
 
@@ -26,13 +27,14 @@ class GroupStageContainer extends Component {
     );
   }
 }
-function mapStateToProps({ profile: { user, isLoading }, groupStage: { qualified: { results, isLoading: qualifiedIsLoading } } }, props) {
+function mapStateToProps({ profile: { user, isLoading }, groupStage: { qualified: { results, isLoading: qualifiedIsLoading }, votes } }, props) {
   const groups =  _(results)
     .filter("group")
     .groupBy("group")
     .map(_.identity)
     .value()
-  return { groups, user, isLoading: qualifiedIsLoading || isLoading };
+    console.log("AA", votes)
+  return { groups, user, votes: votes.results, isLoading: qualifiedIsLoading || isLoading || votes.isLoading };
 }
 
 function mapDispatchToProps(dispatch) {

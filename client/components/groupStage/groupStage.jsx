@@ -25,6 +25,7 @@ class GroupStage extends Component {
               frases={it}
               shouldVote={this.shouldVote(GROUPS[i])}
               vote={::this.vote}
+              votes={this.getVotes(GROUPS[i])}
             />
           )}
           </Row>
@@ -40,6 +41,12 @@ class GroupStage extends Component {
   shouldVote(group) {
     const { voted: { groupStage } } = this.props.user;
     return !_.includes(groupStage, group)
+  }
+
+  getVotes(group) {
+    if(this.shouldVote(group))
+      return [];
+    return _.find(this.props.votes, { group }).frases 
   }
 }
 
