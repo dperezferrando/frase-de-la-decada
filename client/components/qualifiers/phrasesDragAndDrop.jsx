@@ -32,7 +32,7 @@ class PhrasesDragAndDrop extends Component {
               <b> Hay dos restricciones</b>: minimo tiene que haber <b>{MIN_FRASE_YEAR}</b> frases de cada año y maximo <b>{MAX_FRASE_AUTHOR}</b> frases de un autor en particular. (Contando siempre a las frases ya clasificadas)
               Si te da <b>PAJA</b> hay un boton para eso.
               <b> Good luck, have fun. </b> 
-              <b><span className="yearAuthor">ESTA FASE TERMINA EN <CountDown date={config.qualifiers.endDate.toDate()}/></span></b>
+              <b><span className="yearAuthor">ESTA FASE TERMINA EN <CountDown date={config.qualifiers.endDate}/></span></b>
             </Alert>
             }
           </Col>

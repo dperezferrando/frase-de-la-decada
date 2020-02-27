@@ -9,11 +9,11 @@ import WithLoading from "../../components/utils/withLoading";
 import config from "../../config";
 import moment from "moment";
 const GroupStageWithLoading = WithLoading(GroupStage)
-
+const started = moment().isAfter(config.groupStage.startDate);
 class GroupStageContainer extends Component {
 
   componentDidMount() {
-    if(moment().isAfter(config.groupStage.startDate)){
+    if(started){
       this.props.actions.fetchQualified();
       this.props.actions.fetchVotes("groupStage");      
     }
@@ -38,7 +38,7 @@ function mapStateToProps({ profile: { user, isLoading }, groupStage: { qualified
     .map(_.identity)
     .value()
     console.log("AA", votes)
-  return { groups, user, votes: votes.results, isLoading: qualifiedIsLoading || isLoading || votes.isLoading };
+  return { groups, user, votes: votes.results, isLoading: started && (qualifiedIsLoading || isLoading || votes.isLoading) };
 }
 
 function mapDispatchToProps(dispatch) {
