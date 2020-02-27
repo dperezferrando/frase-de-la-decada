@@ -1,6 +1,8 @@
 import React from 'react';
 import Component from "../../utils/component"
 import { Alert } from "react-bootstrap";
+import CountDown from "../countdown";
+import config from "../../config";
 
 class Explanation extends Component {
 
@@ -22,13 +24,13 @@ class Explanation extends Component {
   Explanation = () => {
     return <span>
       <b>FASE DE GRUPOS:</b>
-      <b><span className="yearAuthor">ESTA FASE TERMINA EN</span></b>
+      <b><span className="yearAuthor">ESTA FASE TERMINA EN <CountDown date={config.groupStage.endDate}/></span></b>
     </span>
   }
 
   NotStarted = () => {
-    return <span>
-      NO EMPEZO
+    return <span className="yearAuthor">
+      ESTA FASE EMPIEZA EN <CountDown date={config.groupStage.startDate}/>
     </span>
   }
 
