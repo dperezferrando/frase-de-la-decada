@@ -3,6 +3,7 @@ import { Row, Col, Card, Button, OverlayTrigger, Popover } from "react-bootstrap
 import Component from "../../utils/component"
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import FraseDetailModal from "./fraseDetailModal";
+import ConfirmVoteModal from "./confirmVoteModal";
 import "./groupStage.css"
 
 const Frase = ({ provided, snapshot, item, index, onClick }) => {
@@ -47,7 +48,8 @@ class Group extends Component {
   state ={
     frases: _.orderBy(this.props.frases, ["fraseDelAnio", "coeficienteAutista"], ["desc", "desc"]),
     fraseToShow: null,
-    fraseDetailModalOpened: false
+    fraseDetailModalOpened: false,
+    confirmVoteModalOpened: false
   }
 
   render() {
@@ -56,6 +58,13 @@ class Group extends Component {
         onHide={::this.closeFraseDetailModal}
         frase={this.state.fraseToShow}
         show={this.state.fraseDetailModalOpened}
+      />}
+      {this.state.confirmVoteModalOpened && <ConfirmVoteModal
+        onHide={::this.closeConfirmVoteModal}
+        frases={_.take(this.state.frases, 2)}
+        show={this.state.confirmVoteModalOpened}
+        vote={::this.vote}
+        group={this.props.name}
       />}
       <Card>
       <Card.Header><b>GRUPO {this.props.name == "F" ? this.props.name + " to pay respects" : this.props.name}</b></Card.Header>
@@ -91,7 +100,7 @@ class Group extends Component {
             </Droppable>
           </DragDropContext>
           <div className="voteButton">
-            <Button variant="success" onClick={::this.vote}>VOTAR</Button>
+            <Button variant="success" onClick={::this.openConfirmVoteModal}>VOTAR</Button>
           </div>
         </Card.Body>
     </Card>
@@ -99,12 +108,11 @@ class Group extends Component {
     </Col>
   }
 
-  vote() {
-    this.props.vote(this.props.name, _.take(this.state.frases, 2));
+  vote(frases) {
+    this.props.vote(this.props.name, frases);
   }
 
   onDragEnd(result) {
-    // dropped outside the list
     if (!result.destination) {
       return;
     }
@@ -124,10 +132,16 @@ class Group extends Component {
     this.setState({...this.state, fraseDetailModalOpened: false })
   }
 
-  openFraseDetailModal(frase) {
-    console.log("ASDD")
-    this.setState({...this.state, fraseToShow: frase, fraseDetailModalOpened: true })
+  closeConfirmVoteModal() {
+    this.setState({...this.state, confirmVoteModalOpened: false })
+  }
 
+  openFraseDetailModal(frase) {
+    this.setState({...this.state, fraseToShow: frase, fraseDetailModalOpened: true })
+  }
+
+  openConfirmVoteModal(frase) {
+    this.setState({...this.state, confirmVoteModalOpened: true })
   }
 }
 
