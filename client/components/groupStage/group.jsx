@@ -110,8 +110,8 @@ class Group extends Component {
   }
 
   frases() {
-    const { votes, shouldVote, frases } = this.props;
-    if(shouldVote)
+    const { votes, frases } = this.props;
+    if(_.isEmpty(votes))
       return _.orderBy(frases, ["fraseDelAnio", "coeficienteAutista"], ["desc", "desc"]);
     return votes.concat(_.reject(frases, ({_id: id }) => _.some(votes, ({ _id }) => _id == id )));
   }

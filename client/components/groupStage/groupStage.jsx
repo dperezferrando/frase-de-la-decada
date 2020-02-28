@@ -44,13 +44,12 @@ class GroupStage extends Component {
 
   shouldVote(group) {
     const { voted: { groupStage } } = this.props.user;
-    return !_.includes(groupStage, group)
+    return !_.includes(groupStage, group) && moment().isBefore(config.groupStage.endDate);
   }
 
   getVotes(group) {
-    if(this.shouldVote(group))
-      return [];
-    return _.find(this.props.votes, { group }).frases 
+    const votes = _.find(this.props.votes, { group });
+    return _.get(votes, "frases", []);
   }
 }
 
