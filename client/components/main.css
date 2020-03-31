@@ -39,6 +39,10 @@ body {
   margin-right: 3px;
 }
 
+.detailContext {
+  text-align: justify;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;

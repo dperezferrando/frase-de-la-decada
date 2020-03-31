@@ -76,4 +76,6 @@
 
 .voteModal {
   color: black;
+  width: 90%;
+  max-width: none !important;
 }

@@ -19,7 +19,7 @@ class FraseDetail extends Component {
       <div>
         { fraseDelAnio && <div>Fue elegida como <span className="detailAttribute">Frase del Año</span></div>}
         <span className="detailAttribute">Coeficiente Autista:</span> { coeficienteAutista }
-        { context && <div>
+        { context && <div className="detailContext">
         <span className="detailAttribute">Contexto Histórico:</span>
           { context }
         </div>}

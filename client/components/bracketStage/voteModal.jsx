@@ -1,12 +1,13 @@
 import React from 'react';
 import Component from "../../utils/component"
-import { Modal, Button, Spinner } from "react-bootstrap";
+import { Modal, Button, Spinner, Row, Col } from "react-bootstrap";
+import VoteFrase from "./voteFrase";
 import "./bracketStage.css"
 
 class VoteModal extends Component {
 
-  state= {
-    isLoading: false
+  state ={
+    voted: false
   }
 
   render() {
@@ -14,8 +15,7 @@ class VoteModal extends Component {
       <Modal
         onHide={this.props.onHide}
         show={this.props.show}
-        className="voteModal"
-        size="lg"
+        dialogClassName="voteModal"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
@@ -25,35 +25,23 @@ class VoteModal extends Component {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {this.props.frases.map(({autor, anio}, i) => {
-            return <div key={i}>{autor}-{anio}</div>
-          })}
+          <Row>
+            {this.props.frases.map((frase, i) => {
+              return <VoteFrase frase={frase} key={i} vote={::this.vote}/>
+            })}
+          </Row>
         </Modal.Body>
         <Modal.Footer>
-          { 
-            this.state.isLoading ? 
-              <Button variant="success">
-                <Spinner
-                  as="span"
-                  animation="grow"
-                  size="sm"
-                  role="status"
-                  aria-hidden="true"
-                />
-              </Button>
-              :
-              <Button variant="success" onClick={::this.vote}>Votar</Button>
-          }
-          <Button variant="danger" onClick={this.props.onHide} disabled={this.state.isLoading}>Cancelar</Button>
+          <Button variant="danger" onClick={this.props.onHide} disabled={this.state.voted}>Cancelar</Button>
         </Modal.Footer>
       </Modal>
     );
   }
 
   vote() {
-    this.setState({ ...this.state, isLoading: true })
-    //this.props.vote(this.props.frases)
+    this.setState({...this.state, voted: true })
   }
+
 
 }
 
