@@ -24,24 +24,24 @@ const commonConfig = {
     endDate: moment(new Date(process.env.GROUPSTAGE_END_DATE || "1/1/2021"))
   },
 
-  eigthsStage: {
-    startDate: moment(new Date(process.env.EIGHTSTAGE_START_DATE || "1/1/2020")),
-    endDate: moment(new Date(process.env.EIGHTSTAGE_END_DATE || "1/1/2021"))
+  eigths: {
+    startDate: moment(new Date(process.env.EIGHTS_START_DATE || "1/1/2020")),
+    endDate: moment(new Date(process.env.EIGHTS_END_DATE || "1/1/2021"))
   },
 
-  fourthsStage: {
-    startDate: moment(new Date(process.env.FOURTHSTAGE_START_DATE || "1/1/2020")),
-    endDate: moment(new Date(process.env.FOURTHSTAGE_END_DATE || "1/1/2021"))
+  fourths: {
+    startDate: moment(new Date(process.env.FOURTHS_START_DATE || "1/1/2020")),
+    endDate: moment(new Date(process.env.FOURTHS_END_DATE || "1/1/2021"))
   },
 
-  semiStage: {
-    startDate: moment(new Date(process.env.SEMISTAGE_START_DATE || "1/1/2020")),
-    endDate: moment(new Date(process.env.SEMISTAGE_END_DATE || "1/1/2021"))
+  semi: {
+    startDate: moment(new Date(process.env.SEMI_START_DATE || "1/1/2020")),
+    endDate: moment(new Date(process.env.SEMI_END_DATE || "1/1/2021"))
   },
-  
-  finalStage: {
-    startDate: moment(new Date(process.env.FINALSTAGE_START_DATE || "1/1/2020")),
-    endDate: moment(new Date(process.env.FINALSTAGE_END_DATE || "1/1/2021"))
+
+  final: {
+    startDate: moment(new Date(process.env.FINAL_START_DATE || "1/1/2020")),
+    endDate: moment(new Date(process.env.FINAL_END_DATE || "1/1/2021"))
   },
 
 
