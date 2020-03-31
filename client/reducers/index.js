@@ -4,6 +4,7 @@ import profile from "./profile";
 import qualifiers from "./qualifiers";
 import qualifiersResults from "./qualifiersResults";
 import groupStage from "./groupStage";
+import bracketPhase from "./bracketPhase";
 
 
 const rootReducer = combineReducers({
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
   profile,
   qualifiers,
   qualifiersResults,
-  groupStage
+  groupStage,
+  bracketPhase
 })
 
 

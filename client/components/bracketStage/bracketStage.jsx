@@ -3,8 +3,9 @@ import { Container, Row, Col } from "react-bootstrap";
 import moment from "moment";
 import Component from "../../utils/component"
 import Explanation from "../explanation";
-import BracketPhase from "./bracketPhase";
+import BracketPhase from "../../containers/bracketStage/bracketPhase";
 import config from "../../config";
+import "./bracketStage.css"
 
 const explanationContent = () => {
   return <span>
@@ -13,7 +14,7 @@ const explanationContent = () => {
   </span>
 }
 
-const bracketPhases = ["eightsStage", "fourthsStage", "semiStage", "finalStage"];
+const bracketPhases = ["final", "semi", "fourths", "eights"];
 
 class BracketStage extends Component {
 
@@ -21,9 +22,9 @@ class BracketStage extends Component {
     const started = (phase) => moment().isAfter(config[phase].startDate);
     const showResults = (phase) => moment().isAfter(config[phase].resultsDate);
     return <span>
-      <Row className="justify-content-md-center">
+      <Row className="justify-content-md-center bracketStage">
         <Col md={11}>
-          <Explanation started={started("eightsStage")} content={explanationContent}/>
+          <Explanation started={started("eights")} content={explanationContent}/>
         </Col>
       </Row>
       <Row className="justify-content-md-center">

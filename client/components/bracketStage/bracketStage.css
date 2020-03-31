@@ -1,0 +1,15 @@
+.bracketStage {
+  margin-top: 15px;
+}
+
+.bracketPhase {
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+  color: black;
+}
+
+.phaseTitle {
+  font-size: 24px;
+}

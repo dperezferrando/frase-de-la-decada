@@ -6,6 +6,7 @@ import profileEpic from "./profile";
 import qualifiersEpic from "./qualifiers";
 import qualifiersResultsEpic from "./qualifiersResults";
 import groupStageEpic from "./groupStage";
+import bracketPhaseEpic from "./bracketPhase";
 
 export default (action$, store$, dependencies) =>
   combineEpics(
@@ -13,7 +14,8 @@ export default (action$, store$, dependencies) =>
     ...(_.values(profileEpic)),
     ...(_.values(qualifiersEpic)),
     ...(_.values(qualifiersResultsEpic)),
-    ...(_.values(groupStageEpic))
+    ...(_.values(groupStageEpic)),
+    ...(_.values(bracketPhaseEpic))
   )(action$, store$, dependencies).pipe(
     catchError((error, source) => {
       console.error(error);
