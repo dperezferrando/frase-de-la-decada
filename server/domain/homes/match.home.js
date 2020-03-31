@@ -8,6 +8,13 @@ class MatchHome extends Home {
     super(MatchModel);
   }
 
+  getAll(query) {
+    return this.Model.find(query)
+      .populate("fraseA")
+      .populate("fraseB")
+      .execAsync()
+  }
+
 
 }
 
