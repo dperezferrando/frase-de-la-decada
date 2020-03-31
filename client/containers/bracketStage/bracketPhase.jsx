@@ -33,7 +33,6 @@ class BracketPhaseContainer extends Component {
   }
 }
 function mapStateToProps({ profile: { user, isLoading }, bracketPhase: { ...state } }, props) {
-  console.log("ASD", state, props)
   const { results, isLoading: matchesLoading } = state[props.phase]; 
   return { user, matches: results, isLoading: (isLoading || matchesLoading) };
 }
