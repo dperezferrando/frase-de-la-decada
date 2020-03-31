@@ -4,9 +4,9 @@ import { Button } from "react-bootstrap";
 import VoteModal from "./voteModal";
 import "./bracketStage.css"
 
-const MatchAutor = ({ frase: { autor, anio, coeficienteAutista, votesQuantity }, phase, finished, showResults }) =>  {
+const MatchAutor = ({ frase: { autor, anio, coeficienteAutista, votesQuantity }, phase, finished, showResults, alreadyVoted, votedFrase }) =>  {
   const votes = votesQuantity[phase];
-  return  <div className="matchAutorContainer">
+  return  <div className={votedFrase ? "votedAutor": "matchAutorContainer"}>
       <div className="matchAutor">
         {autor}
       </div>
@@ -42,12 +42,24 @@ class Match extends Component {
         vote={::this.vote}
         frases={[fraseA, fraseB]}
         />}
-      <MatchAutor frase={fraseA} phase={this.props.phase} finished={this.props.finished} showResults={this.props.showResults} />
+      <MatchAutor 
+        frase={fraseA}
+        phase={this.props.phase}
+        finished={this.props.finished}
+        showResults={this.props.showResults}
+        votedFrase={this.alreadyVoted() && this.props.votedFrase._id == fraseA._id}
+        />
       <div className="matchVS">
         vs
         <Button variant="success" disabled={!this.shouldVote()} onClick={::this.showVoteModal}>Votar</Button>
       </div>
-      <MatchAutor frase={fraseB} phase={this.props.phase} finished={this.props.finished} showResults={this.props.showResults} />
+      <MatchAutor 
+        frase={fraseB}
+        phase={this.props.phase}
+        finished={this.props.finished}
+        showResults={this.props.showResults}
+        votedFrase={this.alreadyVoted() && this.props.votedFrase._id == fraseB._id}
+      />
     </div>;
   }
 
@@ -64,12 +76,12 @@ class Match extends Component {
     this.props.vote(this.props.match._id, frases)
   }
 
-  _alreadyVoted() {
+  alreadyVoted() {
     return _.includes(this.props.matchesVoted, this.props.match._id);
   }
 
   shouldVote() {
-    return !this.props.finished && !this._alreadyVoted()
+    return !this.props.finished && !this.alreadyVoted()
   }
 
 }

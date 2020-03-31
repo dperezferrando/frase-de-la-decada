@@ -37,7 +37,7 @@
 
 }
 
-.matchAutorContainer {
+.matchAutorContainer, .votedAutor, .eliminatedAutor {
   width: 40%;
 }
 
@@ -46,7 +46,7 @@
   font-weight: bold;
 }
 
-.matchAutor {
+.matchAutor  {
   font-size: 25px;
 }
 

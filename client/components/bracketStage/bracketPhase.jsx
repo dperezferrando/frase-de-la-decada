@@ -32,10 +32,19 @@ class BracketPhase extends Component {
             showResults={showResults}
             vote={this.props.vote}
             matchesVoted={matchesVoted}
+            votedFrase={this.getMatchVote(match)}
           />)
         }
       </div>
     </div>
+  }
+
+  getMatchVote(match) {
+    return _(this.props.phaseVotes)
+    .filter({match: match._id})
+    .map("frases")
+    .flatten()
+    .first()
   }
 
 }
