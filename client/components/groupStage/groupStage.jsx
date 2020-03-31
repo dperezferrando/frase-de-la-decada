@@ -2,12 +2,23 @@ import React from 'react';
 import { Container, Row, Col } from "react-bootstrap";
 import moment from "moment";
 import Component from "../../utils/component"
-import Explanation from "./explanation";
+import Explanation from "../explanation";
 import Group from "./group";
 import config from "../../config";
 import "./groupStage.css"
+import CountDown from "../countdown";
+
 const GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H"]
 
+const explanationContent = () => {
+  return <span>
+    <b>FASE DE GRUPOS:</b> De cada grupo clasifican los dos primeros,
+    solamente tenes que arrastrar las dos frases que mas te gusten a las primeras dos posiciones y luego apretar "Votar".
+    La primer posicion recibe <b>2 votos</b>, la segunda <b>1 voto</b>. Podes hacer click en una frase para obtener mas informacion sobre la misma.
+    <b> Good luck, have fun. </b>
+    <b><span className="yearAuthor">ESTA FASE TERMINA EN <CountDown date={config.groupStage.endDate}/></span></b>
+  </span>
+}
 
 class GroupStage extends Component {
 
@@ -17,7 +28,7 @@ class GroupStage extends Component {
     return <span>
       <Row className="justify-content-md-center groupStage">
         <Col md={11}>
-          <Explanation started={started}/>
+          <Explanation started={started} content={explanationContent} phase="groupStage"/>
         </Col>
       </Row>
         { showResults && this.Groups(started, showResults) }
