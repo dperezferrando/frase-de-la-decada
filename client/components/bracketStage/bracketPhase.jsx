@@ -2,6 +2,7 @@ import React from 'react';
 import Component from "../../utils/component"
 import CountDown from "../countdown";
 import config from "../../config";
+import Match from "./match";
 import "./bracketStage.css"
 
 const phaseTranslator = {
@@ -17,9 +18,11 @@ class BracketPhase extends Component {
   render() {
     return <div className="bracketPhase">
       <span className="phaseTitle">{phaseTranslator[this.props.phase]}</span><span> - Termina en <CountDown date={config.groupStage.endDate}/></span>
-      {
-        this.props.matches.map(({ fraseA, fraseB }, i) => <div key={i}>{`${fraseA.autor} vs ${fraseB.autor}`}</div>)
-      }
+      <div className="matchContainer">
+        {
+          this.props.matches.map((match, i) => <Match key={i} phase={this.props.phase} match={match}/>)
+        }
+      </div>
     </div>
   }
 

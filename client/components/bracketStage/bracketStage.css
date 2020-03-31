@@ -13,3 +13,63 @@
 .phaseTitle {
   font-size: 24px;
 }
+
+.matchContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.match {
+  width: 20%;
+  border: solid;
+  border-color: #25212136;
+  border-radius: 5px;
+  border-width: 2px;
+  margin: 10px;
+  padding: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: #a7a59f24;
+
+}
+
+.matchAutorContainer {
+  width: 40%;
+}
+
+.matchVS {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.matchAutor {
+  font-size: 25px;
+}
+
+.matchAnio {
+  font-size: 20px;
+  color: #ac0000;
+  font-weight: bold;
+}
+
+.votedAutor {
+  background-color: #0c961124;
+}
+
+.eliminatedAutor {
+  background-color: #960c0c24;
+}
+
+.info {
+  text-align: center;
+  font-size: 14px;
+}
+
+.coefAut {
+  color: #ac0000;
+  font-weight: bold;
+}
