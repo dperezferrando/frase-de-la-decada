@@ -21,12 +21,17 @@ class BracketPhaseContainer extends Component {
 
   }
 
+  vote(match, frases) {
+    this.props.actions.vote(this.props.phase, match, frases)
+  }
+
 
   render() {
     return (
       <div>
         <BracketPhaseWithLoading
           {...this.props}
+          vote={::this.vote}
         />
       </div>
     );

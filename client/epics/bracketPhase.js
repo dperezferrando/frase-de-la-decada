@@ -11,5 +11,12 @@ export default {
       ofType(Types.FETCH_MATCHES),
       flatMap(({ phase }) => serverApi.matches(phase).then(matches => ({ matches, phase }))),
       map(({ phase, matches }) => actions.setMatches(phase, matches))
+    ),voteEpic: (action$, store) =>
+    action$.pipe(
+      ofType(Types.VOTE_BRACKETSTAGE),
+      flatMap(({ phase, frases, match }) => serverApi.vote(phase, frases, { match })
+        .then(() => window.location = "/bracketstage")
+        .catch(it => alert(it))),
+      mapTo(noop())
     )
 };

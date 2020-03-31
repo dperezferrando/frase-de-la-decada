@@ -45,7 +45,7 @@ class Match extends Component {
       <MatchAutor frase={fraseA} phase={this.props.phase} finished={this.props.finished} showResults={this.props.showResults} />
       <div className="matchVS">
         vs
-        <Button variant="success" disabled={this.props.finished} onClick={::this.showVoteModal}>Votar</Button>
+        <Button variant="success" disabled={!this.shouldVote()} onClick={::this.showVoteModal}>Votar</Button>
       </div>
       <MatchAutor frase={fraseB} phase={this.props.phase} finished={this.props.finished} showResults={this.props.showResults} />
     </div>;
@@ -60,10 +60,17 @@ class Match extends Component {
     this.setState({ ...this.state, voteModalOpened: false })
   }
 
-  vote() {
-    this.props.vote()
+  vote(frases) {
+    this.props.vote(this.props.match._id, frases)
   }
 
+  _alreadyVoted() {
+    return _.includes(this.props.matchesVoted, this.props.match._id);
+  }
+
+  shouldVote() {
+    return !this.props.finished && !this._alreadyVoted()
+  }
 
 }
 

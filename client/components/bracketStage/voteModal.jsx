@@ -38,8 +38,9 @@ class VoteModal extends Component {
     );
   }
 
-  vote() {
+  vote(frases) {
     this.setState({...this.state, voted: true })
+    this.props.vote(frases)
   }
 
 

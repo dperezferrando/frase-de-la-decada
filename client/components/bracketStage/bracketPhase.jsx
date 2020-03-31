@@ -19,6 +19,7 @@ class BracketPhase extends Component {
   render() {
     const finished = moment().isAfter(config[this.props.phase].endDate);
     const showResults = moment().isAfter(config[this.props.phase].resultsDate);
+    const matchesVoted = this.props.user.voted[this.props.phase];
     return <div className="bracketPhase">
       <span className="phaseTitle">{phaseTranslator[this.props.phase]}</span><span> - Termina en <CountDown date={config[this.props.phase].endDate}/></span>
       <div className="matchContainer">
@@ -29,6 +30,8 @@ class BracketPhase extends Component {
             match={match}
             finished={finished}
             showResults={showResults}
+            vote={this.props.vote}
+            matchesVoted={matchesVoted}
           />)
         }
       </div>
