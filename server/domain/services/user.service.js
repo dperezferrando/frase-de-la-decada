@@ -7,8 +7,8 @@ class UserService {
     this.home = new UserHome();
   }
 
-  vote(user, phase) {
-    return this.home.update({ googleId: user.googleId }, { [`voted.${phase}`]: true });
+  vote(user, value) {
+    return this.home.update({ googleId: user.googleId }, value);
   }
 
   get(query) {

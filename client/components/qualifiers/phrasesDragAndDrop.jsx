@@ -8,7 +8,7 @@ import PhrasesList from "./phrasesList";
 import ActionButtons from "./actionButtons";
 import "./qualifiers.css"
 import config from "../../config";
-import CountDown from "./countdown"
+import CountDown from "../countdown"
 
 const MIN_FRASE_YEAR = 3;
 const MAX_FRASE_AUTHOR = 10;
@@ -32,7 +32,7 @@ class PhrasesDragAndDrop extends Component {
               <b> Hay dos restricciones</b>: minimo tiene que haber <b>{MIN_FRASE_YEAR}</b> frases de cada año y maximo <b>{MAX_FRASE_AUTHOR}</b> frases de un autor en particular. (Contando siempre a las frases ya clasificadas)
               Si te da <b>PAJA</b> hay un boton para eso.
               <b> Good luck, have fun. </b> 
-              <b><span className="yearAuthor">ESTA FASE TERMINA EN <CountDown/></span></b>
+              <b><span className="yearAuthor">ESTA FASE TERMINA EN <CountDown date={config.qualifiers.endDate}/></span></b>
             </Alert>
             }
           </Col>

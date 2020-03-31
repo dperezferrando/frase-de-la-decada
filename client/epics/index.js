@@ -5,13 +5,15 @@ import exampleEpic from "./example";
 import profileEpic from "./profile";
 import qualifiersEpic from "./qualifiers";
 import qualifiersResultsEpic from "./qualifiersResults";
+import groupStageEpic from "./groupStage";
 
 export default (action$, store$, dependencies) =>
   combineEpics(
     ...(_.values(exampleEpic)),
     ...(_.values(profileEpic)),
     ...(_.values(qualifiersEpic)),
-    ...(_.values(qualifiersResultsEpic))
+    ...(_.values(qualifiersResultsEpic)),
+    ...(_.values(groupStageEpic))
   )(action$, store$, dependencies).pipe(
     catchError((error, source) => {
       console.error(error);
