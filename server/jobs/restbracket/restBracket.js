@@ -43,4 +43,4 @@ const generateMatchesFor = (phase) => {
 }
 
 
-generateMatchesFor("eights", "fourths") ;
+generateMatchesFor("fourths") ;
