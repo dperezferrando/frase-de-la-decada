@@ -27,7 +27,7 @@ class VoteModal extends Component {
         <Modal.Body>
           <Row>
             {this.props.frases.map((frase, i) => {
-              return <VoteFrase frase={frase} key={i} vote={::this.vote}/>
+              return <VoteFrase frase={frase} key={i} vote={::this.vote} disabled={this.state.voted}/>
             })}
           </Row>
         </Modal.Body>
