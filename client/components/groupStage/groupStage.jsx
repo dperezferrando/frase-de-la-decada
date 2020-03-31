@@ -13,15 +13,28 @@ class GroupStage extends Component {
 
   render() {
     const started = moment().isAfter(config.groupStage.startDate);
+    const showResults = moment().isAfter(config.groupStage.resultsDate);
     return <span>
       <Row className="justify-content-md-center groupStage">
         <Col md={11}>
           <Explanation started={started}/>
         </Col>
       </Row>
-      {started && <Row className="justify-content-md-center">
+        { showResults && this.Groups(started, showResults) }
+        {this.Groups(started, false)}
+    </span>
+  }
+
+
+  Groups = (started, showResults) => 
+    started && <Row className="justify-content-md-center">
         <Col md={11}>
           <Row>
+            <h3>{ showResults ? "Resultados" : "Tus Votos:"  }</h3>
+          </Row>
+        </Col>
+          <Col md={11}>
+            <Row>
             {this.props.groups.map((it, i) => <Group
               key={i}
               name={GROUPS[i]}
@@ -29,14 +42,12 @@ class GroupStage extends Component {
               shouldVote={this.shouldVote(GROUPS[i])}
               vote={::this.vote}
               votes={this.getVotes(GROUPS[i])}
+              showResults={showResults}
             />
           )}
           </Row>
         </Col>
       </Row>
-    }
-    </span>
-  }
 
   vote(group, frases) {
     this.props.actions.vote("groupStage", group, frases);   
@@ -51,6 +62,7 @@ class GroupStage extends Component {
     const votes = _.find(this.props.votes, { group });
     return _.get(votes, "frases", []);
   }
+
 }
 
 export default GroupStage

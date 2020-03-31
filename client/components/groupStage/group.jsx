@@ -6,10 +6,11 @@ import FraseDetailModal from "./fraseDetailModal";
 import ConfirmVoteModal from "./confirmVoteModal";
 import "./groupStage.css"
 
-const Frase = ({ provided, snapshot, item, index, onClick }) => {
+const Frase = ({ provided, snapshot, item, index, onClick, showResults }) => {
   const popover = (
     <Popover id="aclaracion" className="frasePopover">
       <Popover.Title>
+        { showResults && <span> <b>Votos:</b> <span className="yearAuthor">{ item.votesQuantity.groupStage }</span> </span>}
         <b>Coeficiente autista:</b> <span className="yearAuthor">{ item.coeficienteAutista }</span>
       </Popover.Title>
       {
@@ -90,6 +91,7 @@ class Group extends Component {
                               snapshot={snapshot}
                               item={item}
                               index={index}
+                              showResults={this.props.showResults}
                               onClick={() => this.openFraseDetailModal(item)}
                             />
                           )}
@@ -100,9 +102,11 @@ class Group extends Component {
               )}
             </Droppable>
           </DragDropContext>
-          <div className="voteButton">
-            <Button variant="success" onClick={::this.openConfirmVoteModal} disabled={!this.props.shouldVote}>VOTAR</Button>
-          </div>
+          {
+            !this.props.showResults && <div className="voteButton">
+              <Button variant="success" onClick={::this.openConfirmVoteModal} disabled={!this.props.shouldVote}>VOTAR</Button>
+            </div>
+          }
         </Card.Body>
     </Card>
       
@@ -110,7 +114,12 @@ class Group extends Component {
   }
 
   frases() {
-    const { votes, frases } = this.props;
+    const { votes, frases, showResults } = this.props;
+    if(showResults)
+      return _(frases)
+        .map(({ votesQuantity: { groupStage, ...otherVotes }, ...other }) => ({ ...other, votesQuantity: { ...otherVotes, groupStage: groupStage || 0 }}))
+        .orderBy(["votesQuantity.groupStage", "coeficienteAutista"], ["desc", "desc"])
+        .value()
     if(_.isEmpty(votes))
       return _.orderBy(frases, ["fraseDelAnio", "coeficienteAutista"], ["desc", "desc"]);
     return votes.concat(_.reject(frases, ({_id: id }) => _.some(votes, ({ _id }) => _id == id )));

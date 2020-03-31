@@ -18,12 +18,30 @@ const fraseSchema = new Schema({
   },
   group: String,
   votesQuantity: {
-    qualifiers: Number,
-    groupStage: Number,
-    eights: Number,
-    fourths: Number,
-    semi: Number,
-    final: Number,
+    qualifiers: {
+      type: Number,
+      default: 0
+    },
+    groupStage: {
+      type: Number,
+      default: 0
+    },
+    eights: {
+      type: Number,
+      default: 0
+    },
+    fourths: {
+      type: Number,
+      default: 0
+    },
+    semi: {
+      type: Number,
+      default: 0
+    },
+    final: {
+      type: Number,
+      default: 0
+    }
   },
   qualified: Boolean
 });
