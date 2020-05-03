@@ -41,6 +41,7 @@ class Match extends Component {
         show={this.state.voteModalOpened}
         vote={::this.vote}
         frases={[fraseA, fraseB]}
+        shouldVote={this.shouldVote()}
         />}
       <MatchAutor 
         frase={fraseA}
@@ -51,7 +52,8 @@ class Match extends Component {
         />
       <div className="matchVS">
         vs
-        <Button variant="success" disabled={!this.shouldVote()} onClick={::this.showVoteModal}>Votar</Button>
+
+        <Button variant="success" onClick={::this.showVoteModal}>{ this.shouldVote() ? "Votar" : "Ver"}</Button>
       </div>
       <MatchAutor 
         frase={fraseB}

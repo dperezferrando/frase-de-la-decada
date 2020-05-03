@@ -28,7 +28,7 @@ class VoteFrase extends Component {
               />
             </Button>
             :
-            <Button disabled={this.props.disabled} variant="success" onClick={::this.vote}>Votar</Button>
+             this.props.shouldVote && <Button disabled={this.props.disabled} variant="success" onClick={::this.vote}>Votar</Button> 
         }
       </Col>
     );
