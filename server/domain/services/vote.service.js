@@ -18,7 +18,8 @@ class VoteService {
   }
 
   votes(phase) {
-    return this.home.getAll({ phase });
+    const query = phase != "bracketStage" ? { phase } : { phase: { $in: ["eights", "fourths", "semi", "final"] }}; 
+    return this.home.getAll(query);
   }
 
 }

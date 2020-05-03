@@ -18,20 +18,20 @@ const userSchema = new Schema({
       default: [],
     },
     eights: {
-      type: Boolean,
-      default: false,
+      type: [Schema.ObjectId],
+      default: [],
     },
     fourths: {
-      type: Boolean,
-      default: false,
+      type: [Schema.ObjectId],
+      default: [],
     },
     semi: {
-      type: Boolean,
-      default: false,
+      type: [Schema.ObjectId],
+      default: [],
     },
     final: {
-      type: Boolean,
-      default: false,
+      type: [Schema.ObjectId],
+      default: [],
     },
   }
 });

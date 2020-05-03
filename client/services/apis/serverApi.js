@@ -24,8 +24,8 @@ class ServerApi {
     return this.get("/authors");
   }
 
-  vote(phase, frases, group = "") {
-    return this.post("/frases/votes", { phase, frases, group });
+  vote(phase, frases, other = {}) {
+    return this.post("/frases/votes", { phase, frases, ...other });
   }
 
   votes(phase) {
@@ -34,6 +34,10 @@ class ServerApi {
 
   preselection() {
     return this.get("/frases/trolo");
+  }
+
+  matches() {
+    return this.get(`/matches`);
   }
 
   delete(resource, body) {
