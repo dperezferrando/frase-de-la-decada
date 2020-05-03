@@ -84,3 +84,9 @@
   border-color: #ac0000; 
   background-color: #ac0000;
 }
+
+.chevron {
+  margin:5px;
+  display: inline-block;
+  cursor: pointer;
+}
