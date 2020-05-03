@@ -4,6 +4,7 @@ import CountDown from "../countdown";
 import config from "../../config";
 import Match from "./match";
 import moment from "moment";
+import { Form } from "react-bootstrap";
 import "./bracketStage.css"
 
 const phaseTranslator = {
@@ -15,13 +16,25 @@ const phaseTranslator = {
 
 class BracketPhase extends Component {
 
+  state = {
+    showResults: moment().isAfter(config[this.props.phase].resultsDate)
+  }
+
 
   render() {
     const finished = moment().isAfter(config[this.props.phase].endDate);
-    const showResults = moment().isAfter(config[this.props.phase].resultsDate);
     const matchesVoted = this.props.user.voted[this.props.phase];
     return <div className="bracketPhase">
-      <span className="phaseTitle">{phaseTranslator[this.props.phase]}</span><span> - Termina en <CountDown date={config[this.props.phase].endDate}/></span>
+      <span className="phaseTitle">{phaseTranslator[this.props.phase]}</span>
+      <span> - Termina en <CountDown date={config[this.props.phase].endDate}/></span>
+      <Form.Check 
+        type="switch"
+        id="custom-switch"
+        label="Ver mis votos"
+        checked={!this.state.showResults}
+        onChange={() => this.setState({...this.state, showResults: !this.state.showResults})}
+        inline
+      />
       <div className="matchContainer">
         {
           this.matches().map((match, i) => <Match 
@@ -29,7 +42,7 @@ class BracketPhase extends Component {
             phase={this.props.phase}
             match={match}
             finished={finished}
-            showResults={showResults}
+            showResults={this.state.showResults}
             vote={this.props.vote}
             matchesVoted={matchesVoted}
             votedFrase={this.getMatchVote(match)}
