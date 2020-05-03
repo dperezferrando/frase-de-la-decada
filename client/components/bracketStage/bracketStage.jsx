@@ -9,7 +9,9 @@ import "./bracketStage.css"
 
 const explanationContent = () => {
   return <span>
-    <b>LLAVE:</b> 
+    <b>ELIMINACION DIRECTA:</b> En esta fase las frases se enfrentan en partidos 1v1 yendo desde 
+    octavos de final hasta la final. Para votar en un partido solamente hay que hacer click
+    en el boton "Votar" correspondiente. En caso de empate, el coeficiente autista define el ganador 
     
   </span>
 }

@@ -37,7 +37,11 @@ class Match extends Component {
 
   render() {
     const { fraseA, fraseB, phase } = this.props.match; 
-    const isWinner = (fraseA, fraseB) => fraseA.votesQuantity[phase] > fraseB.votesQuantity[phase];
+    const isWinner = (fraseA, fraseB) => {
+      const votesA = fraseA.votesQuantity[phase];
+      const votesB = fraseB.votesQuantity[phase];
+      return votesA != votesB ? (votesA > votesB) : (fraseA.coeficienteAutista > fraseB.coeficienteAutista);
+    }
     return <div className="match">
       { this.state.voteModalOpened && <VoteModal
         onHide={::this.hideVoteModal}
