@@ -13,6 +13,7 @@ class BracketStageContainer extends Component {
 
   componentDidMount() {
 
+      this.props.actions.fetchVotes("bracketStage");      
 
   }
 
@@ -27,9 +28,9 @@ class BracketStageContainer extends Component {
     );
   }
 }
-function mapStateToProps({ profile: { user, isLoading }}, props) {
+function mapStateToProps({ profile: { user, isLoading }, bracketStage: { votes}}, props) {
 
-  return { user, isLoading: (isLoading) };
+  return { votes: votes.results, user, isLoading: (isLoading || votes.isLoading) };
 }
 
 function mapDispatchToProps(dispatch) {

@@ -7,6 +7,7 @@ import qualifiersEpic from "./qualifiers";
 import qualifiersResultsEpic from "./qualifiersResults";
 import groupStageEpic from "./groupStage";
 import bracketPhaseEpic from "./bracketPhase";
+import bracketStageEpic from "./bracketStage";
 
 export default (action$, store$, dependencies) =>
   combineEpics(
@@ -15,7 +16,8 @@ export default (action$, store$, dependencies) =>
     ...(_.values(qualifiersEpic)),
     ...(_.values(qualifiersResultsEpic)),
     ...(_.values(groupStageEpic)),
-    ...(_.values(bracketPhaseEpic))
+    ...(_.values(bracketPhaseEpic)),
+    ...(_.values(bracketStageEpic))
   )(action$, store$, dependencies).pipe(
     catchError((error, source) => {
       console.error(error);

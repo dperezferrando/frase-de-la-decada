@@ -18,10 +18,5 @@ export default {
         .then(() => window.location = "/bracketstage")
         .catch(it => alert(it))),
       mapTo(noop())
-    ),fetchVotesEpic: (action$, store) =>
-    action$.pipe(
-      ofType(Types.FETCH_VOTES),
-      flatMap(({ phase }) => serverApi.votes(phase)),
-      map(actions.setVotes)
     )
 };

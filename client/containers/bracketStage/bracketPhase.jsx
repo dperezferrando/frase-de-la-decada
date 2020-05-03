@@ -16,8 +16,6 @@ class BracketPhaseContainer extends Component {
     const started = moment().isAfter(config[this.props.phase].startDate);
     if(started) {
       this.props.actions.fetchMatches(this.props.phase);
-      this.props.actions.fetchVotes("bracketStage");      
-
     }
 
 
@@ -39,10 +37,10 @@ class BracketPhaseContainer extends Component {
     );
   }
 }
-function mapStateToProps({ profile: { user, isLoading }, bracketPhase: { votes, ...state } }, props) {
+function mapStateToProps({ profile: { user, isLoading }, bracketPhase: { ...state } }, props) {
   const { results, isLoading: matchesLoading } = state[props.phase];
-  const phaseVotes = _.filter(votes.results, { phase: props.phase });
-  return { user, phaseVotes, matches: results, isLoading: (isLoading || matchesLoading || votes.isLoading) };
+  //const phaseVotes = _.filter(votes.results, { phase: props.phase });
+  return { user, matches: results, isLoading: (isLoading || matchesLoading) };
 }
 
 function mapDispatchToProps(dispatch) {

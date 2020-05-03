@@ -3,9 +3,7 @@ import _ from "lodash";
 export const Types = {
   FETCH_MATCHES: "FETCH_MATCHES",
   SET_MATCHES: "SET_MATCHES",
-  VOTE_BRACKETSTAGE: "VOTE_BRACKETSTAGE",
-  FETCH_VOTES: "FETCH_VOTES_BRACKETSTAGE",
-  SET_VOTES: "SET_VOTES_BRACKETSTAGE",
+  VOTE_BRACKETSTAGE: "VOTE_BRACKETSTAGE"
 }
 
 export const actions = {
@@ -28,13 +26,5 @@ export const actions = {
     phase,
     match,
     frases
-  }),
-  fetchVotes: (phase) => ({
-    type: Types.FETCH_VOTES,
-    phase
-  }),
-  setVotes: (votes) => ({
-    type: Types.SET_VOTES,
-    votes
   })
 };

@@ -5,6 +5,7 @@ import qualifiers from "./qualifiers";
 import qualifiersResults from "./qualifiersResults";
 import groupStage from "./groupStage";
 import bracketPhase from "./bracketPhase";
+import bracketStage from "./bracketStage";
 
 
 const rootReducer = combineReducers({
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   qualifiers,
   qualifiersResults,
   groupStage,
-  bracketPhase
+  bracketPhase,
+  bracketStage
 })
 
 
