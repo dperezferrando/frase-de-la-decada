@@ -24,7 +24,7 @@ class BracketPhase extends Component {
       <span className="phaseTitle">{phaseTranslator[this.props.phase]}</span><span> - Termina en <CountDown date={config[this.props.phase].endDate}/></span>
       <div className="matchContainer">
         {
-          this.props.matches.map((match, i) => <Match 
+          this.matches().map((match, i) => <Match 
             key={i}
             phase={this.props.phase}
             match={match}
@@ -40,13 +40,17 @@ class BracketPhase extends Component {
   }
 
   getMatchVote(match) {
-    //const phaseVotes = _.filter(this.props.votes, { phase: this.props.phase });
     return _(this.props.votes)
     .filter({match: match._id})
     .map("frases")
     .flatten()
     .first()
   }
+
+  matches() {
+    return _.filter(this.props.matches, { phase: this.props.phase });
+  }
+
 
 }
 

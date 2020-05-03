@@ -36,8 +36,8 @@ class ServerApi {
     return this.get("/frases/trolo");
   }
 
-  matches(phase) {
-    return this.get(`/matches/${phase}`);
+  matches() {
+    return this.get(`/matches`);
   }
 
   delete(resource, body) {

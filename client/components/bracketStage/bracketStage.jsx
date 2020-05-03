@@ -30,7 +30,12 @@ class BracketStage extends Component {
       <Row className="justify-content-md-center">
         <Col md={11}>
           {bracketPhases.filter(started).map((it, i) =>
-            <BracketPhase phase={it} key={i} votes={this.props.votes} />
+            <BracketPhase 
+              phase={it}
+              key={i}
+              matches={this.props.matches}
+              votes={this.props.votes}
+            />
           )}
         </Col>
       </Row>

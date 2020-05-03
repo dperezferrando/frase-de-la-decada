@@ -11,6 +11,6 @@ router.use((req, res, next) => {
   next();
 });
 
-route.get("/:phase", controller.matches);
+route.get("/", controller.matches);
 
 export default router;

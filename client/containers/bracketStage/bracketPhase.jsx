@@ -13,11 +13,6 @@ const BracketPhaseWithLoading = WithLoading(BracketPhase)
 class BracketPhaseContainer extends Component {
 
   componentDidMount() {
-    const started = moment().isAfter(config[this.props.phase].startDate);
-    if(started) {
-      this.props.actions.fetchMatches(this.props.phase);
-    }
-
 
   }
 
@@ -37,10 +32,8 @@ class BracketPhaseContainer extends Component {
     );
   }
 }
-function mapStateToProps({ profile: { user, isLoading }, bracketPhase: { ...state } }, props) {
-  const { results, isLoading: matchesLoading } = state[props.phase];
-  //const phaseVotes = _.filter(votes.results, { phase: props.phase });
-  return { user, matches: results, isLoading: (isLoading || matchesLoading) };
+function mapStateToProps({ profile: { user, isLoading } }, props) {
+  return { user, isLoading: (isLoading) };
 }
 
 function mapDispatchToProps(dispatch) {

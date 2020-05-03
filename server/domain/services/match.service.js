@@ -6,8 +6,8 @@ class VoteService {
     this.home = new MatchHome();
   }
 
-  matches(phase) {
-    return this.home.getAll({ phase });
+  matches() {
+    return this.home.getAll({});
   }
 
 }
