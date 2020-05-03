@@ -4,9 +4,11 @@ import { Button } from "react-bootstrap";
 import VoteModal from "./voteModal";
 import "./bracketStage.css"
 
-const MatchAutor = ({ frase: { autor, anio, coeficienteAutista, votesQuantity }, phase, finished, showResults, alreadyVoted, votedFrase }) =>  {
+const MatchAutor = ({ frase: { autor, anio, coeficienteAutista, votesQuantity }, winner, phase, finished, showResults, alreadyVoted, votedFrase }) =>  {
   const votes = votesQuantity[phase];
-  return  <div className={votedFrase ? "votedAutor": "matchAutorContainer"}>
+  const showGreen = (showResults && winner) || (!showResults && votedFrase);
+
+  return  <div className={showGreen ? "votedAutor": "matchAutorContainer"}>
       <div className="matchAutor">
         {autor}
       </div>
@@ -35,6 +37,7 @@ class Match extends Component {
 
   render() {
     const { fraseA, fraseB, phase } = this.props.match; 
+    const isWinner = (fraseA, fraseB) => fraseA.votesQuantity[phase] > fraseB.votesQuantity[phase];
     return <div className="match">
       { this.state.voteModalOpened && <VoteModal
         onHide={::this.hideVoteModal}
@@ -48,18 +51,20 @@ class Match extends Component {
         phase={this.props.phase}
         finished={this.props.finished}
         showResults={this.props.showResults}
+        winner={isWinner(fraseA, fraseB)}
         votedFrase={this.alreadyVoted() && this.props.votedFrase._id == fraseA._id}
         />
       <div className="matchVS">
         vs
 
-        <Button variant="success" onClick={::this.showVoteModal}>{ this.shouldVote() ? "Votar" : "Ver"}</Button>
+        <Button variant="success" onClick={::this.showVoteModal}>{ this.shouldVote() ? "Votar" : "Detalle"}</Button>
       </div>
       <MatchAutor 
         frase={fraseB}
         phase={this.props.phase}
         finished={this.props.finished}
         showResults={this.props.showResults}
+        winner={isWinner(fraseB, fraseA)}
         votedFrase={this.alreadyVoted() && this.props.votedFrase._id == fraseB._id}
       />
     </div>;

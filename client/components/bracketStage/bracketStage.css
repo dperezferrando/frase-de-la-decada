@@ -79,3 +79,8 @@
   width: 90%;
   max-width: none !important;
 }
+
+.custom-control-input:checked~.custom-control-label::before {
+  border-color: #ac0000; 
+  background-color: #ac0000;
+}

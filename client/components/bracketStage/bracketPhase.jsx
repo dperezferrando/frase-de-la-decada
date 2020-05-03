@@ -29,7 +29,7 @@ class BracketPhase extends Component {
       <span> - Termina en <CountDown date={config[this.props.phase].endDate}/></span>
       <Form.Check 
         type="switch"
-        id="custom-switch"
+        id={`switch-${this.props.phase}`}
         label="Ver mis votos"
         checked={!this.state.showResults}
         onChange={() => this.setState({...this.state, showResults: !this.state.showResults})}
