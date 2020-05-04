@@ -29,6 +29,10 @@ const userSchema = new Schema({
       type: [Schema.ObjectId],
       default: [],
     },
+    thirdPlace: {
+      type: [Schema.ObjectId],
+      default: [],
+    },
     final: {
       type: [Schema.ObjectId],
       default: [],
