@@ -15,7 +15,7 @@ class PhaseVoter {
   }
 
   validate(frases) {
-    return this._phaseIsActive() && this._theSelectionIsValid_(frases);
+    return this._phaseIsActive() && this._allowedToVote && this._theSelectionIsValid_(frases);
   }
 
 
@@ -46,6 +46,10 @@ class PhaseVoter {
 
   _phaseIsActive() {
     return moment().isBefore(config[this.phase].endDate);
+  }
+
+  _allowedToVote() {
+    return this.user.active;
   }
 
 
