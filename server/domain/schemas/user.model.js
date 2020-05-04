@@ -8,6 +8,10 @@ const userSchema = new Schema({
   email:  String,
   googleId: String,
   name:   String,
+  active: {
+    type: Boolean,
+    default: false
+  },
   voted: {
     qualifiers: {
       type: Boolean,
