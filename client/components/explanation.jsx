@@ -3,6 +3,7 @@ import Component from "../utils/component"
 import { Alert } from "react-bootstrap";
 import CountDown from "./countdown";
 import config from "../config";
+import phaseTranslator from "./utils/phaseTranslator";
 
 class Explanation extends Component {
 
@@ -24,7 +25,7 @@ class Explanation extends Component {
 
   NotStarted = () => {
     return this.props.phase ? <span className="yearAuthor">
-      {this.props.phase} EMPIEZA EN <CountDown date={config[this.props.phase].startDate}/>
+      {phaseTranslator[this.props.phase]} EMPIEZA EN <CountDown date={config[this.props.phase].startDate}/>
     </span> : null;
   }
 
