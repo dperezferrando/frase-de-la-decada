@@ -5,19 +5,13 @@ import config from "../../config";
 import Match from "./match";
 import moment from "moment";
 import { Form, Collapse } from "react-bootstrap";
+import phaseTranslator from "../utils/phaseTranslator";
 import "./bracketStage.css"
-
-const phaseTranslator = {
-  "eights": "Octavos de Final", 
-  "fourths": "Cuartos de Final",
-  "semi": "Semifinal",
-  "final": "Final"
-}
 
 class BracketPhase extends Component {
 
   state = {
-    showResults: moment().isAfter(config[this.props.phase].resultsDate),
+    showResults: this.showResults(),
     collapse: false
   }
 
@@ -32,7 +26,7 @@ class BracketPhase extends Component {
       </div>
       <span className="phaseTitle">{phaseTranslator[this.props.phase]}</span>
       <span> - Termina en <CountDown date={config[this.props.phase].endDate}/></span>
-      {!this.state.collapse && finished && <Form.Check 
+      {!this.state.collapse && this.showResults() && <Form.Check 
         type="switch"
         id={`switch-${this.props.phase}`}
         label="Ver mis votos"
@@ -57,6 +51,10 @@ class BracketPhase extends Component {
         </div>
       </Collapse>
     </div>
+  }
+
+  showResults() {
+    return moment().isAfter(config[this.props.phase].resultsDate);
   }
 
   getMatchVote(match) {
