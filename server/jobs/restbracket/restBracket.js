@@ -25,13 +25,25 @@ const phases = {
   "final": { 
     previous:"semi",
     count: 2
+  },
+   "thirdPlace": { 
+    previous:"semi",
+    count: 2
   }
+}
+
+const getWinner = (fraseA, fraseB, previous, phase) => {
+  const quantityA = fraseA.votesQuantity[previous];
+  const quantityB = fraseB.votesQuantity[previous];
+  const operation = phase == "thirdPlace" ? _.minBy : _.maxBy;
+  const criteria = quantityA == quantityB ? "coeficienteAutista" : `votesQuantity.${previous}`;
+  return operation([fraseA, fraseB], criteria);
 }
 
 const generateMatchesFor = (phase) => {
   const { count, previous }= phases[phase];
   matchHome.getAll({ phase: previous })
-  .map(({ fraseA, fraseB }) => _.maxBy([fraseA, fraseB], `votesQuantity.${previous}`))
+  .map(({ fraseA, fraseB }) => getWinner(fraseA, fraseB, previous, phase))
   .then(it => _.shuffle(it))
   .then(it => [_.slice(it, 0, count/2), _.slice(it, count/2, count)])
   .then(([one, other]) => _.zip(one, other))
@@ -43,4 +55,4 @@ const generateMatchesFor = (phase) => {
 }
 
 
-generateMatchesFor("fourths") ;
+generateMatchesFor("final") ;

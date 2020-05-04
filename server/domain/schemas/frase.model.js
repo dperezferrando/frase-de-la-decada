@@ -38,6 +38,10 @@ const fraseSchema = new Schema({
       type: Number,
       default: 0
     },
+    thirdPlace: {
+      type: Number,
+      default: 0
+    },    
     final: {
       type: Number,
       default: 0

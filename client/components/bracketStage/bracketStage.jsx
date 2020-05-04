@@ -11,12 +11,13 @@ const explanationContent = () => {
   return <span>
     <b>ELIMINACION DIRECTA:</b> En esta fase las frases se enfrentan en partidos 1v1 yendo desde 
     octavos de final hasta la final. Para votar en un partido solamente hay que hacer click
-    en el boton "Votar" correspondiente. En caso de empate, el coeficiente autista define el ganador 
+    en el boton "Votar" correspondiente. En caso de empate, el coeficiente autista define el ganador.<br/>
+    Los partidos de cada fase se definen por sorteo.
     
   </span>
 }
 
-const bracketPhases = ["final", "semi", "fourths", "eights"];
+const bracketPhases = ["final", "thirdPlace", "semi", "fourths", "eights"];
 
 class BracketStage extends Component {
 
@@ -26,7 +27,7 @@ class BracketStage extends Component {
     return <span>
       <Row className="justify-content-md-center bracketStage">
         <Col md={11}>
-          <Explanation started={started("eights")} content={explanationContent}/>
+          <Explanation started={started("eights")} phase="eights" content={explanationContent}/>
         </Col>
       </Row>
       <Row className="justify-content-md-center">
