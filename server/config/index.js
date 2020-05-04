@@ -48,6 +48,12 @@ const commonConfig = {
     resultsDate: moment(new Date(process.env.FINAL_RESULTS_DATE || "1/1/2021"))
   },
 
+  thirdPlace: {
+    startDate: moment(new Date(process.env.THIRDPLACE_START_DATE || "1/1/2020")),
+    endDate: moment(new Date(process.env.THIRDPLACE_END_DATE || "1/1/2021")),
+    resultsDate: moment(new Date(process.env.THIRDPLACE_RESULTS_DATE || "1/1/2021"))
+  },
+
 
   mongo: {
     options: {
