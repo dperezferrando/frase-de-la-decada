@@ -5,6 +5,7 @@ import passport from "passport";
 import config from '../config';
 import { googleStrategy } from "../auth/google";
 import cookieSession from 'cookie-session';
+import UserService from "../domain/services/user.service";
 
 export default (app) => {  
   app.use(bodyParser.urlencoded({ extended: true }));
@@ -15,13 +16,15 @@ export default (app) => {
   app.use(passport.session());
   
   passport.use(googleStrategy);
-  passport.serializeUser(function(user, done) {
-    const encodedUser = new Buffer(JSON.stringify(user)).toString("base64");
+  passport.serializeUser(function({ _id }, done) {
+    const encodedUser = new Buffer(JSON.stringify({_id })).toString("base64");
     done(null, encodedUser);
   });
   passport.deserializeUser(function(encodedUser, done) {
-    const user = JSON.parse(new Buffer(encodedUser, "base64").toString("utf8"));
-    done(null, user);
+    const id = JSON.parse(new Buffer(encodedUser, "base64").toString("utf8"));
+    new UserService().get(id)
+      .then(user => done(null, user))
+    
   });
 
 }
