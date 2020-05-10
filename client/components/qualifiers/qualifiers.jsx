@@ -56,6 +56,22 @@ class Qualifiers extends Component {
     disableDrop: false,
   }
 
+  componentDidMount() {
+    window.addEventListener('beforeunload', ::this.beforeUnload);
+
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('beforeunload', ::this.beforeUnload);
+  }
+
+   beforeUnload(e) {
+    if (this.state.selected.length > 7) {
+      e.preventDefault();
+      e.returnValue = true;
+    }
+  }
+
   /**
    * A semi-generic way to handle multiple lists. Matches
    * the IDs of the droppable container to the names of the
