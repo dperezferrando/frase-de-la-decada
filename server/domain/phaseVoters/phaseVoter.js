@@ -4,6 +4,7 @@ import FraseHome from "../homes/frase.home.js";
 import InvalidVote from "../exceptions/invalidVote";
 import VotesService from "../services/vote.service.js";
 import UserService from "../services/user.service.js";
+import _ from "lodash";
 
 class PhaseVoter {
 
@@ -15,7 +16,7 @@ class PhaseVoter {
   }
 
   validate(frases) {
-    return this._phaseIsActive() && this._theSelectionIsValid_(frases);
+    return this._phaseIsActive() && this._allowedToVote() && this._theSelectionIsValid_(frases);
   }
 
 
@@ -24,7 +25,7 @@ class PhaseVoter {
       .then(selection => this.validateSelection(selection))
       .then(() => this.__saveVote__(ids))
       .then(() => this.votesService.createVotes({ phase: this.phase, ids, ...other }))
-      .then(() => this.userService.vote(this.user, this.__votedValue__(other)));
+      .then(() => this.userService.vote(this.user, this.__votedValue__(other)))
   }
 
   validateSelection(selection) {
@@ -46,6 +47,10 @@ class PhaseVoter {
 
   _phaseIsActive() {
     return moment().isBefore(config[this.phase].endDate);
+  }
+
+  _allowedToVote() {
+    return this.user.active && _.isEmpty(this.user.voted[this.phase]);
   }
 
 

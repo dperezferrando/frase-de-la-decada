@@ -3,7 +3,7 @@ export default class VoteFailed {
     this.name = "VoteFailed";
     this.statusCode = 500;
     this.body = {
-      message: "ERROR EN LA VOTACION - Intentar de nuevo, aunque posiblemente haya estados inconsistentes. Sino informar a PEREZ"
+      message: "ERROR EN LA VOTACION. Hubo un error que no estaba estipulado. Esto es muy malo. Informar a PEREZ."
     };
   }
 };

@@ -43,6 +43,9 @@ class GroupStage extends Component {
           <Row>
             <h3>{ showResults ? "Resultados" : "Tus Votos:"  }</h3>
           </Row>
+          <Row>
+            { !showResults && !this.props.user.active && <span>Tu usuario <b>NO</b> esta <b>ACTIVO</b>. No podes votar.</span> }
+          </Row>
         </Col>
           <Col md={11}>
             <Row>
@@ -65,8 +68,8 @@ class GroupStage extends Component {
   }
 
   shouldVote(group) {
-    const { voted: { groupStage } } = this.props.user;
-    return !_.includes(groupStage, group) && moment().isBefore(config.groupStage.endDate);
+    const { voted: { groupStage }, active } = this.props.user;
+    return active && !_.includes(groupStage, group) && moment().isBefore(config.groupStage.endDate);
   }
 
   getVotes(group) {
