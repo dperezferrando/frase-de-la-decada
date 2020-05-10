@@ -150,6 +150,7 @@ class Qualifiers extends Component {
               setTroloMode={::this.setTroloMode}
               trolo={this.props.trolo}
               className={className}
+              active={this.props.user.active}
             />
           </Col>
         </Row>
