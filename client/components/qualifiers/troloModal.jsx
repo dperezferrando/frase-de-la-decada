@@ -17,11 +17,11 @@ class TroloModal extends Component {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-           No seas TROLO, man
+           Te da paja, la concha de tu madre?
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Te da paja, la concha de tu madre?</h4>
+          <h4>No seas TROLO, man</h4>
           <p>
             Elegir la frase de la decada <b>no es joda</b>, pero, dado que seguro sos terrible feto
             tenes la opcion de cargar tu seleccion con un conjunto random
