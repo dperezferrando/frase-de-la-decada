@@ -66,7 +66,7 @@ class Qualifiers extends Component {
   }
 
    beforeUnload(e) {
-    if (this.state.selected.length > 7) {
+    if (moment().isBefore(config.qualifiers.endDate) && !this.props.user.voted.qualifiers && this.state.selected.length > 7) {
       e.preventDefault();
       e.returnValue = true;
     }
