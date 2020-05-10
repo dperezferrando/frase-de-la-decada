@@ -92,7 +92,7 @@ class Match extends Component {
   }
 
   shouldVote() {
-    return !this.props.finished && !this.alreadyVoted()
+    return this.props.active && !this.props.finished && !this.alreadyVoted()
   }
 
 }

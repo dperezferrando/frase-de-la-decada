@@ -46,6 +46,7 @@ class BracketPhase extends Component {
               vote={this.props.vote}
               matchesVoted={matchesVoted}
               votedFrase={this.getMatchVote(match)}
+              active={this.props.user.active}
             />)
           }
         </div>
