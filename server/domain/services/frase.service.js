@@ -4,19 +4,21 @@ import FraseHome from "../homes/frase.home.js";
 import SelectionService from "../services/selection.service.js";
 import VoteFailed from "../exceptions/voteFailed";
 import phaseVoter from "../phaseVoters";
+import ErrorHome from "../homes/error.home.js";
 
 class FraseService {
   constructor(user) {
     this.user = user;
     this.home = new FraseHome();
     this.selectionService = new SelectionService();
+    this.errorHome = new ErrorHome();
   }
 
   vote({ phase, frases, ...other }) {
     const ids = _.map(frases, "_id");
     const voter = phaseVoter(phase, this.user);
     return voter.vote(ids, other)
-      .catch(({ name }) => name != "InvalidVote", () => { throw new VoteFailed()})
+      .catch(({ name }) => name != "InvalidVote", (err) => this._handleUnknownErorr(err, phase, frases))
   }
 
   qualified() {
@@ -58,6 +60,11 @@ class FraseService {
         offset,
         limit
     }));
+  }
+
+  _handleUnknownErorr({ name, stack, message}, phase, frases) {
+    return this.errorHome.create({ user: this.user.name, name, stack, message, phase, frases})
+    .tap(() => Promise.reject(new VoteFailed()))
   }
 
 
