@@ -39,6 +39,7 @@
 
 .bar {
   margin-top: 10px;
+  min-width: 10px;
 }
 
 .page-item.active .page-link {
