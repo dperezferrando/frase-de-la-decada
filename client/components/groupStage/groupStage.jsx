@@ -38,32 +38,32 @@ class GroupStage extends Component {
 
 
   Groups = (started, showResults) => 
-    started && <Row className="justify-content-md-center">
-        <div className="groups"> 
-          <Col md={12}>
-            <Row>
-              <h3>{ showResults ? "Resultados" : "Tus Votos"  }</h3>
-              <br />
-            </Row>
-            <Row>
-              { !showResults && !this.props.user.active && <span>Tu usuario <b>NO</b> esta <b>ACTIVO</b>. No podes votar.</span> }
-            </Row>
-          </Col>
+    started && <Row className="justify-content-md-center">  
+        <Col md={11}>
+          <Row className="justify-content-md-center groups">
             <Col md={12}>
               <Row>
-              {this.props.groups.map((it, i) => <Group
-                key={i}
-                name={GROUPS[i]}
-                frases={it}
-                shouldVote={this.shouldVote(GROUPS[i])}
-                vote={::this.vote}
-                votes={this.getVotes(GROUPS[i])}
-                showResults={showResults}
-              />
-            )}
-            </Row>
-          </Col>
-        </div>
+                <h3>{ showResults ? "Resultados" : "Tus Votos"  }</h3>
+                <br />
+                { !showResults && !this.props.user.active && <span>Tu usuario <b>NO</b> esta <b>ACTIVO</b>. No podes votar.</span> }
+              </Row>
+            </Col>
+            <Col md={12}>
+              <Row className="justify-content-md-center">
+                {this.props.groups.map((it, i) => <Group
+                  key={i}
+                  name={GROUPS[i]}
+                  frases={it}
+                  shouldVote={this.shouldVote(GROUPS[i])}
+                  vote={::this.vote}
+                  votes={this.getVotes(GROUPS[i])}
+                  showResults={showResults}
+                />
+                )}
+              </Row>
+            </Col>
+          </Row>
+        </Col>
       </Row>
 
   vote(group, frases) {

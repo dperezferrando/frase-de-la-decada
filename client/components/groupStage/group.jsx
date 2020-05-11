@@ -25,8 +25,9 @@ const Frase = ({ provided, snapshot, item, index, onClick, showResults }) => {
     {...provided.draggableProps}
     {...provided.dragHandleProps}
     onClick={onClick}
-    className={index == 0 || index == 1 ? "groupFraseSelected" : "groupFrase"}>
-      <span className="yearAuthor">{`${item.autor} - (${item.anio})`}</span>
+    className={index < 2 ? "groupFraseSelected" : "groupFrase"}>
+      <div className={`${ index < 2 ? "winningPosition" : "loosingPosition"} float-left`}>{ `${index + 1}°` }</div>
+      <div className="yearAuthor">{`${item.autor} - (${item.anio})`}</div>
     </div> );
   return (
     <OverlayTrigger trigger="hover" placement="auto-end" overlay={popover}>
@@ -75,7 +76,7 @@ class Group extends Component {
               {(provided, snapshot) => (
                 <div
                   ref={provided.innerRef}
-                 // className="frasesList"
+                  className="groupList"
                   >
                     {this.state.frases.map((item, index) => (
                       <Draggable

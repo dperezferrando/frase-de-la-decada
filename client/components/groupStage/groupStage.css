@@ -12,7 +12,9 @@
   user-select: 'none';
   padding: 6px;
   word-break: break-word;
-  background-color: #bdae002b;
+  border-top-color: #d3d3d36e;
+  border-top-width: thin;
+  border-top-style: solid;
 }
 
 .groupFraseSelected {
@@ -41,4 +43,19 @@
   padding: 10px;
   color: black;
   margin-bottom: 20px;
+}
+
+.winningPosition {
+  font-size: 20px;
+  font-weight: bold;
+}
+.loosingPosition {
+  font-size: 20px
+}
+
+.groupList {
+  border-color: #d3d3d36e;
+  border-width: thin;
+  border-style: solid;
+
 }
