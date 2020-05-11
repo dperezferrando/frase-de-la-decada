@@ -99,3 +99,25 @@ table {
 .qualified {
   background-color: #f2dede !important;
 }
+
+.clasificadas {
+  padding: 20px;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  margin-top:10px;
+}
+
+.chevron {
+  margin:5px;
+  display: inline-block;
+  cursor: pointer;
+}
+.tableQualifiers {
+
+}
+
+.resultsTitle {
+  display: inline-block;
+  font-size: 20px;
+}
