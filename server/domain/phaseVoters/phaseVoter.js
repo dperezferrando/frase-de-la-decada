@@ -15,21 +15,21 @@ class PhaseVoter {
     this.userService = new UserService();
   }
 
-  validate(frases) {
-    return this._phaseIsActive() && this._allowedToVote() && this._theSelectionIsValid_(frases);
+  validate(frases, other) {
+    return this._phaseIsActive() && this._allowedToVote(other) && this._theSelectionIsValid_(frases);
   }
 
 
   vote(ids, other) {
     return this.fraseHome.getAll({ _id: { $in: ids }}, 0, 32)
-      .then(selection => this.validateSelection(selection))
+      .then(selection => this.validateSelection(selection, other))
       .then(() => this.__saveVote__(ids))
       .then(() => this.votesService.createVotes({ phase: this.phase, ids, ...other }))
       .then(() => this.userService.vote(this.user, this.__votedValue__(other)))
   }
 
-  validateSelection(selection) {
-    if(!this.validate(selection))
+  validateSelection(selection, other) {
+    if(!this.validate(selection, other))
       return Promise.reject(new InvalidVote())
   }
 
@@ -53,8 +53,8 @@ class PhaseVoter {
     return _.isEmpty(this.user.voted[this.phase]);
   }
 
-  _allowedToVote() {
-    return this.user.active && this._didntVote_();
+  _allowedToVote(other) {
+    return this.user.active && this._didntVote_(other);
   }
 
 
