@@ -21,6 +21,10 @@ class GroupStageVoter extends PhaseVoter {
     return { $push: { [`voted.${this.phase}`]: group } }
   }
 
+  _didntVote_() {
+    return this.user.voted[this.phase].length < 8;
+  }
+
 
 }
 

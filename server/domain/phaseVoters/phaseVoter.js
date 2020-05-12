@@ -49,8 +49,12 @@ class PhaseVoter {
     return moment().isBefore(config[this.phase].endDate);
   }
 
+  _didntVote_() {
+    return _.isEmpty(this.user.voted[this.phase]);
+  }
+
   _allowedToVote() {
-    return this.user.active && _.isEmpty(this.user.voted[this.phase]);
+    return this.user.active && this._didntVote_();
   }
 
 
