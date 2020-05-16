@@ -27,7 +27,12 @@ const Frase = ({ provided, snapshot, item, index, onClick, showResults }) => {
     onClick={onClick}
     className={index < 2 ? "groupFraseSelected" : "groupFrase"}>
       <div className={`${ index < 2 ? "winningPosition" : "loosingPosition"} float-left`}>{ `${index + 1}°` }</div>
-      <div className="yearAuthor">{`${item.autor} - (${item.anio})`}</div>
+      <div className="yearAuthor">
+        {`${item.autor} - (${item.anio})`}
+        {showResults &&  <div className={`${ index < 2 ? "winningPosition" : "loosingPosition"} float-right`}>{ `${item.votesQuantity.groupStage} pts` }</div>}
+      </div>
+     
+
     </div> );
   return (
     <OverlayTrigger trigger="hover" placement="auto-end" overlay={popover}>
