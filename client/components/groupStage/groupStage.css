@@ -59,3 +59,9 @@
   border-style: solid;
 
 }
+
+.switchGroup {
+  display: inline-block;
+  margin-left: 20px;
+  margin-top: 5px;
+}

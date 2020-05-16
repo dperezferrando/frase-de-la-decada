@@ -49,14 +49,14 @@ class GroupStage extends Component {
               <Row>
                 <h3>{ this.state.showResults ? "Resultados" : "Tus Votos"  }</h3>
                 {
-                  showResults && <Form.Check 
+                  showResults && <div className="switchGroup"><Form.Check 
                     type="switch"
                     id={`switch-groups`}
                     label="Ver mis votos"
                     checked={!this.state.showResults}
-                    onChange={this.setState({...this.state, showResults: !this.state.showResults})}
+                    onChange={() => this.setState({...this.state, showResults: !this.state.showResults})}
                     inline
-                  />}
+                  /></div>}
                 <br />
                 { !showResults && !this.props.user.active && <span>Tu usuario <b>NO</b> esta <b>ACTIVO</b>. No podes votar.</span> }
               </Row>
