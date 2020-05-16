@@ -54,6 +54,10 @@ class Group extends Component {
     confirmVoteModalOpened: false
   }
 
+  componentWillReceiveProps(newProps) {
+    this.setState({ ...this.state, frases: this.frases(newProps)})
+  }
+
   render() {
     return <Col md={3} className="group">
       {this.state.fraseDetailModalOpened && <FraseDetailModal
@@ -104,7 +108,7 @@ class Group extends Component {
             </Droppable>
           </DragDropContext>
           {
-            !this.props.showResults && <div className="voteButton">
+            <div className="voteButton">
               <Button variant="success" onClick={::this.openConfirmVoteModal} disabled={!this.props.shouldVote}>VOTAR</Button>
             </div>
           }
@@ -114,8 +118,8 @@ class Group extends Component {
     </Col>
   }
 
-  frases() {
-    const { votes, frases, showResults } = this.props;
+  frases(props) {
+    const { votes, frases, showResults } = (props || this.props);
     if(showResults)
       return _(frases)
         .map(({ votesQuantity: { groupStage, ...otherVotes }, ...other }) => ({ ...other, votesQuantity: { ...otherVotes, groupStage: groupStage || 0 }}))
