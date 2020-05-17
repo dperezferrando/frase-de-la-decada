@@ -25,8 +25,14 @@ const Frase = ({ provided, snapshot, item, index, onClick, showResults }) => {
     {...provided.draggableProps}
     {...provided.dragHandleProps}
     onClick={onClick}
-    className={index == 0 || index == 1 ? "groupFraseSelected" : "groupFrase"}>
-      <span className="yearAuthor">{`${item.autor} - (${item.anio})`}</span>
+    className={index < 2 ? "groupFraseSelected" : "groupFrase"}>
+      <div className={`${ index < 2 ? "winningPosition" : "loosingPosition"} float-left`}>{ `${index + 1}°` }</div>
+      <div className="yearAuthor">
+        {`${item.autor} - (${item.anio})`}
+        {showResults &&  <div className={`${ index < 2 ? "winningPosition" : "loosingPosition"} float-right`}>{ `${item.votesQuantity.groupStage} pts` }</div>}
+      </div>
+     
+
     </div> );
   return (
     <OverlayTrigger trigger="hover" placement="auto-end" overlay={popover}>
@@ -53,6 +59,10 @@ class Group extends Component {
     confirmVoteModalOpened: false
   }
 
+  componentWillReceiveProps(newProps) {
+    this.setState({ ...this.state, frases: this.frases(newProps)})
+  }
+
   render() {
     return <Col md={3} className="group">
       {this.state.fraseDetailModalOpened && <FraseDetailModal
@@ -75,7 +85,7 @@ class Group extends Component {
               {(provided, snapshot) => (
                 <div
                   ref={provided.innerRef}
-                 // className="frasesList"
+                  className="groupList"
                   >
                     {this.state.frases.map((item, index) => (
                       <Draggable
@@ -103,7 +113,7 @@ class Group extends Component {
             </Droppable>
           </DragDropContext>
           {
-            !this.props.showResults && <div className="voteButton">
+            <div className="voteButton">
               <Button variant="success" onClick={::this.openConfirmVoteModal} disabled={!this.props.shouldVote}>VOTAR</Button>
             </div>
           }
@@ -113,8 +123,8 @@ class Group extends Component {
     </Col>
   }
 
-  frases() {
-    const { votes, frases, showResults } = this.props;
+  frases(props) {
+    const { votes, frases, showResults } = (props || this.props);
     if(showResults)
       return _(frases)
         .map(({ votesQuantity: { groupStage, ...otherVotes }, ...other }) => ({ ...other, votesQuantity: { ...otherVotes, groupStage: groupStage || 0 }}))

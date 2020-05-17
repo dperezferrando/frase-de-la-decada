@@ -26,7 +26,7 @@ class PhrasesDragAndDrop extends Component {
           <Col md={12} className="qualifiersDesc">
            { this.state.showExplanation && 
             <Alert variant="light" onClose={::this.hideTutorial} dismissible>
-              <b>ELIMINATORIAS:</b> Tenes que elegir las 27 frases que consideras deben participar
+              <b>ELIMINATORIAS:</b> Tenes que elegir las 25 frases que consideras deben participar
               en la competicion para convertirse en la <b>Frase de la Decada</b> (Las frases ganadroas de cada año ya estan clasificadas). Esto lo haces arrastrando las frases de 
               izquierda a derecha <i>(No es casualidad, la derecha funciona)</i>
               <b> Hay dos restricciones</b>: minimo tiene que haber <b>{MIN_FRASE_YEAR}</b> frases de cada año y maximo <b>{MAX_FRASE_AUTHOR}</b> frases de un autor en particular. (Contando siempre a las frases ya clasificadas)

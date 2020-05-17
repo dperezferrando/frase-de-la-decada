@@ -54,6 +54,23 @@ class Qualifiers extends Component {
     items: this.props.frases.results,
     selected: _.isEmpty(this.props.preselection.results) ? ( _.isEmpty(this.props.selected) ? this.props.frasesAnio.results : this.props.selected) : descendingSort(this.props.preselection.results, ["fraseDelAnio", "coeficienteAutista"]),
     disableDrop: false,
+    showExitWarning: true
+  }
+
+  componentDidMount() {
+    window.addEventListener('beforeunload', ::this.beforeUnload);
+
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('beforeunload', ::this.beforeUnload);
+  }
+
+   beforeUnload(e) {
+    if (moment().isBefore(config.qualifiers.endDate) && this.state.showExitWarning && !this.props.user.voted.qualifiers && this.state.selected.length > 7) {
+      e.preventDefault();
+      e.returnValue = true;
+    }
   }
 
   /**
@@ -155,13 +172,13 @@ class Qualifiers extends Component {
           </Col>
         </Row>
         <Row className="justify-content-md-center">
-          <Col md={3} className="bar">
+          <div className="bar">
             <PaginationBar 
               pageCount={Math.ceil(this.props.frases.total / PAGE_SIZE) }
               onPageChange={::this.onPageChange}
               currentPage={parseInt(this.props.location.query.page) || 0}
             />
-          </Col>
+          </div>
         </Row>
       </span>
     );
@@ -178,6 +195,7 @@ class Qualifiers extends Component {
   }
 
   vote() {
+    this.setState({...this.state, showExitWarning: false})
     this.props.actions.vote("qualifiers", this.state.selected);
   }
 

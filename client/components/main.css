@@ -43,6 +43,13 @@ body {
   text-align: justify;
 }
 
+.placeHolder {
+  margin: auto;
+  font-size: 45px;
+  width: 2%;
+  color: yellow;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;

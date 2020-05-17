@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import moment from "moment";
 import Component from "../../utils/component"
 import Explanation from "../explanation";
@@ -20,45 +20,61 @@ const explanationContent = () => {
   </span>
 }
 
+const showResults = moment().isAfter(config.groupStage.resultsDate);
+
 class GroupStage extends Component {
+
+  state = { 
+    showResults
+  }
 
   render() {
     const started = moment().isAfter(config.groupStage.startDate);
-    const showResults = moment().isAfter(config.groupStage.resultsDate);
     return <span>
       <Row className="justify-content-md-center groupStage">
         <Col md={11}>
           <Explanation started={started} content={explanationContent} phase="groupStage"/>
         </Col>
       </Row>
-        { showResults && this.Groups(started, showResults) }
-        {this.Groups(started, false)}
+        {this.Groups(started)}
     </span>
   }
 
 
-  Groups = (started, showResults) => 
-    started && <Row className="justify-content-md-center">
+  Groups = (started) => 
+    started && <Row className="justify-content-md-center">  
         <Col md={11}>
-          <Row>
-            <h3>{ showResults ? "Resultados" : "Tus Votos:"  }</h3>
-          </Row>
-          <Row>
-            { !showResults && !this.props.user.active && <span>Tu usuario <b>NO</b> esta <b>ACTIVO</b>. No podes votar.</span> }
-          </Row>
-        </Col>
-          <Col md={11}>
-            <Row>
-            {this.props.groups.map((it, i) => <Group
-              key={i}
-              name={GROUPS[i]}
-              frases={it}
-              shouldVote={this.shouldVote(GROUPS[i])}
-              vote={::this.vote}
-              votes={this.getVotes(GROUPS[i])}
-              showResults={showResults}
-            />
-          )}
+          <Row className="justify-content-md-center groups">
+            <Col md={12}>
+              <Row>
+                <h3>{ this.state.showResults ? "Resultados" : "Tus Votos"  }</h3>
+                {
+                  showResults && <div className="switchGroup"><Form.Check 
+                    type="switch"
+                    id={`switch-groups`}
+                    label="Ver mis votos"
+                    checked={!this.state.showResults}
+                    onChange={() => this.setState({...this.state, showResults: !this.state.showResults})}
+                    inline
+                  /></div>}
+                <br />
+                { !showResults && !this.props.user.active && <span>Tu usuario <b>NO</b> esta <b>ACTIVO</b>. No podes votar.</span> }
+              </Row>
+            </Col>
+            <Col md={12}>
+              <Row className="justify-content-md-center">
+                {this.props.groups.map((it, i) => <Group
+                  key={i}
+                  name={GROUPS[i]}
+                  frases={it}
+                  shouldVote={this.shouldVote(GROUPS[i])}
+                  vote={::this.vote}
+                  votes={this.getVotes(GROUPS[i])}
+                  showResults={ this.state.showResults}
+                />
+                )}
+              </Row>
+            </Col>
           </Row>
         </Col>
       </Row>
