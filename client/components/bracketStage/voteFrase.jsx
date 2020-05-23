@@ -14,11 +14,14 @@ class VoteFrase extends Component {
 
   render() {
     return (
-      <Col md={6}>
-          <FraseDetail frase={this.props.frase} />
+      <Col md={6} className="fraseCol">
+          <div className="fraseDetailContainer">
+            <FraseDetail frase={this.props.frase} />
+          </div>
+          <div className="voteButton">
           { 
           this.state.isLoading ? 
-            <Button variant="success">
+            <Button variant="success" style={{width: "100%"}}>
               <Spinner
                 as="span"
                 animation="grow"
@@ -28,8 +31,9 @@ class VoteFrase extends Component {
               />
             </Button>
             :
-             this.props.shouldVote && <Button disabled={this.props.disabled} variant="success" onClick={::this.vote}>Votar</Button> 
+             this.props.shouldVote && <Button style={{width: "100%"}} disabled={this.props.disabled} variant="success" onClick={::this.vote}>Votar</Button> 
         }
+          </div>
       </Col>
     );
   }
