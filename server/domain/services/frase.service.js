@@ -5,6 +5,8 @@ import SelectionService from "../services/selection.service.js";
 import VoteFailed from "../exceptions/voteFailed";
 import phaseVoter from "../phaseVoters";
 import ErrorHome from "../homes/error.home.js";
+import config from "../../config";
+import moment from "moment";
 
 class FraseService {
   constructor(user) {
@@ -24,7 +26,8 @@ class FraseService {
   qualified() {
     return this.home.aggregate([
       { $sort: { "votesQuantity.qualifiers": -1 , "coeficienteAutista": -1, "anio": -1  } },
-      { $limit: 50 }
+      { $limit: 50 },
+      { "$project": this._getVotesProjection()}
     ])
   }
 
@@ -67,6 +70,16 @@ class FraseService {
     .tap(() => Promise.reject(new VoteFailed()))
   }
 
+
+  _getVotesProjection() {
+    const phases = ["groupStage", "eights", "fourths", "semi", "thirdPlace", "final"];
+    const projection = {};
+    phases.forEach(phase => {
+      if(moment().isBefore(config[phase].resultsDate))
+        _.assign(projection, { [`votesQuantity.${phase}`] : 0})
+    })
+    return projection;
+  }
 
 }
 
