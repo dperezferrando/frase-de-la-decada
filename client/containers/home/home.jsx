@@ -12,7 +12,7 @@ const HomeWithLoading = WithLoading(Home)
 class HomeContainer extends Component {
 
   componentDidMount() {
-
+    this.props.actions.fetchNews();
 
   }
 
@@ -27,9 +27,9 @@ class HomeContainer extends Component {
     );
   }
 }
-function mapStateToProps({ profile: { user, isLoading } }, props) {
+function mapStateToProps({ profile: { user, isLoading }, home: { news: { results, isLoading: newsLoading } } }, props) {
 
-  return { user, isLoading };
+  return { user, isLoading: isLoading || newsLoading };
 }
 
 function mapDispatchToProps(dispatch) {

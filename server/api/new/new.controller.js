@@ -2,7 +2,7 @@ import Promise from "bluebird";
 
 class NewController {
 
-  matches({ service }) {
+  news({ service }) {
     return service.news();
   }
 
