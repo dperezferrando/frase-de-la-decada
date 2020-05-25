@@ -6,6 +6,7 @@ import Navbar from "../containers/navbar";
 import Footer from "../components/footer";
 import Qualifiers from "../containers/qualifiers";
 import GroupStage from "../containers/groupStage";
+import Home from "../containers/home";
 import BracketStage from "../containers/bracketStage";
 import { createBrowserHistory } from 'history'
 import qhistory from 'qhistory'
@@ -18,7 +19,6 @@ const history = qhistory(
   stringify,
   parse
 )
-const HolaMundo = () => <h1>Hola Mundo</h1>;  
 
 class Routes extends Component {
   state = {
@@ -36,7 +36,7 @@ class Routes extends Component {
       <Navbar trolo={this.state.trolo} />
       <Container fluid>
         <Switch>
-          <Route exact path="/inicio" component={HolaMundo}/>
+          <Route exact path="/inicio" component={Home}/>
           <Route exact path="/qualifiers" component={this.Qualifiers} />
           <Route exact path="/groupstage" component={GroupStage} />
           <Route exact path="/bracketstage" component={BracketStage} />
