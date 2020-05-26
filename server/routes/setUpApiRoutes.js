@@ -3,6 +3,7 @@ import frases from "../api/frase";
 import authors from "../api/author";
 import votes from "../api/vote";
 import matches from "../api/match";
+import news from "../api/new";
 
 export default (app) => {
 
@@ -12,5 +13,6 @@ export default (app) => {
   app.use("/api/authors", authors);
   app.use("/api/votes", votes);
   app.use("/api/matches", matches);
+  app.use("/api/news", news);
 
 }

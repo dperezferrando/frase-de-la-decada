@@ -40,6 +40,10 @@ class ServerApi {
     return this.get(`/matches`);
   }
 
+  news() {
+    return this.get(`/news`);
+  }
+
   delete(resource, body) {
     return this._request({ method: "DELETE", resource, body });
   }

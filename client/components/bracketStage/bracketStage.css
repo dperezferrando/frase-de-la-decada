@@ -90,3 +90,13 @@
   display: inline-block;
   cursor: pointer;
 }
+
+.fraseDetailContainer {
+  height: 90%;
+}
+
+.fraseCol {
+  border-color: #d3d3d36e;
+  border-width: thin;
+  border-left-style: solid;
+}
