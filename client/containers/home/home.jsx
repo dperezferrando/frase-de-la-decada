@@ -28,7 +28,6 @@ class HomeContainer extends Component {
   }
 }
 function mapStateToProps({ profile: { user, isLoading }, home: { news: { results, isLoading: newsLoading } } }, props) {
-  console.log("EEE", results)
   return { user, news: results, isLoading: isLoading || newsLoading };
 }
 
