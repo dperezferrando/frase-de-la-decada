@@ -28,8 +28,8 @@ class HomeContainer extends Component {
   }
 }
 function mapStateToProps({ profile: { user, isLoading }, home: { news: { results, isLoading: newsLoading } } }, props) {
-
-  return { user, isLoading: isLoading || newsLoading };
+  console.log("EEE", results)
+  return { user, news: results, isLoading: isLoading || newsLoading };
 }
 
 function mapDispatchToProps(dispatch) {

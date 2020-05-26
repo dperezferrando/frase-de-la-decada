@@ -7,7 +7,7 @@ class NewService {
   }
 
   news() {
-    return this.home.getAll({});
+    return this.home.getAll({ hidden: false }, 0, 25, { date: 1 });
   }
 
 }
