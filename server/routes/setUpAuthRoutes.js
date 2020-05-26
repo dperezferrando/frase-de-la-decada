@@ -1,11 +1,13 @@
 import passport from "passport";
 import config from "../config";
+import path from "path";
+const PUBLIC_DIR = path.join(__dirname, '/../../public');
 
 const loginOrRedict = (req, res) => {
   if(req.isAuthenticated())
     res.redirect("/inicio");
   else
-    res.send("<a href='/auth/google'>Login</a>");
+    res.sendFile(path.join(PUBLIC_DIR, 'publicIndex.html'));
 }
 
 export default (app) => {
