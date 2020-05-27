@@ -7,9 +7,9 @@ class MyNavbar extends Component {
     return <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="/">
           { !this.props.trolo? <img
-            src="staticos/assets/images/logo.png"
+            src="https://i.imgur.com/BgRjhJV.png"
           //  className="d-inline-block align-top"
-            alt="PBSTUFF logo"
+            alt="Frase de la decada logo"
           />
           : <img src="https://i.imgur.com/Ml69p4G.png" height="50px" width="50px"/>
         } 
