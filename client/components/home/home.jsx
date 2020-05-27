@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Form } from "react-bootstrap";
 import Component from "../../utils/component"
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown from "react-markdown/with-html";
 import YouTube from 'react-youtube';  
 import moment from "moment-with-locales-es6";
 import "./home.css";
@@ -25,7 +25,7 @@ class Home extends Component {
 
                 { video && <YouTube  videoId={video}/> }
               </div>
-              <ReactMarkdown source={body} className="newsText"/>
+              <ReactMarkdown source={body} escapeHtml={false} className="newsText"/>
 
             </div>
           })
