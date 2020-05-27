@@ -18,6 +18,7 @@ class ActionButtons extends Component {
         onHide={::this.closeTroloModal}
         show={this.state.troloModalOpened}
         setTroloMode={this.props.setTroloMode}
+        user={this.props.user}
       />}
       {this.state.confirmationModalOpened && <ConfirmationModal
         onHide={::this.closeConfirmationModal}

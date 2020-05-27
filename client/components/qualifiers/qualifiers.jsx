@@ -168,6 +168,7 @@ class Qualifiers extends Component {
               trolo={this.props.trolo}
               className={className}
               active={this.props.user.active}
+              user={this.props.user}
             />
           </Col>
         </Row>

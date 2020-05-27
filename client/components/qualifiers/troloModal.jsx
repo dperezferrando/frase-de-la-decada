@@ -6,6 +6,7 @@ import "./qualifiers.css"
 class TroloModal extends Component {
 
   render() {
+    const man = this.props.user.sex == "M";
     return (
       <Modal
         onHide={this.props.onHide}
@@ -17,14 +18,13 @@ class TroloModal extends Component {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-           Te da paja, la concha de tu madre?
+           Te da paja{man ? ", la concha de tu madre?" : "?"}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>No seas TROLO, man</h4>
+          <h4>No seas TROLO, {  man ? "man" : "woman"}</h4>
           <p>
-            Elegir la frase de la decada <b>no es joda</b>, pero, dado que seguro sos terrible feto
-            tenes la opcion de cargar tu seleccion con un conjunto random
+            Elegir la frase de la decada <b>no es joda</b>, pero tenes la opcion de cargar tu seleccion con un conjunto random
             de las mejores frases de cada año. Si te da cancer, vas a poder modificarla para que se ajuste a tus (ologifrenicos) gustos.
           </p> 
           <p>
@@ -35,7 +35,7 @@ class TroloModal extends Component {
             Sin embargo, si haces eso sos terrible TROLO (confirmado por un grupo de rugbiers)
           </p>
           <p>
-            <i>Como vas a ser TROLO? No seas TROLO y listo troesma.</i>
+            <i>Como vas a ser TROLO? No seas TROLO y listo, {man ? "crack" : "genia"}.</i>
           </p>
           <p>
             <i><b>Nota:</b> si ya elegiste algunas frases, esa seleccion se va a ir en un falcon verde </i>
