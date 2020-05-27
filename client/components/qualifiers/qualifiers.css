@@ -60,6 +60,11 @@
   color: #ac0000;
 }
 
+.page-link:hover {
+  color: #ac0000;
+
+}
+
 .filters {
   display: inline-block;
   margin-right: 0.4%;
