@@ -49,6 +49,8 @@ En el periodo de votacion, cada participante debera elegir por cada grupo sus do
 
 ## PREMIOS ??
 
+## HABILITACION DE CUENTAS
+
 ## Aclaraciones Varias
 * posibleas fallas tecnicas, free tier
 * no recomendable en celular
