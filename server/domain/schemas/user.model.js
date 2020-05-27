@@ -8,6 +8,10 @@ const userSchema = new Schema({
   email:  String,
   googleId: String,
   name:   String,
+  sex: {
+    type: String,
+    default: "M"
+  },
   active: {
     type: Boolean,
     default: false
