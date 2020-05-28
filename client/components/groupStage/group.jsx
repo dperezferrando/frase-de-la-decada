@@ -76,6 +76,7 @@ class Group extends Component {
         show={this.state.confirmVoteModalOpened}
         vote={::this.vote}
         group={this.props.name}
+        multiplicator={this.props.user.multiplicator}
       />}
       <Card>
       <Card.Header><b>GRUPO {this.props.name == "F" ? this.props.name + " to pay respects" : this.props.name}</b></Card.Header>

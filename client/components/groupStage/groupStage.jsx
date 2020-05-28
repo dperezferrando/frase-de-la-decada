@@ -71,6 +71,7 @@ class GroupStage extends Component {
                   vote={::this.vote}
                   votes={this.getVotes(GROUPS[i])}
                   showResults={ this.state.showResults}
+                  user={this.props.user}
                 />
                 )}
               </Row>

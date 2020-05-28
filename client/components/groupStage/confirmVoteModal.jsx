@@ -28,7 +28,7 @@ class ConfirmVoteModal extends Component {
           {this.props.frases.map(({ frase, aclaracion, autor, anio }, i) => {
 
             return <div key={i}>
-               <span className="yearAuthor"> {`${2 - i} voto/s a `}</span>
+               <span className="yearAuthor"> {`${(2 - i)*this.props.multiplicator} voto/s a `}</span>
                <span>{frase}</span>
                <span className="yearAuthor"> {` - ${autor} (${anio})`}</span>
             </div>

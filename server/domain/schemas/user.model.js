@@ -16,6 +16,10 @@ const userSchema = new Schema({
     type: Boolean,
     default: false
   },
+  multiplicator: {
+    type: Number,
+    default: 1
+  },
   voted: {
     qualifiers: {
       type: Boolean,
