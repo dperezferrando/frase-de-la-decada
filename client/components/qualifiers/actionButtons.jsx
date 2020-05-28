@@ -26,7 +26,7 @@ class ActionButtons extends Component {
         vote={this.props.vote}
       />}
       <Button variant="success" className="actionButton" onClick={::this.openConfirmationModal} disabled={this.props.selected.length < 32 || !this.props.validate() || !this.props.active}>VOTAR</Button>
-      <Button variant="warning" className="actionButton" onClick={this.props.trolo ? this.props.setTroloMode : ::this.openTroloModal} disabled={this.props.voted}>Me da paja, bro</Button>
+      <Button variant="warning" className="actionButton" onClick={this.props.trolo ? this.props.setTroloMode : ::this.openTroloModal} disabled={this.props.voted || !this.props.active}>Me da paja, bro</Button>
       {!this.props.active && <span className="actionButton">Tu usuario <b>NO</b> esta <b>ACTIVO</b>. No podes votar.</span>}
     </span>
     )
