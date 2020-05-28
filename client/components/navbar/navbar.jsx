@@ -8,7 +8,6 @@ class MyNavbar extends Component {
         <Navbar.Brand href="/">
           { !this.props.trolo? <img
             src="https://i.imgur.com/BgRjhJV.png"
-          //  className="d-inline-block align-top"
             alt="Frase de la decada logo"
           />
           : <img src="https://i.imgur.com/Ml69p4G.png" height="50px" width="50px"/>
@@ -20,7 +19,7 @@ class MyNavbar extends Component {
         <Nav.Link href="/bracketstage">Eliminacion Directa</Nav.Link>
       </Nav>
       <Nav className="justify-content-end">
-        <Nav.Link >{ this.props.user.name }</Nav.Link>
+        <Nav.Link href="/profile">{ this.props.user.name }</Nav.Link>
         <Nav.Link onClick={() => this.logout()}>Cerrar sesion</Nav.Link>
       </Nav>
       

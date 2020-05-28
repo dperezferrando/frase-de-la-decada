@@ -7,6 +7,7 @@ import Footer from "../components/footer";
 import Qualifiers from "../containers/qualifiers";
 import GroupStage from "../containers/groupStage";
 import Home from "../containers/home";
+import Profile from "../containers/profile";
 import BracketStage from "../containers/bracketStage";
 import { createBrowserHistory } from 'history'
 import qhistory from 'qhistory'
@@ -40,6 +41,7 @@ class Routes extends Component {
           <Route exact path="/qualifiers" component={this.Qualifiers} />
           <Route exact path="/groupstage" component={GroupStage} />
           <Route exact path="/bracketstage" component={BracketStage} />
+          <Route exact path="/profile" component={Profile} />
           <Route exact path="/test" component={ExampleContainer}/>
         </Switch>
         <Footer/>

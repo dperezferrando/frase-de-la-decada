@@ -1,0 +1,23 @@
+.profileContainer {
+  width: 24%;
+  background-color: white;
+  border-radius: 5px;
+  color: black;
+  padding: 20px;
+  margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.atributo {
+  font-size: 25px;
+
+}
+
+.valor {
+  font-weight: bold;
+  font-size: 25px;
+  color: #ac0000;
+
+}
