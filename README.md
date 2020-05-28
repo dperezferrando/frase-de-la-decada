@@ -2,7 +2,7 @@
 # Punchbang's Stuff - Frase de la Decada
 [![Build Status](https://travis-ci.org/dperezferrando/frase-de-la-decada.svg?branch=master)](https://travis-ci.org/dperezferrando/frase-de-la-decada)
 
-Se acerca el comienzo de la votación de la **Frase de la Decada** por lo que es un buen momento para leer como garcha funciona esta cosa. Si sos como Mauro y te da paja leer esto, podes no leerlo, en cada etapa se dará la información necesaria. Sin embargo, todos los detalles van a estar acá, si después no entendes algo ~~andate a la concha de tu madre~~ no llores.
+Se acerca el comienzo de la votación de la **Frase de la Decada** por lo que es un buen momento para leer como garcha funciona esta cosa. Si te da paja leer esto, podes no leerlo, en cada etapa se dará la información necesaria, pero si después no entendes algo ~~andate a la concha de tu madre~~ no llores.
 
 
 <div style="text-align: center;">
@@ -81,12 +81,9 @@ Lo mismo se aplica en el resto de las fases.
 Las categorias seran asignadas en base a fucking sentido comun por Perez. En caso de considerar incorrecta la asignacion, se podra solicitar una revision al Comité de las Frases
 
 ## Fair Play
-No hay mayores reglas mas que lo obvio, por lo que todo lo que no te escrito ni validado por el sistema es legal **siempre y cuando** no vaya en contra de la moral y las buenas costumbres. En caso de encontrarse una actividad sospechosa, el Comite de las Frases podra tomar cartas en el asunto si interpreta que se ha actuado de mala fe.
+No hay mayores reglas mas que lo obvio, por lo que todo lo que no este escrito ni validado por el sistema es legal **siempre y cuando** no vaya en contra de la moral y las buenas costumbres. En caso de encontrarse una actividad sospechosa, el Comite de las Frases podra tomar cartas en el asunto si interpreta que se ha actuado de mala fe.
 
 ## Notas Varias
 * Toda esta wea esta hosteada sin poner un peso, por lo que puede que su rendimiento no sea optimo, en caso de ponerse muy rancion se procedera a gatillar.
 * Si bien todo fue testeado, puede fallar, de encontrarse un error el mismo sera guardado por el sistema, pero al mismo tiempo lo mas conveniente es que le hablen a Perez para ver si esta todo ok
 * La experiencia posiblemetne sea una mierda desde el celular. Se recomienda usar PC.
-
-
-## PREMIOS ??
