@@ -9,7 +9,6 @@ moment.locale("es")
 
 class Home extends Component {
   render() {
-  const input = '# Hola \n\n *aaaa*'
     return <Row className="justify-content-md-center groupStage">
       <Col md={11}>
         <div className="newsContainer">
@@ -17,7 +16,7 @@ class Home extends Component {
             this.props.news.map(({title, body, img, video, date}) => {
             return <div className="new">
               <div> 
-                <div className="newsTitle"><h1>{title}</h1></div>
+                <div className="newsTitle"><h2>{title}</h2></div>
                 <div className="newsDate"><i>{moment(date).calendar()}</i></div>
               </div>
               <div className="newsMedia">
