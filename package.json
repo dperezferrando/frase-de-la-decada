@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Sistema de votacion de la frase de la decada 2010s",
   "main": "index.js",
+  "engines": {
+    "node": "10.x.x"
+  },
   "scripts": {
     "test": "NODE_ENV=test mocha-webpack  --recursive --require 'server/test-globals' 'server/**/*.spec.js' --mode development --webpack-config ./webpack/webpack.config.js",
     "dev": "NODE_ENV=development nodemon",
