@@ -1,4 +1,5 @@
 export default {
+  "qualifiers": "Eliminatorias",
   "groupStage": "Fase de Grupos",
   "eights": "Octavos de Final", 
   "fourths": "Cuartos de Final",
