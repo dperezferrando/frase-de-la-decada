@@ -20,16 +20,13 @@ class MyNavbar extends Component {
       </Nav>
       <Nav className="justify-content-end">
         <Nav.Link href="/profile">{ this.props.user.name }</Nav.Link>
-        <Nav.Link onClick={() => this.logout()}>Cerrar sesion</Nav.Link>
+        <Nav.Link href="/auth/logout">Cerrar sesión</Nav.Link>
       </Nav>
       
     </Navbar>
  
   }
 
-  logout() {
-    this.props.logout()
-  }
 
 }
 

@@ -11,11 +11,5 @@ export default {
       ofType(Types.FETCH_USER),
       flatMap(() => serverApi.user()),
       map(actions.setUser)
-    ),
-  logoutEpic: (action$, store) =>
-    action$.pipe(
-      ofType(Types.LOGOUT),
-      flatMap(() => serverApi.logout().then(() => window.location = "/")),
-      mapTo(noop())
     )
 };

@@ -23,7 +23,7 @@ export default (app) => {
       res.redirect('/inicio');
     });
 
-  app.post('/api/logout', (request, response) => {
+  app.get('/auth/logout', (request, response) => {
     request.logout();
     response.redirect("/");
   });
