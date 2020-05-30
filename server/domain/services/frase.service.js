@@ -24,11 +24,14 @@ class FraseService {
   }
 
   qualified() {
-    return this.home.aggregate([
-      { $sort: { "votesQuantity.qualifiers": -1 , "coeficienteAutista": -1, "anio": -1  } },
-      { $limit: 50 },
-      { "$project": this._getVotesProjection()}
-    ])
+    const base = [{ $sort: { "votesQuantity.qualifiers": -1 , "coeficienteAutista": -1, "anio": -1  } },
+      { $limit: 50 }]
+
+    const votesProjection =  this._getVotesProjection();
+
+    if(!_.isEmpty(votesProjection))
+      base.push({ "$project":  votesProjection });
+    return this.home.aggregate(base);
   }
 
   trolo() {
