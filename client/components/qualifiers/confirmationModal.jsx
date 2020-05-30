@@ -21,7 +21,7 @@ class ConfirmationModal extends Component {
         centered
       >
         <Modal.Body>
-          <h4>Confirmas tu seleccion?</h4>
+          <h4>¿Confirmás tu selección?</h4>
         </Modal.Body>
         <Modal.Footer>
           { this.state.isLoading ? 
@@ -35,9 +35,9 @@ class ConfirmationModal extends Component {
               />
             </Button>
             :
-             <Button variant="success" onClick={::this.vote}>Si, enviar voto</Button>
+             <Button variant="success" onClick={::this.vote}>Sí, enviar voto</Button>
           }
-          <Button variant="danger" disabled={this.state.isLoading} onClick={this.props.onHide}>No, banca</Button>
+          <Button variant="danger" disabled={this.state.isLoading} onClick={this.props.onHide}>No, bancá</Button>
         </Modal.Footer>
       </Modal>
     );

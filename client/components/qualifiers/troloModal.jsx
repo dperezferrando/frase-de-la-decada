@@ -24,21 +24,20 @@ class TroloModal extends Component {
         <Modal.Body>
           <h4>No seas TROLO, {  man ? "man" : "woman"}</h4>
           <p>
-            Elegir la frase de la decada <b>no es joda</b>, pero tenes la opcion de cargar tu seleccion con un conjunto random
+            Elegir la frase de la década <b>no es joda</b>, pero tenés la opción de cargar tu selección con un conjunto random
             de las mejores frases de cada año. Si te da cancer, vas a poder modificarla para que se ajuste a tus (ologifrenicos) gustos.
           </p> 
           <p>
-            Tambien vas a poder apretar de nuevo el boton para obtener distintas selecciones.
-            No prometo que no se repitan porque no me gaste tanto en esta mierda.
+            También vas a poder apretar de nuevo el botón para obtener distintas selecciones, no prometo que no se repitan porque no me gasté tanto en esta mierda.
           </p>
           <p>
-            Sin embargo, si haces eso sos terrible TROLO (confirmado por un grupo de rugbiers)
+            Sin embargo, si hacés eso sos terrible TROLO
           </p>
           <p>
-            <i>Como vas a ser TROLO? No seas TROLO y listo, {man ? "crack" : "genia"}.</i>
+            <i>¿Cómo vas a ser TROLO? No seas TROLO y listo, {man ? "capo" : "genia"}.</i>
           </p>
           <p>
-            <i><b>Nota:</b> si ya elegiste algunas frases, esa seleccion se va a ir en un falcon verde </i>
+            <i><b>Nota:</b> si ya elegiste algunas frases, esa selección se va a ir en un falcon verde </i>
           </p>
         </Modal.Body>
         <Modal.Footer>

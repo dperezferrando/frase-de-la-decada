@@ -13,8 +13,8 @@ const GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H"]
 const explanationContent = () => {
   return <span>
     <b>FASE DE GRUPOS:</b> De cada grupo clasifican los dos primeros,
-    solamente tenes que arrastrar las dos frases que mas te gusten a las primeras dos posiciones y luego apretar "Votar".
-    La primer posicion recibe <b>2 votos</b>, la segunda <b>1 voto</b>. Podes hacer click en una frase para obtener mas informacion sobre la misma.
+    solamente tenés que arrastrar las dos frases que más te gusten a las primeras dos posiciones y luego apretar "Votar".
+    La primer posición recibe <b>2 votos</b>, la segunda <b>1 voto</b>. Podés hacer click en una frase para obtener más información sobre la misma.
     <b> Good luck, have fun. </b>
     <b><span className="yearAuthor">ESTA FASE TERMINA EN <CountDown date={config.groupStage.endDate}/></span></b>
   </span>
@@ -58,7 +58,7 @@ class GroupStage extends Component {
                     inline
                   /></div>}
                 <br />
-                { !showResults && !this.props.user.active && <span>Tu usuario <b>NO</b> esta <b>ACTIVO</b>. No podes votar.</span> }
+                { !showResults && !this.props.user.active && <span>Tu usuario <b>NO</b> está <b>ACTIVO</b>. No podés votar.</span> }
               </Row>
             </Col>
             <Col md={12}>

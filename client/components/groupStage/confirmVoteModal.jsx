@@ -21,7 +21,7 @@ class ConfirmVoteModal extends Component {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-           Confirmacion de Voto - Grupo {this.props.group}
+           Confirmación de Voto - Grupo {this.props.group}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

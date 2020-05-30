@@ -32,7 +32,7 @@ class BracketStage extends Component {
       </Row>
       <Row className="justify-content-md-center">
         <Col md={11}>
-      { !this.props.user.active && <span>Tu usuario <b>NO</b> esta <b>ACTIVO</b>. No podes votar.</span> }
+      { !this.props.user.active && <span>Tu usuario <b>NO</b> está <b>ACTIVO</b>. No podés votar.</span> }
         </Col>
       </Row>
       <Row className="justify-content-md-center">
