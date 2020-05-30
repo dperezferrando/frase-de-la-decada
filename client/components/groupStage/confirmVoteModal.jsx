@@ -21,14 +21,14 @@ class ConfirmVoteModal extends Component {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-           Confirmacion de Voto - Grupo {this.props.group}
+           Confirmación de Voto - Grupo {this.props.group}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {this.props.frases.map(({ frase, aclaracion, autor, anio }, i) => {
 
             return <div key={i}>
-               <span className="yearAuthor"> {`${2 - i} voto/s a `}</span>
+               <span className="yearAuthor"> {`${(2 - i)*this.props.multiplicator} voto/s a `}</span>
                <span>{frase}</span>
                <span className="yearAuthor"> {` - ${autor} (${anio})`}</span>
             </div>

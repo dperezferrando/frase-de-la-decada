@@ -60,6 +60,11 @@
   color: #ac0000;
 }
 
+.page-link:hover {
+  color: #ac0000;
+
+}
+
 .filters {
   display: inline-block;
   margin-right: 0.4%;
@@ -121,4 +126,8 @@ table {
 .resultsTitle {
   display: inline-block;
   font-size: 20px;
+}
+
+.qualCountdown {
+  margin-top: 15px;
 }

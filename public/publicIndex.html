@@ -17,7 +17,7 @@
 
     .principal {
       background-color: white;
-      margin-top: 10px;
+      margin-top: 20px;
       margin-left: auto;
       border-radius: 5px;
       padding: 25px;
@@ -26,7 +26,21 @@
 
     .texto {
       text-align: justify;
-      font-size: 25px;
+      text-justify: inter-word;
+      font-size: 24px;
+      display: inline-block;
+      width: 40%;
+      border-color: #d3d3d36e;
+      border-left-width: thin;
+      border-left-style: solid;
+      padding-left: 40px;
+    }
+
+    .logo {
+      display: inline-block;
+      width: 40%;
+      vertical-align: top;
+      margin-right:-60px;
     }
 
     .footer {
@@ -40,28 +54,47 @@
     .boton {
       margin:20px;
     }
+
+    .cont {
+      margin-top:50px;
+    }
+
+    .lastText {
+      font-size: 25px;
+
+    }
+
   </style>
   </head> 
   <body> 
 <nav class="navbar navbar-dark bg-dark">
   <a href="/" class="navbar-brand">
-    <img src="staticos/assets/images/logo.png" alt="PBSTUFF logo">
+    <img src="https://i.imgur.com/BgRjhJV.png" alt="Frase de la decada logo" />
   </a>
 </nav>
   <div class="container-fluid">
     <div class="row justify-content-md-center">
       <div class="col-md-11">
         <div class="principal">
-          <h1>¡Bienvenidos al evento mas autista del año!</h1>
-          <img src="https://i.imgur.com/OnUUbNy.png" width="30%"/>
-          <div class="texto">
-            Para ingresar a este antro simplemente entra con tu cuenta de google. Si no tenes cuenta de google
-            create una porque ni puta idea si otra cosa funciona. Una vez adentro, para poder participar en la votacion
-            vas a tener que esperar que tu cuenta este habilitada. Se van a habilitar las cuentas de gente cuyos cromosomas sean reconocibles
-            y esten al tanto del multiverso de las frases
-            <br /><br />Para entrar, hace click en el siguiente boton
+          <h1>¡Bienvenidos al evento más autista del año!</h1>
+          <div class="cont">
+            <div class="logo">
+              <img src="https://i.imgur.com/nm6LTF6.png" width="90%"/>
+            </div>
+            <div class="texto">
+              Este año nos quedamos sin la posibilidad de pechear la Copa América y de contar medallas en los JJOO,
+              pero por suerte este monumento a la oligofrenia no requiere contacto físico. <br /> <br />
+              Todas las frases de la pasada década se miden cara a cara en unas eliminatorias que posteriormente
+              llevará a las 32 clasificadas a competir por el título en un torneo mundialista.<br /> <br />
+              Para ingresar a este antro simplemente entrá con tu cuenta de Google. Si no tenés cuenta de Google
+              create una porque posiblemente otra cosa no funcione. Una vez adentro, para poder participar en la votación
+              vas a tener que esperar a que tu cuenta esté habilitada. <b>Se van a habilitar las cuentas de gente cuyos cromosomas sean reconocibles
+              y esten al tanto del multiverso de las frases</b>
+              <br /><br />
+            </div>
           </div>
           <div class="boton">
+            <p class="lastText">Para entrar, hacé click en el siguiente botón</p>
             <a href='/auth/google'>
               <img src="https://i.imgur.com/sxDpX65.png" width="15%"/>
             </a>

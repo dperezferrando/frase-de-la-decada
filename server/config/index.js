@@ -16,7 +16,9 @@ const commonConfig = {
   },
 
   qualifiers: {
-    endDate: moment(new Date(process.env.QUALIFIERS_END_DATE || "1/1/2021"))
+    startDate: moment(new Date(process.env.QUALIFIERS_START_DATE || "1/1/2020")),
+    endDate: moment(new Date(process.env.QUALIFIERS_END_DATE || "1/1/2021")),
+    resultsDate: moment(new Date(process.env.QUALIFIERS_RESULTS_DATE || "1/1/2021"))
   },
 
   groupStage: {
@@ -67,6 +69,6 @@ const commonConfig = {
 }
 
 
-const envConfig = require(`./${process.env.NODE_ENV}`);
+const envConfig = require(`./${_.trim(process.env.NODE_ENV)}.js`);
 
 module.exports = _.merge(commonConfig, envConfig || {});

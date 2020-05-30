@@ -8,6 +8,7 @@ import Filters from "./filters";
 import PaginationBar from "./paginationBar"
 import config from "../../config";
 import QualifiersResults from "../../containers/qualifiers/qualifiersResults";
+import Explanation from "../explanation";
 
 const PAGE_SIZE = 25;
 const MAX_FRASES_PER_AUTOR = 10;
@@ -138,8 +139,9 @@ class Qualifiers extends Component {
 
   render() {
     const className = `${this.props.trolo? "yearAuthorTrolo" : "yearAuthor"}`
+    const started = moment().isAfter(config.qualifiers.startDate);
     return (
-      <span>
+       started ? <span>
 
         { moment().isAfter(config.qualifiers.resultsDate) &&
           <QualifiersResults / >
@@ -168,6 +170,7 @@ class Qualifiers extends Component {
               trolo={this.props.trolo}
               className={className}
               active={this.props.user.active}
+              user={this.props.user}
             />
           </Col>
         </Row>
@@ -180,9 +183,8 @@ class Qualifiers extends Component {
             />
           </div>
         </Row>
-      </span>
+      </span> : <Row className="justify-content-md-center qualCountdown"> <Col md={11}><Explanation started={started} phase="qualifiers"/> </Col> </Row>
     );
- 
   }
 
   setSelected() {

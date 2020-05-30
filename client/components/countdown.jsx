@@ -4,7 +4,7 @@ import Countdown from 'react-countdown';
 import config from "../config";
 //import "./qualifiers.css";
 
-const Finished = () => <span className="yearAuthor"> Finalizo! </span>;
+const Finished = () => <span className="yearAuthor"> ¡Finalizó! </span>;
 
 class CountDown extends Component {
 

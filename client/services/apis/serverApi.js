@@ -8,10 +8,6 @@ class ServerApi {
     return this.get("/users/me");
   }
 
-  logout() {
-    return this.post("/logout");
-  }
-
   frases(options) {
     return this.get("/frases", options);
   }

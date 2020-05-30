@@ -42,7 +42,7 @@ class PhaseVoter {
   }
 
   _persist(ids, quantity) {
-    return this.fraseHome.update({ _id: { $in: ids }}, { $inc: { [`votesQuantity.${this.phase}`]: quantity } }, { multi: true });
+    return this.fraseHome.update({ _id: { $in: ids }}, { $inc: { [`votesQuantity.${this.phase}`]: (quantity * this.user.multiplicator) } }, { multi: true });
   }
 
   _phaseIsActive() {

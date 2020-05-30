@@ -26,11 +26,11 @@ class PhrasesDragAndDrop extends Component {
           <Col md={12} className="qualifiersDesc">
            { this.state.showExplanation && 
             <Alert variant="light" onClose={::this.hideTutorial} dismissible>
-              <b>ELIMINATORIAS:</b> Tenes que elegir las 25 frases que consideras deben participar
-              en la competicion para convertirse en la <b>Frase de la Decada</b> (Las frases ganadroas de cada año ya estan clasificadas). Esto lo haces arrastrando las frases de 
+              <b>ELIMINATORIAS:</b> Tenés que elegir las 25 frases que considerás deben participar
+              en la competición para convertirse en la <b>Frase de la Década</b> (Las frases ganadoras de cada año ya están clasificadas). Esto lo hacés arrastrando las frases de 
               izquierda a derecha <i>(No es casualidad, la derecha funciona)</i>
-              <b> Hay dos restricciones</b>: minimo tiene que haber <b>{MIN_FRASE_YEAR}</b> frases de cada año y maximo <b>{MAX_FRASE_AUTHOR}</b> frases de un autor en particular. (Contando siempre a las frases ya clasificadas)
-              Si te da <b>PAJA</b> hay un boton para eso.
+              <b> Hay dos restricciones</b>: mínimo tiene que haber <b>{MIN_FRASE_YEAR}</b> frases de cada año y máximo <b>{MAX_FRASE_AUTHOR}</b> frases de un autor en particular. (Contando siempre a las frases ya clasificadas)
+              Si te da <b>PAJA</b> hay un botón para eso.
               <b> Good luck, have fun. </b> 
               <b><span className="yearAuthor">ESTA FASE TERMINA EN <CountDown date={config.qualifiers.endDate}/></span></b>
             </Alert>
@@ -52,6 +52,7 @@ class PhrasesDragAndDrop extends Component {
                 setTroloMode={this.props.setTroloMode}
                 trolo={this.props.trolo}
                 active={this.props.active}
+                user={this.props.user}
               />
               {
                 !this.validate() && <div>
@@ -63,12 +64,12 @@ class PhrasesDragAndDrop extends Component {
             }
             {
               this.props.voted && !this._qualifiersFinished() && <span>
-                <b>Ya votaste en esta fase!</b> Podes seguir viendo tu eleccion:
+                <b>Ya votaste en esta fase!</b> Podés seguir viendo tu elección:
               </span>
             }
             {
               this._qualifiersFinished() && <span>
-                <b>Esta fase ya termino!</b>
+                <b>Esta fase ya terminó!</b>
               </span>
             }
           </Col>
