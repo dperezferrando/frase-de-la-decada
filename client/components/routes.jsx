@@ -7,6 +7,7 @@ import { createBrowserHistory } from 'history'
 import qhistory from 'qhistory'
 import { stringify, parse } from 'qs'
 import { Container } from "react-bootstrap";
+import DefaultPlaceholder from "./utils/defaultPlaceholder"
 import "./main.css";
 
 const Home = React.lazy( () => import("../containers/home"));
@@ -36,7 +37,7 @@ class Routes extends Component {
     return <Router history={history}>
       <Navbar trolo={this.state.trolo} />
       <Container fluid>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={DefaultPlaceholder}>
           <Switch>
             <Route exact path="/inicio" component={Home}/>
             <Route exact path="/qualifiers" component={this.Qualifiers} />
