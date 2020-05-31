@@ -3,13 +3,18 @@ const path = require("path");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const _ = require("lodash");
 const webpack = require("webpack");
+const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 const { envVars } = require('./setUpLocalEnv');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-const commomPlugins = [
+
+const commonPlugins = [
   new HtmlWebpackPlugin({
     template: './server/index.html'
   }),
-  new webpack.DefinePlugin(envVars)
+  new webpack.DefinePlugin(envVars),
+  new MiniCssExtractPlugin({filename: '[name].css'})
 ];
 
 const commonConfig = {
@@ -25,13 +30,25 @@ const commonConfig = {
       use: ['babel-loader']
     },{
       test: /\.css$/i,
-      use: ['style-loader', 'css-loader']
+      use: [MiniCssExtractPlugin.loader, 'css-loader']
     }]  
   },
   resolve: {
     extensions: [".js", ".jsx", ".json"]
   },
-  plugins: commomPlugins,
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true,
+        }
+      }
+    }
+  },
+  plugins: commonPlugins,
   node: { fs: 'empty' },
 };
 
@@ -42,7 +59,24 @@ const devConfig = {
 const prodConfig = {
   optimization: {
     minimizer: [new UglifyJsPlugin()],
-  }
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true,
+        },
+    //     commons: {
+    //       test: /[\\/]node_modules[\\/]/,
+    //       name: 'vendors',
+    //       chunks: 'all'
+    //     }
+      }
+    }
+  },
+  devtool: "",
+  plugins: commonPlugins.concat([new webpack.optimize.ModuleConcatenationPlugin(), new LodashModuleReplacementPlugin(), new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /es/)])//, new BundleAnalyzerPlugin()])
 };
 
 const configMap = {
@@ -53,5 +87,5 @@ const configMap = {
 
 
 module.exports = () => {
-  return _.merge({}, commonConfig, configMap[process.env.NODE_ENV]);
+  return _.merge({}, commonConfig, configMap[_.trim(process.env.NODE_ENV)]);
 }
