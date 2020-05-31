@@ -3,7 +3,7 @@ import { Container, Row, Col, Form } from "react-bootstrap";
 import Component from "../../utils/component"
 import ReactMarkdown from "react-markdown/with-html";
 import YouTube from 'react-youtube';  
-import moment from "moment-with-locales-es6";
+import moment from "moment";
 import "./home.css";
 moment.locale("es")
 

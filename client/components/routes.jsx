@@ -1,19 +1,20 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Component from "../utils/component";
 import { Switch, Router, Route } from 'react-router-dom';
-import ExampleContainer from "../containers/example";
 import Navbar from "../containers/navbar";
 import Footer from "../components/footer";
-import Qualifiers from "../containers/qualifiers";
-import GroupStage from "../containers/groupStage";
-import Home from "../containers/home";
-import Profile from "../containers/profile";
-import BracketStage from "../containers/bracketStage";
 import { createBrowserHistory } from 'history'
 import qhistory from 'qhistory'
 import { stringify, parse } from 'qs'
 import { Container } from "react-bootstrap";
+import DefaultPlaceholder from "./utils/defaultPlaceholder"
 import "./main.css";
+
+const Home = React.lazy( () => import("../containers/home"));
+const Qualifiers = React.lazy( () => import("../containers/qualifiers"));
+const GroupStage = React.lazy( () => import("../containers/groupStage"));
+const BracketStage = React.lazy( () => import("../containers/bracketStage"));
+const Profile = React.lazy( () => import("../containers/profile"));
 
 const history = qhistory(
   createBrowserHistory(),
@@ -36,14 +37,15 @@ class Routes extends Component {
     return <Router history={history}>
       <Navbar trolo={this.state.trolo} />
       <Container fluid>
-        <Switch>
-          <Route exact path="/inicio" component={Home}/>
-          <Route exact path="/qualifiers" component={this.Qualifiers} />
-          <Route exact path="/groupstage" component={GroupStage} />
-          <Route exact path="/bracketstage" component={BracketStage} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/test" component={ExampleContainer}/>
-        </Switch>
+        <Suspense fallback={DefaultPlaceholder}>
+          <Switch>
+            <Route exact path="/inicio" component={Home}/>
+            <Route exact path="/qualifiers" component={this.Qualifiers} />
+            <Route exact path="/groupstage" component={GroupStage} />
+            <Route exact path="/bracketstage" component={BracketStage} />
+            <Route exact path="/profile" component={Profile} />
+          </Switch>
+        </Suspense>
         <Footer/>
       </Container>
     </Router>
