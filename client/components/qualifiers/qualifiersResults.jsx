@@ -35,7 +35,7 @@ class QualifiersResults extends Component {
                     return <tr key={`fraseclasif-${i}`} className={frase.qualified? "qualified" : ""}>
                       <td className="yearAuthor">{i + 1}</td>
                       <td><span>{`${frase.frase} - `}</span><span className="yearAuthor">{`${frase.autor} (${frase.anio})` }</span></td>
-                      <td className="yearAuthor">{frase.votesQuantity.qualifiers}</td>
+                      <td className="yearAuthor">{frase.votesQuantity ? frase.votesQuantity.qualifiers: 0}</td>
                       <td className="yearAuthor">{frase.coeficienteAutista}</td>
                     </tr>
 
