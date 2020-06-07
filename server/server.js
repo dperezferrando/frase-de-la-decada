@@ -5,6 +5,7 @@ import config from './config';
 import setUpAuthMiddlewares, { authValidation } from "./routes/setUpAuthMiddlewares";
 import setUpAuthRoutes from "./routes/setUpAuthRoutes";
 import setUpApiRoutes from "./routes/setUpApiRoutes";
+const compression = require('compression')
 
 const app = express();
 const PORT = config.port; 
@@ -15,6 +16,10 @@ mongoose.connect(config.mongo.uri, config.mongo.options);
 mongoose.Promise = require("bluebird");
 
 app.use(morgan("dev"));  
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(compression());
+}
 
 setUpAuthMiddlewares(app);
 
