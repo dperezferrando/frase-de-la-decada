@@ -56,7 +56,8 @@ class PhrasesDragAndDrop extends Component {
               />
               {
                 !this.validate() && <div>
-                <b>Te faltan frases de los años:</b> { this.aniosFaltantes() }
+                <div> <b>Te faltan frases de los años:</b> { this.aniosFaltantes() }</div>
+                <div> <b>Frases de cada año elegidas: </b>{this._countByAnio().map((value, key) => `${key} (${value})`).join(", ")}</div>
 
               </div>
               }
