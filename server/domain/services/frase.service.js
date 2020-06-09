@@ -24,7 +24,7 @@ class FraseService {
   }
 
   qualified() {
-    const base = [{ $sort: { "qualified": 1, "votesQuantity.qualifiers": -1 ,  "fraseDelAnio": -1, "coeficienteAutista": -1, "anio": -1  } },
+    const base = [{ $sort: { "qualified": -1, "votesQuantity.qualifiers": -1 ,  "fraseDelAnio": -1, "coeficienteAutista": -1, "anio": -1  } },
       { $limit: 50 }]
 
     const votesProjection =  this._getVotesProjection();
