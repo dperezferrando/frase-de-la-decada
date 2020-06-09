@@ -24,7 +24,7 @@ import _ from "lodash";
       case Types.FETCH_PRESELECTION:
         return {...state, preselection: { ...state.preselection, isLoading: true } }
       case Types.SET_PRESELECTION:
-        return {...state, preselection: { ...action.preselection, isLoading: false } }
+        return {...state, preselection: { ...action.preselection, isLoading: false }, selected: [] }
       default: return state;
     }
  }
