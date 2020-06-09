@@ -35,7 +35,7 @@ const _validateSelection = (selection, preSelection) => {
     const autorCount = _.countBy(selection, "autor")
     const anioCount = _.countBy(selection, "anio");
     const validAutors = _.every(autorCount, (value, key ) => value <= 10)
-    const validAnios = _.every(anioCount, (value, key ) => value >= 3);
+    const validAnios = _.every(anioCount, (value, key ) => value >= 2);
     if( validAnios && validAutors )
       return _.map(selection, ({ _id }) =>  new ObjectId(_id));
 
