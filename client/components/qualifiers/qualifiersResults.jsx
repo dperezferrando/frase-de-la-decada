@@ -32,7 +32,7 @@ class QualifiersResults extends Component {
                 <tbody>
                   {this.props.frases.results.map((frase, i) => {
 
-                    return <tr key={`fraseclasif-${i}`} className={frase.qualified? "qualified" : ""}>
+                    return <tr key={`fraseclasif-${i}`} className={frase.qualified? "qualified" :( frase.fraseDelAnio ? "fraseDelAnio" :"")}>
                       <td className="yearAuthor">{i + 1}</td>
                       <td><span>{`${frase.frase} - `}</span><span className="yearAuthor">{`${frase.autor} (${frase.anio})` }</span></td>
                       <td className="yearAuthor">{frase.votesQuantity ? frase.votesQuantity.qualifiers: 0}</td>
