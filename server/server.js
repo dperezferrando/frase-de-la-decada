@@ -10,12 +10,14 @@ const compression = require('compression')
 const app = express();
 const PORT = config.port; 
 const PUBLIC_DIR = path.join(__dirname, '/../public');
+const favicon = require('express-favicon');
 const morgan = require('morgan');
 
 mongoose.connect(config.mongo.uri, config.mongo.options);
 mongoose.Promise = require("bluebird");
 
 app.use(morgan("dev"));  
+app.use(favicon(PUBLIC_DIR + '/favicon.png'));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(compression());

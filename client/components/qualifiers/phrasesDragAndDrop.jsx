@@ -10,7 +10,7 @@ import "./qualifiers.css"
 import config from "../../config";
 import CountDown from "../countdown"
 
-const MIN_FRASE_YEAR = 3;
+const MIN_FRASE_YEAR = 2;
 const MAX_FRASE_AUTHOR = 10;
 
 class PhrasesDragAndDrop extends Component {
@@ -55,10 +55,9 @@ class PhrasesDragAndDrop extends Component {
                 user={this.props.user}
               />
               {
-                !this.validate() && <div>
-                <b>Te faltan frases de los años:</b> { this.aniosFaltantes() }
-
-              </div>
+                <div>{ !this.validate() && <div><b>Te faltan frases de los años:</b> { this.aniosFaltantes() }</div> }
+                  <div> <b>Cantidad de frases de cada año elegidas: </b>{this._countByAnio().map((value, key) => `${key} (${value})`).join(", ")}</div>
+                </div>
               }
               </span>
             }
