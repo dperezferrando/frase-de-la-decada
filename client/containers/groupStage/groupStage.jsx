@@ -35,8 +35,12 @@ function mapStateToProps({ profile: { user, isLoading }, groupStage: { qualified
   const groups =  _(results)
     .filter("group")
     .groupBy("group")
+    .toPairs()
+    .sortBy(0)
+    .fromPairs()
     .map(_.identity)
     .value()
+
   return { groups, user, votes: votes.results, isLoading: started && (qualifiedIsLoading || isLoading || votes.isLoading) };
 }
 
