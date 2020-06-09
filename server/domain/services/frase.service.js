@@ -47,7 +47,7 @@ class FraseService {
       { "$facet": {
         "results": [
           { "$match": query },
-          { "$sort": { coeficienteAutista: -1 } },
+          { "$sort": { coeficienteAutista: -1, frase: 1 } },
           { "$skip": parseInt(offset) },
           { "$limit": parseInt(limit) },
           { "$project": { votesQuantity: 0 }}
