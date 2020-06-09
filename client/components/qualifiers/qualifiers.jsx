@@ -53,7 +53,7 @@ class Qualifiers extends Component {
 
  state = {
     items: this.props.frases.results,
-    selected: _.isEmpty(this.props.preselection.results) ? ( _.isEmpty(this.props.selected) ? this.props.frasesAnio.results : this.props.selected) : descendingSort(this.props.preselection.results, ["fraseDelAnio", "coeficienteAutista"]),
+    selected: _.isEmpty(this.props.preselection.results) ? ( _.isEmpty(this.props.selected) ? this.props.frasesAnio.results : this.props.selected) : (_.isEmpty(this.props.selected) ? descendingSort(this.props.preselection.results, ["fraseDelAnio", "coeficienteAutista"]) : this.props.selected),
     disableDrop: false,
     showExitWarning: true
   }
