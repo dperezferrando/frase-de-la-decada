@@ -56,13 +56,14 @@ const persistGroup = (group, i) => {
 
 fraseHome.aggregate([
   { $match: { qualified: true } },
-  { $sort: {"votesQuantity.qualifiers": -1 , "coeficienteAutista": -1, "anio": -1 }},  
+  { $sort: {"votesQuantity.qualifiers": -1 , "fraseDelAnio": -1,"coeficienteAutista": -1, "anio": -1 }},  
   { $limit: 32 }
 ])
 .then(qualified => createBombos(qualified))
 .then(bombos => makeDraw(bombos))
 .tap(groups => console.log(JSON.stringify(groups)))
 .map((group, i) => persistGroup(group, i))
+.tap(() => console.log("DONE"))
 .then(() => process.exit(0))
 
 
