@@ -14,7 +14,7 @@ const matchHome = new MatchHome();
 
 fraseHome.getAll({ qualified: true }, 0, 50)
 .then(qualified => _(qualified).groupBy("group").map(_.identity).value())
-.map(group => _(group).orderBy(["votesQuantity.groupStage", "coeficienteAutista"], ["desc", "desc"]).take(2).value())
+.map(group => _(group).orderBy(["votesQuantity.groupStage", "coeficienteAutista", "anio"], ["desc", "desc", "asc"]).take(2).value())
 .then(it => _(it).flatten().shuffle().value())
 .then(it => [_.slice(it, 0, 8), _.slice(it, 8, 16)])
 .then(([one, other]) => _.zip(one, other))
