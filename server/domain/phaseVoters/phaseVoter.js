@@ -49,7 +49,7 @@ class PhaseVoter {
     return moment().isBefore(config[this.phase].endDate);
   }
 
-  _didntVote_() {
+  _didntVote_(other) {
     return _.isEmpty(this.user.voted[this.phase]);
   }
 

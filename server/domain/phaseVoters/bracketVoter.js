@@ -16,6 +16,9 @@ class BracketVoter extends PhaseVoter {
     return { $push: { [`voted.${this.phase}`]: match } }
   }
 
+  _didntVote_({ match }) {
+    return !_(this.user.voted[this.phase]).map(it => it.toString()).includes(match);
+  }
 
 }
 
