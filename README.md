@@ -29,9 +29,9 @@ La cantidad de frases que se votan en cada etapa y el valor de cada voto depende
 ## Eliminatorias
 ---------------
 En esta fase participan las **437** frases del periodo buscando un lugar dentro de las **32** que van a clasificar a la Fase de Grupos, sin embargo, las **7** Frases del Año ya están **clasificadas** como **Cabezas de Serie** , por lo que cada votante solo deberá elegir **25** frases que las acompañen.
-Para realizar esta selección, el votante tendrá a disposición filtros por año y por autor, ademas de un buscador de texto *(que es sensible a tildes y no todas las frases tienen los tildes que deberían - sin suerte nuevamente -)*.
+Para realizar esta selección, hay filtros por año y por autor, ademas de un buscador de texto *(que es sensible a tildes y no todas las frases tienen los tildes que deberían - sin suerte nuevamente -)*.
 La selección  deberá cumplir las siguientes restricciones (contando siempre a las frases ya clasificadas):
-* Mínimo tiene que haber **3** frases de cada año *(Para asegurar la participación de cada año - hiper comunista, perdón)*
+* Mínimo tiene que haber **2** frases de cada año *(Perdón por el comunismo)*
 * Puede haber máximo **10** frases de un autor en particular. *(Para que gente como Yerman no vote solamente sus frases)*
 
  En el caso de que seas como Mauro y te dé paja hacer esto, hay un botón mágico que soluciona dicha problemática al cargar una selección random (y modificable) de frases. A pesar de esto, es importante recalcar que dicha herramienta debe ser usada con responsabilidad, **porque dejar las cosas libradas al azar puede llevar a la clasificación de frases cancerígenas**, lo cual está perfecto *(no hay que discriminar a quienes tienen cáncer)* pero luego no me vengan con *"¿Cómo ganó esa mierda?"* *"¿Quién votó esa poronga?"* *"¿Otra vez cagaron a Diego?"*  y demás troladas que surgen cuando votan como el orto *(uff con esta última oración tuve la oportunidad de hacer un chiste político y no lo hice, de nada).*
@@ -40,8 +40,6 @@ Mi recomendación es que os toméis un tiempo para recorrer los cromosomas de to
 Cada frase en la selección del votante recibirá **1** voto, las **7** Frases del Año sumadas las **25** frases más votadas, serán clasificadas a la siguiente fase.
 
 ***Nota**: el valor final del voto estará sujeto al multiplicador del usuario, esto está explicado más adelante*
-
-**Esta fase posiblemente sea la mas importante, porque define quienes realmente van a participar.**
 
 ## Fase de Grupos
 ---------------
@@ -65,12 +63,10 @@ Los ganadores pasan a la siguiente fase donde se vuelven a sortear partidos, y a
 
 ## Criterios de Desempate
 ---------------
-En caso de igualdad de votos en las **Eliminatorias** y en la **Fase de Grupos**, los siguientes criterios, en el orden dado, se tendrán en cuenta para determinar que frase le gana a otra:
+En caso de igualdad de votos se usarán los siguientes criterios, en el orden dado, para determinar que frase le gana a otra:
 * **Coeficiente Autista (CA)**: pasa la que tiene mayor coeficiente *(Recordatorio: el CA es un promedio de la cantidad de personas que eligieron la frase como su primer opción en correspondiente votación para Frase del Año)*
 * **Año**: la frase mas antigua pasa. Se considera que frases mas modernas van a ser ponderadas por los votantes por su cercanía temporal, por lo que en caso de empate se priorizan las viejas joyitas.
 * **Random**: Se estima que no se va a llegar a este punto, pero si sucede, se quedara la frase que haya elegido el sistema.
-
-En las etapas de **Eliminación Directa**, solo se usará el primer criterio. En caso de que persista el empate...
 
 ## Habilitación de Cuentas y Multiplicadores
 ---------------
@@ -95,12 +91,8 @@ El multiplicador funciona de una forma bastante simple: multiplica al valor orig
 
 Las categorías y habilitaciones serán asignadas en base a lo aquí descrito, y no debería haber mucho margen de error, pero en caso de considerar incorrecta la asignación, se podrá solicitar una revisión al **Comité de las Frases.**
 
-## Fair Play
----------------
-No hay mayores reglas mas que lo obvio, por lo que todo lo que no este escrito ni validado por el sistema es legal **siempre y cuando** no vaya en contra de la moral y las buenas costumbres. En caso de encontrarse una actividad sospechosa, el **Comité de las Frases** podrá aplicar sanciones si interpreta que se ha actuado de mala fe.
-
 ## Notas Varias
 ---------------
 * Toda esta wea esta hosteada sin poner un peso, por lo que puede que su rendimiento no sea optimo, en caso de ponerse muy rancio se procederá a gatillar.
-* De encontrarse un error el mismo sera guardado por el sistema, al mismo tiempo lo mas conveniente es comunicarselo a Pérez para ver si esta todo ok.
+* De encontrarse un error comunicarselo a Pérez.
 * La experiencia posiblemente sea una mierda desde el celular. Se recomienda usar PC.
