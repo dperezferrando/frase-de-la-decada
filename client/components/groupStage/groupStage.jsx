@@ -10,11 +10,11 @@ import CountDown from "../countdown";
 
 const GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H"]
 
-const explanationContent = () => {
+const explanationContent = (multiplicator) => {
   return <span>
     <b>FASE DE GRUPOS:</b> De cada grupo clasifican los dos primeros,
     solamente tenés que arrastrar las dos frases que más te gusten a las primeras dos posiciones y luego apretar "Votar".
-    La primer posición recibe <b>2 votos</b>, la segunda <b>1 voto</b>. Podés hacer click en una frase para obtener más información sobre la misma.
+    La primer posición recibe <b>{2 * multiplicator} punto/s</b>, la segunda <b>{multiplicator} punto/s</b>. Podés hacer click en una frase para obtener más información sobre la misma.
     <b> Good luck, have fun. </b>
     <b><span className="yearAuthor">ESTA FASE TERMINA EN <CountDown date={config.groupStage.endDate}/></span></b>
   </span>
@@ -33,7 +33,7 @@ class GroupStage extends Component {
     return <span>
       <Row className="justify-content-md-center groupStage">
         <Col md={11}>
-          <Explanation started={started} content={explanationContent} phase="groupStage"/>
+          <Explanation started={started} content={() => explanationContent(this.props.user.multiplicator)} phase="groupStage"/>
         </Col>
       </Row>
         {this.Groups(started)}

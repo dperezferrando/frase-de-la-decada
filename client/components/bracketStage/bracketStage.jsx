@@ -7,12 +7,13 @@ import BracketPhase from "../../containers/bracketStage/bracketPhase";
 import config from "../../config";
 import "./bracketStage.css"
 
-const explanationContent = () => {
+const explanationContent = (multiplicator) => {
   return <span>
     <b>ELIMINACION DIRECTA:</b> En esta fase las frases se enfrentan en partidos 1v1 yendo desde 
     octavos de final hasta la final. Para votar en un partido solamente hay que hacer click
-    en el boton "Votar" correspondiente. En caso de empate, el coeficiente autista define el ganador.<br/>
-    Los partidos de cada fase se definen por sorteo.
+    en el boton "Votar" correspondiente. En caso de empate, el coeficiente autista define el ganador. Los partidos de cada fase se definen por sorteo.
+    <br />Tus votos valen: <b>{multiplicator} punto/s</b>.
+    <br /><b>Good luck, have fun.</b>
     
   </span>
 }
@@ -27,7 +28,7 @@ class BracketStage extends Component {
     return <span>
       <Row className="justify-content-md-center bracketStage">
         <Col md={11}>
-          <Explanation started={started("eights")} phase="eights" content={explanationContent}/>
+          <Explanation started={started("eights")} phase="eights" content={() => explanationContent(this.props.user.multiplicator)}/>
         </Col>
       </Row>
       <Row className="justify-content-md-center">
