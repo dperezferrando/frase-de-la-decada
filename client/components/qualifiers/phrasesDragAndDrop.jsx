@@ -30,8 +30,8 @@ class PhrasesDragAndDrop extends Component {
               en la competición para convertirse en la <b>Frase de la Década</b> (Las frases ganadoras de cada año ya están clasificadas). Esto lo hacés arrastrando las frases de 
               izquierda a derecha <i>(No es casualidad, la derecha funciona)</i>
               <b> Hay dos restricciones</b>: mínimo tiene que haber <b>{MIN_FRASE_YEAR}</b> frases de cada año y máximo <b>{MAX_FRASE_AUTHOR}</b> frases de un autor en particular. (Contando siempre a las frases ya clasificadas)
-              Si te da <b>PAJA</b> hay un botón para eso.
-              <b> Good luck, have fun. </b> 
+              Si te da <b>PAJA</b> hay un botón para eso.<br />Tu voto vale: <b>{this.props.user.multiplicator} punto/s</b>
+              <br /><b> Good luck, have fun. </b> 
               <b><span className="yearAuthor">ESTA FASE TERMINA EN <CountDown date={config.qualifiers.endDate}/></span></b>
             </Alert>
             }
