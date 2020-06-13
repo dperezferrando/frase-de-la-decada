@@ -56,8 +56,8 @@ class PhrasesDragAndDrop extends Component {
               />
               {
                 <div>{ !this.validate() && <div><b>Te faltan frases de los años:</b> { this.aniosFaltantes() }</div> }
-                  <div> <b>Cantidad de frases de cada año elegidas: </b>{this._countByAnio().map((value, key) => `${key} (${value})`).join(", ")}</div>
-                  <div> <b>Cantidad de frases de cada autor elegidas: </b>{this._countByAutor().map((value, key) => `${key} (${value})`).join(", ")}</div>
+                  <div> <b>Cantidad de frases de cada año elegidas: </b>{this._countByAnio().map((value, key) => ({criteria: key,  value})).orderBy("value", "desc").map(({criteria, value}) => `${criteria} (${value})`).join(", ")}</div>
+                  <div> <b>Cantidad de frases de cada autor elegidas: </b>{this._countByAutor().map((value, key) => ({criteria: key,  value})).orderBy("value", "desc").map(({criteria, value}) => `${criteria} (${value})`).join(", ")}</div>
                 </div>
               }
               </span>

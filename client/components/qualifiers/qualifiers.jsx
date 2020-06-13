@@ -58,14 +58,14 @@ class Qualifiers extends Component {
     showExitWarning: true
   }
 
-  componentDidMount() {
-    window.addEventListener('beforeunload', ::this.beforeUnload);
+  // componentDidMount() {
+  //   window.addEventListener('beforeunload', ::this.beforeUnload);
 
-  }
+  // }
 
-  componentWillUnmount() {
-    window.removeEventListener('beforeunload', ::this.beforeUnload);
-  }
+  // componentWillUnmount() {
+  //   window.removeEventListener('beforeunload', ::this.beforeUnload);
+  // }
 
    beforeUnload(e) {
     if (moment().isBefore(config.qualifiers.endDate) && this.state.showExitWarning && !this.props.user.voted.qualifiers && this.state.selected.length > 7) {
