@@ -8,22 +8,22 @@ Se acerca el comienzo de la votación de la **Frase de la Decada** por lo que es
 
 ## Introducción
 ---------------
-![logo](https://i.imgur.com/eDNCtkc.png)
+![logo](https://i.imgur.com/ILrP3qH.png)
 
 La votación se va a desarrollar como el mismísimo mundial, o en realidad, como una Champions League *(porque para la parte de eliminación directa flashie mientras programaba e hice que cada fase salga por sorteo en vez de armarse un cruce por llaves y me dio paja cambiarlo - sin suerte - )*
 Para esto la votación se dividirá en las siguientes etapas:
 
 
- * Eliminatorias
- * Fase de Grupos
+ * Eliminatorias **26/06 20:30 (MINUTOS ANTES: CEREMONIA DE INAUGURACION) - 28/06 20:30**
+ * Fase de Grupos **29/06 20:00 - 30/06 20:00**
  * Eliminación Directa
-   * Octavos de Final
-   * Cuartos de Final
-   * Semifinal
-   * Tercer Puesto
-   * Final
+   * Octavos de Final **30/06 21:00 - 01/07 20:00**
+   * Cuartos de Final **01/07 21:00 - 02/07 20:00**
+   * Semifinal **02/07 21:00 - 03/07 20:00**
+   * Tercer Puesto **03/07 21:00 - 04/07 20:00**
+   * Final **04/07 21:00 - 05/07 20:00**
 
-Cada etapa  tendrá una fecha de comienzo y una fecha de fin, durante ese periodo se va a poder votar. Al llegar a la fecha de cierre se cierran los comicios y una hora mas tarde se harán públicos los resultados de dicha fase. Durante esa hora se valida que nada turbina haya sucedido y se procede a ejecutar los algoritmos mágicos que sortean la siguiente fase.
+Cada etapa tiene una fecha de comienzo y una fecha de fin, durante ese periodo se va a poder votar. Al llegar a la fecha de cierre se cierran los comicios y una hora mas tarde se harán públicos los resultados de dicha fase. Durante esa hora se valida que nada turbina haya sucedido y se procede a ejecutar los algoritmos mágicos que sortean la siguiente fase.
 La cantidad de frases que se votan en cada etapa y el valor de cada voto depende de la etapa misma.
 
 ## Eliminatorias
