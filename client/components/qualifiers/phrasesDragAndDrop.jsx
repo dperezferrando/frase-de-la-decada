@@ -83,7 +83,7 @@ class PhrasesDragAndDrop extends Component {
                 isLoading={this.props.isLoading}
                 isDropDisabled={false}
                 className={this.props.className}
-                dragDisabled={this.props.voted || this._qualifiersFinished()}
+                dragDisabled={!this.props.active || this.props.voted || this._qualifiersFinished()}
               />
               </Col>
             <Col md={6}>
@@ -93,7 +93,7 @@ class PhrasesDragAndDrop extends Component {
                 items={this.props.selected}
                 isDropDisabled={this.props.disableDrop || this.props.selected.length >= 32 }
                 className={this.props.className}
-                dragDisabled={this.props.voted || this._qualifiersFinished()}
+                dragDisabled={!this.props.active || this.props.voted || this._qualifiersFinished()}
               />
             </Col>
           </Row>
