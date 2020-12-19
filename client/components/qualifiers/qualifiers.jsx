@@ -120,7 +120,6 @@ class Qualifiers extends Component {
       if (source.droppableId === 'selectedPhrasesList') {
         state = { selected: items };
       }
-
       this.setState(state);
     } else {
       const result = move(
