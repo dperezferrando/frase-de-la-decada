@@ -41,14 +41,7 @@ class Filters extends Component {
       <Row className="justify-content-md-center">
         <Col md={11}>
           <Row>
-            <Col md={12} >
-              <GroupedFilters
-                name="anios" 
-                items={YEARS.map(it => ({ value: it }))}
-                onChange={anio => this.addFilter({ anio })}
-                selected={this.props.location.query.anio}
-                className={this.props.className}
-              />
+            <Col>
               <GroupedFilters
                 name="authors" 
                 items={this.props.authors.map(({ _id, name }) => ({ key: _id, value: name }))}
