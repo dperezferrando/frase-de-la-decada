@@ -42,7 +42,7 @@ class PhrasesDragAndDrop extends Component {
             {
               this._shouldBeAbleToVote() && <span>
               <span>
-                <b>Frases seleccionadas:</b> <b>{ this.props.selected.length }</b> de 32
+                <b>Frases seleccionadas:</b> <b>{ this.props.selected.length }</b> de 7
               </span>
               <ActionButtons 
                 voted={this.props.voted}
@@ -88,7 +88,7 @@ class PhrasesDragAndDrop extends Component {
               <PhrasesList
                 id={"selectedPhrasesList"}
                 items={this.props.selected}
-                isDropDisabled={this.props.disableDrop || this.props.selected.length >= 32 }
+                isDropDisabled={this.props.disableDrop || this.props.selected.length >= 7 }
                 className={this.props.className}
                 dragDisabled={!this.props.active || this.props.voted || this._qualifiersFinished()}
               />

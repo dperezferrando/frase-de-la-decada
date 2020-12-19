@@ -11,13 +11,8 @@ class QualifiersVoter extends PhaseVoter {
   }
 
   _theSelectionIsValid_(frases) {
-    const validByYear = _(frases)
-      .countBy("anio")
-      .every(it => it >= MIN_FRASE_YEAR);
-    const validByAuthor = _(frases)
-      .countBy("autor")
-      .every(it => it <= MAX_FRASE_AUTOR);
-    return validByYear && validByAuthor && frases.length == 32;
+
+    return frases.length == 7;
   }
 
 }
