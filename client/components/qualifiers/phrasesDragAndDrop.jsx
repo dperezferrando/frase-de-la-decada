@@ -60,12 +60,12 @@ class PhrasesDragAndDrop extends Component {
             }
             {
               this.props.voted && !this._qualifiersFinished() && <span>
-                <b>Ya votaste en esta fase!</b> Podés seguir viendo tu elección:
+                <b>Ya votaste!</b> Podés seguir viendo tu elección:
               </span>
             }
             {
               this._qualifiersFinished() && <span>
-                <b>Esta fase ya terminó!</b>
+                <b>La votación terminó!</b>
               </span>
             }
           </Col>
