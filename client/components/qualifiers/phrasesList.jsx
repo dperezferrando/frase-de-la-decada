@@ -4,7 +4,7 @@ import Component from "../../utils/component"
 import { Row, Col, Popover, OverlayTrigger } from "react-bootstrap";
 
 
-const Frase = (provided, snapshot, item, className) => {
+const Frase = (provided, snapshot, item, className, index, id, { multiplicator }) => {
   const popover = (
     <Popover id="aclaracion" className="frasePopover">
       <Popover.Title>
@@ -25,7 +25,7 @@ const Frase = (provided, snapshot, item, className) => {
       <span className="phraseBody"> {`"${item.frase}" - `} </span> 
       <span className={className}> { item.autor } </span>
       <span className={className}> {` (${item.anio})` } </span>
-
+      { id == "selectedPhrasesList" && <span><span className="phraseBody"> Votos: </span> <span className={className}>{ (7 - index) * multiplicator }</span></span> }
     </div> );
   return item.aclaracion ? (
     <OverlayTrigger trigger={["hover", "focus"]} placement="auto-end" overlay={popover}>
@@ -50,7 +50,7 @@ class PhrasesList extends Component {
                   index={index}
                   isDragDisabled={item.fraseDelAnio || this.props.dragDisabled}>
                     {(provided, snapshot) => (
-                      Frase(provided, snapshot, item, this.props.className)
+                      Frase(provided, snapshot, item, this.props.className, index, this.props.id, this.props.user)
                     )}
                 </Draggable>
               ))}
