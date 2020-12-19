@@ -7,7 +7,7 @@ deploy:
     secure: iEKj+LPUp/PJ9jmzZrYDdx4s6XEStYD+ZWaJgYb1qgk5+lCdQSKEBocFrTYKRgP5bXQ+z4QpZcx+I2HtHi0EDoDa3TahUd05BWYIvjQO0CBy4zHO8w43EXkkAZ1vGPnWnerb30daYv3zJFNby7PgewaLF55Yh1Qa3g8CpGrktsHU6laQguFnvKaMzbPkEXDQ76YF9iW5MFUI/TZcYmJ9+ebAvHfYnPLpaQUjG1rRwwQZ8dR3g9Wu8Nn4Jn7iYSU9f9zFD/R7zyyO90chRaemyGCeLoIqk2FfhKpCZ0nfJGrVFxt2yeintoGQhDpvSohDHWq0tbs27mHbS2NdwiLxmppwyX3xtNb51p3Aqt2FNd34mfp/JLqbhh+cAT3iG9xNZmEgMqzpnt+LMID7HIFUaowK6FrzC6o3MYm5WpCytRjSOLXRYxFe6cGvgmOulBV1QEmxo+iUXb5DZwsmbcpf34kgWCrtRgJvN+5ulqOgzALryNtPnSoRf6XzI4JqpfIVF25oMkjojdpjBjiVlhWeVcnhJ4D7OGqjR++pnYZ1EoeSGCasm/KuzUuQUwcPDGncOiEadpV/m6rbpd0HxYKEUDV6oW2+K1bBI2KsrKLA5wdW9wb5Tp/EnP3Uvo3wF72NS9H3I+PxICq7tvLxTmX92RcHQ18bdvOw/K51gFC2TuA=
   app: frase-2020
   on:
-    repo: frase-de-la-decada
+    repo: dperezferrando/frase-de-la-decada
     branches:    
       only:      
         - master
