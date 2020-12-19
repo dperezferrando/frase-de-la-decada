@@ -46,9 +46,7 @@ class Routes extends Component {
       <Container fluid>
         <Switch>
           <Route exact path="/inicio" component={Home}/>
-          <Route exact path="/qualifiers" component={this.Qualifiers} />
-          <Route exact path="/groupstage" component={GroupStage} />
-          <Route exact path="/bracketstage" component={BracketStage} />
+          <Route exact path="/2020" component={this.Qualifiers} />
           <Route exact path="/profile" component={Profile} />
         </Switch>
         <Footer/>
