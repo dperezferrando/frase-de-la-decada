@@ -8,10 +8,10 @@ const Frase = (provided, snapshot, item, className) => {
   const popover = (
     <Popover id="aclaracion" className="frasePopover">
       <Popover.Title>
-        <b>Coeficiente autista:</b> <span className={className}>{ item.coeficienteAutista }</span>
+        <b>Aclaración</b>
       </Popover.Title>
       {
-        item.aclaracion && <Popover.Content>
+        <Popover.Content>
           { item.aclaracion }
         </Popover.Content>
       }
@@ -27,11 +27,11 @@ const Frase = (provided, snapshot, item, className) => {
       <span className={className}> {` (${item.anio})` } </span>
 
     </div> );
-  return (
+  return item.aclaracion ? (
     <OverlayTrigger trigger={["hover", "focus"]} placement="auto-end" overlay={popover}>
       { body }
-    </OverlayTrigger>
-  );
+    </OverlayTrigger> 
+  ): body;
 }
 
 class PhrasesList extends Component {
