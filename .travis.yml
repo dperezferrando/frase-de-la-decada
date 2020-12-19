@@ -8,7 +8,5 @@ deploy:
   app: frase-2020
   on:
     repo: dperezferrando/frase-de-la-decada
-    branches:    
-      only:      
-        - master
-        - 2020
+    all_branches: true
+    condition: $TRAVIS_BRANCH =~ ^(master|2020)$
