@@ -7,8 +7,9 @@ class MyNavbar extends Component {
     return <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="/">
           { !this.props.trolo? <img
-            src="https://i.imgur.com/ExbFOjQ.png"
-            alt="Frase de la decada logo"
+            src="https://i.imgur.com/xZhC1UM.png"
+            alt="Frase 2020 logo"
+            height="40px"
           />
           : <img src="https://i.imgur.com/Ml69p4G.png" height="50px" width="50px"/>
         } 
