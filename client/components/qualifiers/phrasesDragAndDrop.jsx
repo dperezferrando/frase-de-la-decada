@@ -26,13 +26,12 @@ class PhrasesDragAndDrop extends Component {
           <Col md={12} className="qualifiersDesc">
            { this.state.showExplanation && 
             <Alert variant="light" onClose={::this.hideTutorial} dismissible>
-              <b>ELIMINATORIAS:</b> Tenés que elegir las 25 frases que considerás deben participar
-              en la competición para convertirse en la <b>Frase de la Década</b> (Las frases ganadoras de cada año ya están clasificadas). Esto lo hacés arrastrando las frases de 
-              izquierda a derecha <i>(No es casualidad, la derecha funciona)</i>
-              <b> Hay dos restricciones</b>: mínimo tiene que haber <b>{MIN_FRASE_YEAR}</b> frases de cada año y máximo <b>{MAX_FRASE_AUTHOR}</b> frases de un autor en particular. (Contando siempre a las frases ya clasificadas)
-              Si te da <b>PAJA</b> hay un botón para eso.<br />Tu voto vale: <b>{this.props.user.multiplicator} punto/s</b>
+              <b>FRASE DEL AÑO 2020:</b> Tenés que elegir las 7 frases que considerás fueron las mejores del año.
+              Esto lo hacés arrastrando las frases de izquierda a derecha <i>(No es casualidad, la derecha SIEMPRE Y EN TODO LUGAR funciona)</i>
+              <b> EL ORDERN IMPORTA</b> La primera frase tendrá la cantidad maxima de votos, las siguientes valdran menos. Al lado de cada frase te va a salir cuantos votos le estas dando.
+              <br />Tu voto MÁXIMO vale: <b>{this.props.user.multiplicator * 7} punto/s</b>
               <br /><b> Good luck, have fun. </b> 
-              <b><span className="yearAuthor">ESTA FASE TERMINA EN <CountDown date={config.qualifiers.endDate}/></span></b>
+              <b><span className="yearAuthor">LA VOTACIÓN TERMINA EN <CountDown date={config.qualifiers.endDate}/></span></b>
             </Alert>
             }
           </Col>
