@@ -20,6 +20,10 @@ class FraseHome extends Home {
     })
   }
 
+  destacadas() {
+    return this.getAll({ destacada: true});
+  }
+
   _frasesCount() {
     return this.aggregate([{ $group: { _id: "$autor", count: { $sum: 1} }}, {$sort: {count: -1}}]);
   }

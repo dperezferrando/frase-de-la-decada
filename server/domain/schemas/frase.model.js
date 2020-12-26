@@ -12,6 +12,7 @@ const fraseSchema = new Schema({
   coeficienteAutista: Number,
   preSelected: Boolean,
   context: String,
+  destacada: Boolean,
   fraseDelAnio: {
     type: Boolean,
     default: false

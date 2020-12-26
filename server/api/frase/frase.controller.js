@@ -25,6 +25,11 @@ class FraseController {
     return service.stats();
   }
 
+  destacadas({ service }) {
+    return service.destacadas();
+  }
+
+
 }
 
 export default FraseController;
