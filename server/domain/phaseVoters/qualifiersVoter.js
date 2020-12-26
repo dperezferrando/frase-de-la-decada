@@ -13,11 +13,11 @@ class QualifiersVoter extends PhaseVoter {
 
   _theSelectionIsValid_(frases) {
 
-    return frases.length == 7;
+    return frases.length == 8;
   }
 
   __saveVote__(ids) {
-    return Promise.map(ids, (id, i) => this._persist(id, 7 - i))
+    return Promise.map(ids, (id, i) => this._persist(id, 8 - i))
   }
 
 

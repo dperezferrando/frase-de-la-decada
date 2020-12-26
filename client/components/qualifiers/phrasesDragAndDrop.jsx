@@ -26,7 +26,7 @@ class PhrasesDragAndDrop extends Component {
           <Col md={12} className="qualifiersDesc">
            { this.state.showExplanation && 
             <Alert variant="light" onClose={::this.hideTutorial} dismissible>
-              <b>FRASE DEL AÑO 2020:</b> Tenés que elegir las 7 frases que considerás fueron las mejores del año.
+              <b>FRASE DEL AÑO 2020:</b> Tenés que elegir las 8 frases que considerás fueron las mejores del año.
               Esto lo hacés arrastrando las frases de izquierda a derecha <i>(No es casualidad, la derecha SIEMPRE Y EN TODO LUGAR funciona)</i>
               <b> EL ORDEN IMPORTA</b> La primera frase tendrá la cantidad maxima de votos, las siguientes valdran menos. Al lado de cada frase te va a salir cuantos votos le estas dando.
               <br />Tu voto MÁXIMO vale: <b>{this.props.user.multiplicator * 7} punto/s</b>
@@ -41,7 +41,7 @@ class PhrasesDragAndDrop extends Component {
             {
               this._shouldBeAbleToVote() && <span>
               <span>
-                <b>Frases seleccionadas:</b> <b>{ this.props.selected.length }</b> de 7
+                <b>Frases seleccionadas:</b> <b>{ this.props.selected.length }</b> de 8
               </span>
               <ActionButtons 
                 voted={this.props.voted}
