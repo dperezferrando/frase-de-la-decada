@@ -36,7 +36,7 @@ class ResultadosContainer extends Component {
   }
 }
 function mapStateToProps({ profile: { user, isLoading }, resultados: { mostVoted, stats, destacadas }, ...state }, props) {
-  return { isLoading: isLoading || mostVoted.isLoading || stats.isLoading || destacadas.isLoading, mostVoted: mostVoted.frase, stats, destacadas: destacadas.frases, user };
+  return { started, isLoading: isLoading || mostVoted.isLoading || stats.isLoading || destacadas.isLoading, mostVoted: mostVoted.frase, stats, destacadas: destacadas.frases, user };
 }
 
 function mapDispatchToProps(dispatch) {

@@ -40,7 +40,7 @@ class Resultados extends Component {
     return (
         <Row className="justify-content-md-center">
           <Col md={11}>
-            <div className="mainResults">
+            {!this.props.started ? <div className="mainResults"> <span className="detailAutor">LOS RESULTADOS ESTAN EL 31/12 LA RE PUTISIMA MADRE</span></div> : <div className="mainResults">
               <Row>
                 <Col md={12}>
                   <div className="mainTitle">RESULTADOS 2020</div>
@@ -92,6 +92,7 @@ class Resultados extends Component {
                 </Col>
               </Row>
             </div>
+          }
           </Col>
         </Row>
       
