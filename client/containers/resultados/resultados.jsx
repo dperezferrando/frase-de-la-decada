@@ -18,6 +18,8 @@ class ResultadosContainer extends Component {
   componentDidMount() {
     if(started) {
       this.props.actions.fetchMostVoted();
+      this.props.actions.fetchDestacadas();
+      this.props.actions.fetchStats();
     }
   }
 
@@ -33,8 +35,8 @@ class ResultadosContainer extends Component {
     );
   }
 }
-function mapStateToProps({ profile: { user, isLoading }, resultados: { mostVoted }, ...state }, props) {
-  return { isLoading: isLoading || mostVoted.isLoading, mostVoted: mostVoted.frase, user };
+function mapStateToProps({ profile: { user, isLoading }, resultados: { mostVoted, stats, destacadas }, ...state }, props) {
+  return { isLoading: isLoading || mostVoted.isLoading || stats.isLoading || destacadas.isLoading, mostVoted: mostVoted.frase, stats, destaacadas: destacadas.frases, user };
 }
 
 function mapDispatchToProps(dispatch) {

@@ -12,6 +12,17 @@ export default {
       ofType(Types.FETCH_MOST_VOTED),
       flatMap(() => serverApi.mostVoted()),
       map(actions.setMostVoted)
+    ),
+  fetchStatsEpic: (action$, store) =>
+    action$.pipe(
+      ofType(Types.FETCH_STATS),
+      flatMap(() => serverApi.stats()),
+      map(actions.setStats)
+    ),
+  fetchDestacadas: (action$, store) =>
+    action$.pipe(
+      ofType(Types.FETCH_DESTACADAS),
+      flatMap(() => serverApi.destacadas()),
+      map(actions.setDestacadas)
     )
-
 };

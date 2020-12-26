@@ -24,6 +24,14 @@ class ServerApi {
     return this.get("/frases/mostVoted").get(0);
   }
 
+  stats() {
+    return this.get("/frases/stats");
+  }
+
+  destacadas() {
+    return this.get("/frases/destacadas");
+  }
+
   vote(phase, frases, other = {}) {
     return this.post("/frases/votes", { phase, frases, ...other });
   }
