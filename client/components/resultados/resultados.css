@@ -1,0 +1,40 @@
+
+.mainResults {
+  background: #FFFFFF;
+  border-radius: 5px;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  padding: 8px;
+  height: 1000px;
+  text-align: center;
+  color: #333;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.mainTitle {
+  font-size: 40px;
+  color: #ac0000;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.detailAutor {
+  font-size: 25px;
+  text-align: center;
+  color: #ac0000;
+  font-weight: bold;
+
+}
+
+.fraseAnio {
+  background-color: #f2dede !important;
+  text-align: center;
+  margin:auto;
+  width: 90%;
+}
+
+.detailFrase {
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+}
