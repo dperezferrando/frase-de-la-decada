@@ -18,6 +18,7 @@ import "./main.css";
 
 import Home from "../containers/home";
 import Qualifiers from "../containers/qualifiers";
+import Resultados from "../containers/resultados";
 import GroupStage from "../containers/groupStage";
 import BracketStage from "../containers/bracketStage";
 import Profile from "../containers/profile";
@@ -47,6 +48,7 @@ class Routes extends Component {
         <Switch>
           <Route exact path="/inicio" component={Home}/>
           <Route exact path="/2020" component={this.Qualifiers} />
+          <Route exact path="/resultados" component={Resultados} />
           <Route exact path="/profile" component={Profile} />
         </Switch>
         <Footer/>

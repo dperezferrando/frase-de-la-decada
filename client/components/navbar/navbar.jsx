@@ -16,6 +16,7 @@ class MyNavbar extends Component {
         </Navbar.Brand>
       <Nav className="mr-auto">
         <Nav.Link href="/2020">Votación</Nav.Link>
+        <Nav.Link href="/resultados">Resultados</Nav.Link>
       </Nav>
       <Nav className="justify-content-end">
         <Nav.Link href="/profile">{ this.props.user.name }</Nav.Link>
