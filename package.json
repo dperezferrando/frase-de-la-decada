@@ -51,6 +51,7 @@
     "mongoose": "^5.8.9",
     "morgan": "^1.9.1",
     "net": "^1.0.2",
+    "newrelic": "^7.0.2",
     "passport": "^0.4.1",
     "passport-google-oauth": "^2.0.0",
     "qhistory": "^1.0.3",
