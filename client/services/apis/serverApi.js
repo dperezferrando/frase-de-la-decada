@@ -20,6 +20,10 @@ class ServerApi {
     return this.get("/authors");
   }
 
+  mostVoted() {
+    return this.get("/frases/mostVoted").get(0);
+  }
+
   vote(phase, frases, other = {}) {
     return this.post("/frases/votes", { phase, frases, ...other });
   }

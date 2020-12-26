@@ -16,8 +16,8 @@ class Resultados extends Component {
           <div className="mainResults">
             <div className="mainTitle">RESULTADOS 2020</div>
             <div className="fraseAnio"> 
-              <p className="detailAutor">Pérez</p>
-              <p className="detailFrase">La concha tuya (Puto)</p>
+              <p className="detailAutor">{this.props.mostVoted.autor}</p>
+              <p className="detailFrase">{this.props.mostVoted.frase} { this.props.mostVoted.aclaracion && `(${this.props.mostVoted.aclaracion})`}</p>
               <p className="detailAutor">FRASE DEL AÑO</p>
 
             </div>

@@ -1,11 +1,15 @@
 export const Types = {
-  FETCH_RESULTS_2020: "FETCH_RESULTS_2020",
+  FETCH_MOST_VOTED: "FETCH_MOST_VOTED",
+  SET_MOST_VOTED: "SET_MOST_VOTED",
 }
 
 
 export const actions = {
-  fetchResults: (options) => ({
-    type: Types.FETCH_RESULTS_2020,
-    options
+  fetchMostVoted: () => ({
+    type: Types.FETCH_MOST_VOTED
+  }),
+  setMostVoted: (mostVoted) => ({
+    type: Types.SET_MOST_VOTED,
+    mostVoted
   })
 }

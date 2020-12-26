@@ -9,14 +9,16 @@ import Component from "../../utils/component"
 import WithLoading from "../../components/utils/withLoading";
 
 
-//const started = moment().isAfter(config.qualifiers.startDate);
+const started = moment().isAfter(config.qualifiers.resultsDate);
 
 const ResultadosWithLoading = WithLoading(Resultados)
 
 class ResultadosContainer extends Component {
 
   componentDidMount() {
-
+    if(started) {
+      this.props.actions.fetchMostVoted();
+    }
   }
 
 
@@ -31,8 +33,8 @@ class ResultadosContainer extends Component {
     );
   }
 }
-function mapStateToProps({ profile: { user, isLoading }, ...state }, props) {
-  return { isLoading: isLoading, user };
+function mapStateToProps({ profile: { user, isLoading }, resultados: { mostVoted }, ...state }, props) {
+  return { isLoading: isLoading || mostVoted.isLoading, mostVoted: mostVoted.frase, user };
 }
 
 function mapDispatchToProps(dispatch) {

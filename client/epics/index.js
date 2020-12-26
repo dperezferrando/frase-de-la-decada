@@ -8,6 +8,7 @@ import qualifiersResultsEpic from "./qualifiersResults";
 import groupStageEpic from "./groupStage";
 import bracketPhaseEpic from "./bracketPhase";
 import bracketStageEpic from "./bracketStage";
+import resultadosEpic from "./resultados";
 import homeEpic from "./home";
 
 export default (action$, store$, dependencies) =>
@@ -19,7 +20,8 @@ export default (action$, store$, dependencies) =>
     ...(_.values(groupStageEpic)),
     ...(_.values(bracketPhaseEpic)),
     ...(_.values(bracketStageEpic)),
-    ...(_.values(homeEpic))
+    ...(_.values(homeEpic)),
+    ...(_.values(resultadosEpic))
   )(action$, store$, dependencies).pipe(
     catchError((error, source) => {
       console.error(error);
