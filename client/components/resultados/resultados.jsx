@@ -23,6 +23,17 @@ const getList = (list, text) => {
     )
 }
 
+const getFrases = (list) => {
+  return list.map(({_id, frase, aclaracion}) => {
+    return <Col md={2}>
+        <p className="autorMasVotada">{ _id }</p>
+        <p className="fraseMasVotada">{ frase } { aclaracion && `(${aclaracion})`}</p>
+        <p className="autorMasVotada">2020</p>
+
+      </Col>
+  })
+}
+
 class Resultados extends Component {
 
    render() {
@@ -54,6 +65,29 @@ class Resultados extends Component {
               </Row>
               <Row>
                 <Col md={12}>
+                  <hr/>
+                  <p className="detailAutor">FRASES MAS VOTADAS DE CADA UNO:</p>
+                  <Row>
+                    {
+                      getFrases(this.props.stats.mostVoted.filter(it => !_.isNull(it.votos)))
+                    }
+                  </Row>
+                </Col>
+              </Row>
+              <Row>
+                <Col md={12}>
+                  <hr/>
+                  <p className="detailAutor">FRASES QUE SE DESTACARON TODO EL AÑO:</p>
+                  <Row>
+                    {
+                      getFrases(this.props.destacadas.map(it => ({ ...it, _id: it.autor})))
+                    }
+                  </Row>
+                </Col>
+              </Row>
+              <Row>
+                <Col md={12}>
+                  <hr/>
                   <QualifiersResults/>
                 </Col>
               </Row>

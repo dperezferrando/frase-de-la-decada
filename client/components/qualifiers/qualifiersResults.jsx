@@ -15,7 +15,7 @@ class QualifiersResults extends Component {
     return <Row className="justify-content-md-center" style={{ marginTop: "10px"}}>
       <Col md={11}>
         <div className="clasificadas">
-          <div className="resultsTitle">RESULTADOS DE LA VOTACIÓN (PRIMEROS 20)</div>
+          <div className="detailAutor">RESULTADOS DE LA VOTACIÓN (PRIMEROS 20)</div>
             <div className="tableQualifiers">
             <Collapse in={!this.state.collapse}>
               <Table striped bordered>
