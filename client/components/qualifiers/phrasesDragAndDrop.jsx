@@ -89,7 +89,7 @@ class PhrasesDragAndDrop extends Component {
               <PhrasesList
                 id={"selectedPhrasesList"}
                 items={this.props.selected}
-                isDropDisabled={this.props.disableDrop || (this.props.selected.length + 1) >= 8 }
+                isDropDisabled={this.props.disableDrop || (this.props.selected.length + 1) > 8 }
                 className={this.props.className}
                 dragDisabled={!this.props.active || this.props.voted || this._qualifiersFinished()}
                 user={this.props.user}
