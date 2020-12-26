@@ -3,7 +3,7 @@
 		{
 			"follow_symlinks": true,
 			"path": ".",
-			"folder_exclude_patterns": ["compiled",".*", "ci", "public", "dist", "node_modules"],
+			"folder_exclude_patterns": ["compiled",".*", "ci", "psublic", "dist", "node_modules"],
 			"file_exclude_patterns": ["*.sublime-workspace"]
 		}
 	],

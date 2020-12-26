@@ -3,6 +3,6 @@ import React from 'react';
 export default (props) => 
   <div className="placeHolder">
     <p>
-      <img src="https://i.imgur.com/zjEsa9l.png" height="50px" className="fa fa-spin" /> 
+      <i className="fas fa-virus fa-spin" aria-hidden='true'/> 
     </p>
   </div>
