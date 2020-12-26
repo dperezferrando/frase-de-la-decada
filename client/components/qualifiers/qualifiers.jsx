@@ -142,7 +142,7 @@ class Qualifiers extends Component {
     return (
        started ? <span>
 
-        { moment().isAfter(config.qualifiers.resultsDate) &&
+        { false &&
           <QualifiersResults / >
         }
         <FiltersWithLoading

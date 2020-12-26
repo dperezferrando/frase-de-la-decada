@@ -4,6 +4,7 @@ import moment from "moment";
 import Component from "../../utils/component"
 import WithLoading from "../../components/utils/withLoading";
 import config from "../../config";
+import QualifiersResults from "../../containers/qualifiers/qualifiersResults";
 import "./resultados.css"
 
 
@@ -21,6 +22,7 @@ class Resultados extends Component {
               <p className="detailAutor">FRASE DEL AÑO</p>
 
             </div>
+          <QualifiersResults/>
           </div>
           </Col>
         </Row>
