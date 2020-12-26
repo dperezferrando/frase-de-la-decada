@@ -43,6 +43,10 @@ class FraseService {
    return this.home.mostVoted(); 
   }
 
+  stats() {
+    return this.home.stats();
+  }
+
   getAll({ frase, ...other}, offset = 0, limit = 25) {
     const query = frase ? { frase: new RegExp(frase, "gi"), ...other } : other; 
     if(query.fraseDelAnio)
