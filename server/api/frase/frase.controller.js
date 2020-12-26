@@ -17,6 +17,10 @@ class FraseController {
     return service.qualified();
   }
 
+  mostVoted({ service }) {
+    return service.mostVoted();
+  }
+
 }
 
 export default FraseController;

@@ -15,6 +15,7 @@ router.use((req, res, next) => {
 route.get("/", controller.getAll);
 route.get("/trolo", controller.trolo);
 route.get("/qualified", controller.qualified);
+route.get("/mostVoted", controller.mostVoted);
 route.post("/votes", controller.vote)
 
 export default router;

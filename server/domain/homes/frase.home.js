@@ -6,6 +6,10 @@ class FraseHome extends Home {
     super(FraseModel);
   }
 
+  mostVoted() {
+    return this.Model.find({}).sort({ "votesQuantity.qualifiers": -1 }).limit(1).execAsync();
+  }
+
 }
 
 export default FraseHome;

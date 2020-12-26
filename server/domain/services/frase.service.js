@@ -39,6 +39,10 @@ class FraseService {
       .then(({ frases }) => this.getAll({ _id: { $in: frases } }, 0, 32 ));
   }
 
+  mostVoted() {
+   return this.home.mostVoted(); 
+  }
+
   getAll({ frase, ...other}, offset = 0, limit = 25) {
     const query = frase ? { frase: new RegExp(frase, "gi"), ...other } : other; 
     if(query.fraseDelAnio)
