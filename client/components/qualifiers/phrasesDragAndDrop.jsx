@@ -27,7 +27,7 @@ class PhrasesDragAndDrop extends Component {
            { this.state.showExplanation && 
             <Alert variant="light" onClose={::this.hideTutorial} dismissible>
               <b>FRASE DEL AÑO 2020:</b> Tenés que elegir las 8 frases que considerás fueron las mejores del año.
-              Esto lo hacés arrastrando las frases de izquierda a derecha <i>(No es casualidad, la derecha SIEMPRE Y EN TODO LUGAR funciona)</i>
+              Esto lo hacés arrastrando las frases de izquierda a derecha <i>(No es casualidad, la derecha funciona)</i>
               <b> EL ORDEN IMPORTA</b> La primera frase tendrá la cantidad maxima de votos, las siguientes valdran menos. Al lado de cada frase te va a salir cuantos votos le estas dando.
               <br />Tu voto MÁXIMO vale: <b>{this.props.user.multiplicator * 8} punto/s</b>
               <br /><b> Good luck, have fun. </b> 
@@ -79,7 +79,7 @@ class PhrasesDragAndDrop extends Component {
                 isLoading={this.props.isLoading}
                 isDropDisabled={false}
                 className={this.props.className}
-                dragDisabled={!this.props.active || this.props.voted || this._qualifiersFinished()}
+                dragDisabled={!this.props.active || this.props.voted || (this.props.selected.length + 1) > 8 || this._qualifiersFinished()}
                 user={this.props.user}
 
               />
@@ -89,7 +89,7 @@ class PhrasesDragAndDrop extends Component {
               <PhrasesList
                 id={"selectedPhrasesList"}
                 items={this.props.selected}
-                isDropDisabled={this.props.disableDrop || (this.props.selected.length + 1) > 8 }
+                isDropDisabled={this.props.disableDrop}
                 className={this.props.className}
                 dragDisabled={!this.props.active || this.props.voted || this._qualifiersFinished()}
                 user={this.props.user}
