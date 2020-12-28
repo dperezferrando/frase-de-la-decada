@@ -1,6 +1,8 @@
 import Home from "./home";
 import _ from "lodash";
+import moment from "moment"
 import Promise from "bluebird";
+import config from "../../config";
 import FraseModel from "../schemas/frase.model.js"
 
 class FraseHome extends Home {
@@ -9,10 +11,18 @@ class FraseHome extends Home {
   }
 
   mostVoted() {
+    if(!moment().isAfter(config.qualifiers.resultsDate))
+      return Promise.resolve([])
     return this.Model.find({}).sort({ "votesQuantity.qualifiers": -1 }).limit(1).execAsync();
   }
 
   stats() {
+    if(!moment().isAfter(config.qualifiers.resultsDate))
+      return Promise.resolve({
+      frasesCount: [],
+      votesCount: [],
+      mostVoted: []
+    })
     return Promise.props({
       frasesCount: this._frasesCount(),
       votesCount: this._votesCount(),
