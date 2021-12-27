@@ -1,6 +1,7 @@
 import request from "request-promise";
 import config from "../../config";
 const baseUrl = `${config.domain}/api`;
+console.log("AAA", baseUrl)
 
 class ServerApi {
   
