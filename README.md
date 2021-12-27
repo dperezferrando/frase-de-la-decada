@@ -3,7 +3,7 @@
 # Punchbang's Stuff - Frase de la Decada
 [![Build Status](https://travis-ci.org/dperezferrando/frase-de-la-decada.svg?branch=master)](https://travis-ci.org/dperezferrando/frase-de-la-decada)
 
-Se acerca el comienzo de la votación de la **Frase de la Decada** por lo que es un buen momento para leer como garcha funciona esta cosa. Si te da paja leer esto, podés no leerlo porque en cada etapa se dará la información mínima para la misma, pero si después no entendés algo, no llores.
+Se acerca el comienzo de la votación de la **Frase de la Decada** por lo que es un buen momento para leer como garcha funciona esta cosa. Si te da paja leer esto, podés no leerlo porque en cada etapa se dará la información mínima para la misma, pero si después no entendés algo, no llores
 
 
 ## Introducción
