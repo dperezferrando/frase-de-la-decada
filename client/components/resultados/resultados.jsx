@@ -28,7 +28,7 @@ const getFrases = (list) => {
     return <Col md={2}>
         <p className="autorMasVotada">{ _id }</p>
         <p className="fraseMasVotada">{ frase } { aclaracion && `(${aclaracion})`}</p>
-        <p className="autorMasVotada">2020</p>
+        <p className="autorMasVotada">2021</p>
 
       </Col>
   })
@@ -43,7 +43,7 @@ class Resultados extends Component {
             {!this.props.started ? <div className="mainResults"> <span className="detailAutor">LOS RESULTADOS ESTAN EL 31/12 LA RE PUTISIMA MADRE</span></div> : <div className="mainResults">
               <Row>
                 <Col md={12}>
-                  <div className="mainTitle">RESULTADOS 2020</div>
+                  <div className="mainTitle">RESULTADOS 2021</div>
                   <div className="fraseAnio"> 
                     <p className="detailAutor">{this.props.mostVoted.autor}</p>
                     <p className="detailFrase">{this.props.mostVoted.frase} { this.props.mostVoted.aclaracion && `(${this.props.mostVoted.aclaracion})`}</p>

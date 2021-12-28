@@ -7,15 +7,15 @@ class MyNavbar extends Component {
     return <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="/">
           { !this.props.trolo? <img
-            src="https://i.imgur.com/xZhC1UM.png"
-            alt="Frase 2020 logo"
+            src="https://i.imgur.com/FZUenoK.png"
+            alt="Frase 2021 logo"
             height="40px"
           />
           : <img src="https://i.imgur.com/Ml69p4G.png" height="50px" width="50px"/>
         } 
         </Navbar.Brand>
       <Nav className="mr-auto">
-        <Nav.Link href="/2020">Votación</Nav.Link>
+        <Nav.Link href="/2021">Votación</Nav.Link>
         <Nav.Link href="/resultados">Resultados</Nav.Link>
       </Nav>
       <Nav className="justify-content-end">

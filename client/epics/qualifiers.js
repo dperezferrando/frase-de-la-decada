@@ -49,7 +49,7 @@ export default {
     ),setFiltersEpic: (action$, store) =>
     action$.pipe(
       ofType(Types.SET_FILTERS),
-      map(({ history, filters }) => { history.push({ pathname: '/2020', query: filters });
+      map(({ history, filters }) => { history.push({ pathname: '/2021', query: filters });
        return filters;
      }),
       map(actions.fetchFrases)
@@ -57,7 +57,7 @@ export default {
     action$.pipe(
       ofType(Types.VOTE_QUALIFIERS),
       flatMap(({ phase, frases }) => serverApi.vote(phase, frases)
-        .then(() => window.location = "/2020")
+        .then(() => window.location = "/2021")
         .catch(it => alert(it))),
       mapTo(noop())
     ),fetchVotesEpic: (action$, store) =>

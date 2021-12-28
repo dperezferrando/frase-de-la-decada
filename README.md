@@ -76,7 +76,7 @@ Esta votación *(como siempre)* está abierta al publico general, si bien no se 
 
 Los usuarios se dividirán en **3** categorías. Cada categoría determina el peso de su voto, el cual se define mediante un multiplicador.
 
-* **Categoría 1**: todos los autores de frases hasta **2020 inclusive**. Multiplicador: **1**
+* **Categoría 1**: todos los autores de frases hasta **2021 inclusive**. Multiplicador: **1**
 * **Categoría 2**: todas las personas que sepan de la existencia de **antemano** y/o hayan presenciado regularmente el acto autista de las frases. Multiplicador: **0,5**
 * **Categoría 3**: todas las personas que no entran en las anteriores categorías y por alguna extraña razón tienen una cuenta habilitada. Multiplicador: **0,2**
 

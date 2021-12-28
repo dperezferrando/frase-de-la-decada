@@ -3,6 +3,7 @@ import PhaseVoter from "./phaseVoter";
 import Promise from "bluebird";
 const MIN_FRASE_YEAR = 2;
 const MAX_FRASE_AUTOR = 10;
+const CANT_FRASES = 7
 
 class QualifiersVoter extends PhaseVoter {
 
@@ -13,11 +14,11 @@ class QualifiersVoter extends PhaseVoter {
 
   _theSelectionIsValid_(frases) {
 
-    return frases.length == 8;
+    return frases.length == CANT_FRASES;
   }
 
   __saveVote__(ids) {
-    return Promise.map(ids, (id, i) => this._persist(id, 8 - i))
+    return Promise.map(ids, (id, i) => this._persist(id, CANT_FRASES - i))
   }
 
 

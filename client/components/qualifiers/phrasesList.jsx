@@ -3,6 +3,7 @@ import { Droppable, Draggable } from 'react-beautiful-dnd';
 import Component from "../../utils/component"
 import { Row, Col, Popover, OverlayTrigger } from "react-bootstrap";
 
+const CANT_FRASES = 7
 
 const Frase = (provided, snapshot, item, className, index, id, { multiplicator }) => {
   const popover = (
@@ -25,7 +26,7 @@ const Frase = (provided, snapshot, item, className, index, id, { multiplicator }
       <span className="phraseBody"> {`"${item.frase}" - `} </span> 
       <span className={className}> { item.autor } </span>
       <span className={className}> {` (${item.anio})` } </span>
-      { id == "selectedPhrasesList" && <span><span className="phraseBody"> Votos: </span> <span className={className}>{ (8 - index) * multiplicator }</span></span> }
+      { id == "selectedPhrasesList" && <span><span className="phraseBody"> Votos: </span> <span className={className}>{ (CANT_FRASES - index) * multiplicator }</span></span> }
     </div> );
   return item.aclaracion ? (
     <OverlayTrigger trigger={["hover", "focus"]} placement="auto-end" overlay={popover}>

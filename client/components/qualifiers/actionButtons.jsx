@@ -5,6 +5,8 @@ import TroloModal from "./troloModal";
 import ConfirmationModal from "./confirmationModal";
 import "./qualifiers.css"
 
+const CANT_FRASES = 7
+
 class ActionButtons extends Component {
   state = {
     troloModalOpened: false,
@@ -25,7 +27,7 @@ class ActionButtons extends Component {
         show={this.state.confirmationModalOpened}
         vote={this.props.vote}
       />}
-      <Button variant="success" className="actionButton" onClick={::this.openConfirmationModal} disabled={this.props.selected.length < 8 || !this.props.validate() || !this.props.active}>VOTAR</Button>
+      <Button variant="success" className="actionButton" onClick={::this.openConfirmationModal} disabled={this.props.selected.length < CANT_FRASES || !this.props.validate() || !this.props.active}>VOTAR</Button>
       {!this.props.active && <span className="actionButton">Tu usuario <b>NO</b> está <b>ACTIVO</b>. No podés votar.</span>}
     </span>
     )

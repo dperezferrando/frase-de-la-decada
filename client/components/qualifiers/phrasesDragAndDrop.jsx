@@ -12,6 +12,7 @@ import CountDown from "../countdown"
 
 const MIN_FRASE_YEAR = 2;
 const MAX_FRASE_AUTHOR = 10;
+const CANT_FRASES = 7
 
 class PhrasesDragAndDrop extends Component {
 
@@ -26,10 +27,10 @@ class PhrasesDragAndDrop extends Component {
           <Col md={12} className="qualifiersDesc">
            { this.state.showExplanation && 
             <Alert variant="light" onClose={::this.hideTutorial} dismissible>
-              <b>FRASE DEL AÑO 2020:</b> Tenés que elegir las 8 frases que considerás fueron las mejores del año.
-              Esto lo hacés arrastrando las frases de izquierda a derecha <i>(No es casualidad, la derecha funciona)</i>
+              <b>FRASE DEL AÑO 2021:</b> Tenés que elegir las { CANT_FRASES } frases que considerás fueron las mejores del año.
+              Esto lo hacés arrastrando las frases de izquierda a derecha 
               <b> EL ORDEN IMPORTA</b> La primera frase tendrá la cantidad maxima de votos, las siguientes valdran menos. Al lado de cada frase te va a salir cuantos votos le estas dando.
-              <br />Tu voto MÁXIMO vale: <b>{this.props.user.multiplicator * 8} punto/s</b>
+              <br />Tu voto MÁXIMO vale: <b>{this.props.user.multiplicator * CANT_FRASES} punto/s</b>
               <br /><b> Good luck, have fun. </b> 
               <b><span className="yearAuthor">LA VOTACIÓN TERMINA EN <CountDown date={config.qualifiers.endDate}/></span></b>
             </Alert>
@@ -41,7 +42,7 @@ class PhrasesDragAndDrop extends Component {
             {
               this._shouldBeAbleToVote() && <span>
               <span>
-                <b>Frases seleccionadas:</b> <b>{ this.props.selected.length }</b> de 8
+                <b>Frases seleccionadas:</b> <b>{ this.props.selected.length }</b> de { CANT_FRASES }
               </span>
               <ActionButtons 
                 voted={this.props.voted}
@@ -79,7 +80,7 @@ class PhrasesDragAndDrop extends Component {
                 isLoading={this.props.isLoading}
                 isDropDisabled={false}
                 className={this.props.className}
-                dragDisabled={!this.props.active || this.props.voted || (this.props.selected.length + 1) > 8 || this._qualifiersFinished()}
+                dragDisabled={!this.props.active || this.props.voted || (this.props.selected.length + 1) > CANT_FRASES || this._qualifiersFinished()}
                 user={this.props.user}
 
               />
