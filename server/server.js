@@ -21,6 +21,12 @@ app.use(favicon(PUBLIC_DIR + '/favicon.png'));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(compression());
+  app.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https')
+      res.redirect(`https://${req.header('host')}${req.url}`)
+    else
+      next()
+  })
 }
 
 setUpAuthMiddlewares(app);
